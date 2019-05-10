@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var http = require('http');
 
-const bonnett_port = 7778;
+const bonnett_port = 3000;
 const bonnett_host = 'bonnet19.cs.qc.cuny.edu';
 /* GET home page. */
 router.get('/', function (req, res, next) {
