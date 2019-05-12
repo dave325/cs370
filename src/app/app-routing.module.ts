@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: './list/list.module#ListPageModule'
   },
   {
+    path:'home',
+    loadChildren: './home/home.module#HomePageModule'
+  },
+  {
     path:'about',
     component: AboutComponent
   },
