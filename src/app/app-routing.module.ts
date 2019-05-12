@@ -1,6 +1,10 @@
 import { AboutComponent } from './about/about.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ListPageModule } from './list/list.module';
+import { UploadComponent } from './upload/upload.component';
+import { CaseViewComponent } from './case-view/case-view.component';
+import { HomePage } from './home/home.page';
 
 const routes: Routes = [
   {
@@ -14,6 +18,14 @@ const routes: Routes = [
   {
     path:'about',
     component: AboutComponent
+  },
+  {
+    path:'upload',
+    component: UploadComponent
+  },
+  {
+    path:'view-case',
+    component: CaseViewComponent
   }
 ];
 

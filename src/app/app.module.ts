@@ -10,12 +10,16 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { UploadComponent } from './upload/upload.component';
+import { CaseViewComponent } from './case-view/case-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AboutComponent
+    AboutComponent,
+    UploadComponent,
+    CaseViewComponent
   ],
   entryComponents: [
     LoginComponent
