@@ -19,6 +19,6 @@ import { AboutComponent } from '../about/about.component';
       }
     ])
   ],
-  declarations: [HomePage, AboutComponent]
+  declarations: [HomePage]
 })
 export class HomePageModule {}
