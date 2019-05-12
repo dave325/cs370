@@ -9,6 +9,11 @@ import { HomePage } from './home/home.page';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
     loadChildren: './home/home.module#HomePageModule'
   },
   {
