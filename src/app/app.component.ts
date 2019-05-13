@@ -16,8 +16,13 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
+      title: 'View Cases',
       url: '/list',
+      icon: 'list'
+    },
+    {
+      title: 'Upload a Case',
+      url: '/upload',
       icon: 'list'
     },
     {
