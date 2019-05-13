@@ -1,3 +1,5 @@
+import { ProxyService } from './proxy.service';
+import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
@@ -14,6 +16,7 @@ import { UploadPage } from './upload/upload.page';
 import { CasePage } from './case/case.page';
 import { ListPage } from './list/list.page';
 import { HomePage } from './home/home.page';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -28,13 +31,16 @@ import { HomePage } from './home/home.page';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ProxyService
   ],
   bootstrap: [AppComponent]
 })
