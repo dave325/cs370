@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var http = require('http');
-
+var caseReport = require('../bonnet_case_report_parse');
 const bonnett_port = 7778;
 const bonnett_host = 'http://bonnet19.cs.qc.cuny.edu';
 router.post("/login",
@@ -44,10 +44,6 @@ router.post("/login",
     reqToBonnett.write(postData);
     reqToBonnett.end();
 
-
-
-
-
   });
-
+router.post('/case', caseReport.case);
 module.exports = router;

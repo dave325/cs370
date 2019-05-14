@@ -16,7 +16,7 @@
     <ion-item *ngFor="let item of items">
       {{item.title}}
       
-      <div class="item-note" slot="end">
+      <div class="item-note" slot="end" [routerDirection]="'root'" [routerLink]="'/case/' + item.url">
         {{item.note}}
       </div>
     </ion-item>
