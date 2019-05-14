@@ -4,11 +4,48 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Case Upload
+      Case List
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form #form="ngForm" (ngSubmit)="register(form)">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Upload your case!</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-label>Case Name:</ion-label>
+              <ion-input name="caseName" type="text" placeholder="What will we call your case?" ngModel required>
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Case Description:</ion-label>
+              <ion-textarea rows="6" cols="20" maxlength="500" name="caseName" type="text" placeholder="Give a short description of your case" ngModel
+                required></ion-textarea>
+            </ion-item>
+            <ion-item>
+              <ion-label>Case File:</ion-label>
+              <ion-button color="primary" shape="round" fill="outline">Attach</ion-button>
+            </ion-item>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+
 
 </ion-content>
+
+
+<ion-footer>
+  <div padding>
+    <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Upload</ion-button>
+  </div>
+</ion-footer>

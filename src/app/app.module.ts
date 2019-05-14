@@ -1,3 +1,4 @@
+import { CasePageModule } from './case/case.module';
 import { ProxyService } from './proxy.service';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
@@ -23,11 +24,13 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     LoginComponent,
-    AboutComponent
+    AboutComponent,
+    CasePage
   
   ],
   entryComponents: [
-    LoginComponent
+    LoginComponent,
+    CasePage
   ],
   imports: [
     BrowserModule,
