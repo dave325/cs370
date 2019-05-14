@@ -2,7 +2,7 @@ const cheerio = require('cheerio');
 const request = require('request');
 const URL = "http://localhost:8080";
 
-module.exports.case = (request, response) => {
+module.exports.case = (req, response) => {
     request({ method: 'GET', url: URL },
         (err, res, body) => {
             if (err) return console.error(err);

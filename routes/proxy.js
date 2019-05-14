@@ -2,6 +2,11 @@ var express = require('express');
 var router = express.Router();
 var http = require('http');
 var caseReport = require('../bonnet_case_report_parse');
+var caseLoad = require('../parsers/bonnet_case_load_parse');
+var caseCreate = require('../parsers/bonnet_create_case_parse');
+var login = require('../parsers/bonnet_login_parse');
+var threadCase = require('../parsers/parseThreadedCase');
+
 const bonnett_port = 7778;
 const bonnett_host = 'http://bonnet19.cs.qc.cuny.edu';
 router.post("/login",
@@ -46,4 +51,8 @@ router.post("/login",
 
   });
 router.post('/case', caseReport.case);
+router.post('/caseload', caseLoad.caseLoad);
+router.post('/caseCreate', caseCreate.caseCreate);
+router.post('/login', login.login);
+router.post('/threadCase', threadCase.threadCase);
 module.exports = router;
