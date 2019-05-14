@@ -1,14 +1,18 @@
 const cheerio = require('cheerio');
 const request = require('request');
-const URL = "http://localhost:8080";
+const URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.retrieve_interface";
 
-request({method: 'GET',url: URL}, 
+//case report
+//p_media_select: "img" or "aud" or "vid" or "ole"
+//p_attachOrReply: "Get-attachment" || "Reply" || "Bookmark case"||"Add user to my hotlist"||"Create my new resource group"
+                
+request({method: 'GET',url: URL, form: { p_case_select: req.body.p_case_select, p_session: req.body.p_session }}, 
     (err, res, body) => {
         if (err) return console.error(err);
         
         let $ = cheerio.load(body);
         let object = {};
-        object["form-action"] = $("link").attr('href');
+        object["form-action"] = $("form").attr('action');
         
         object["title"] = $("title").text();
         
@@ -30,10 +34,6 @@ request({method: 'GET',url: URL},
                 object["Case Description link"] = $(this).find('a').attr('href');
                 object["Case Description"] = $(this).find('td').text();
                 
-            }else if($(this).text().includes("Oracle Y2K compliant system date reporting today as:")){
-                
-                let l = $(this).text().length;
-                object["compliant system date"] = $(this).text().substring(53, l).trim();
             }else if($(this).find('a').text() == "Bon Sy."){
                 object["mailto link"] = $(this).find('a').attr('href');
             }else{
@@ -43,14 +43,23 @@ request({method: 'GET',url: URL},
                 (type == "vid")||
                 (type == "ole")){
                     $(this).find('option').each(function(i,e){
-                        object[type+" "+i] = $(this).attr('value');
+                        object[type+""+i] = $(this).attr('value');
                         //download file
                     })
                 
                 }
             }
         })
+
+        $('input').each(function(i,e){
+            if($(this).attr('name') == "p_case_id"){
+                object["p_case_id"] = $(this).attr("value");
+            }else if($(this).attr("name") == "p_ses"){
+                object["p_ses"] = $(this).attr("value");
+            }
+            
+        })
         
-        //console.log(JSON.stringify(object));
+        console.log(JSON.stringify(object));
         return object;
 });

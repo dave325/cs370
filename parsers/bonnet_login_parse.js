@@ -1,8 +1,8 @@
 const cheerio = require('cheerio');
 const request = require('request');
-const URL = "http://localhost:8080";
+const URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.access_check";
 
-request({method: 'GET',url: URL}, 
+request({method: 'GET',url: URL }, 
     (err, res, body) => {
         if (err) return console.error(err);
         
