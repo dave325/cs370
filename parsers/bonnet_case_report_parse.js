@@ -5,8 +5,8 @@ const URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.retrieve_interfac
 //case report
 //p_media_select: "img" or "aud" or "vid" or "ole"
 //p_attachOrReply: "Get-attachment" || "Reply" || "Bookmark case"||"Add user to my hotlist"||"Create my new resource group"
-                
-request({method: 'GET',url: URL, form: { p_case_select: req.body.p_case_select, p_session: req.body.p_session }}, 
+module.exports.caseCreate = (req, response) => {          
+    request({method: 'GET',url: URL, form: { p_case_select: req.body.p_case_select, p_session: req.body.p_session }}, 
     (err, res, body) => {
         if (err) return console.error(err);
         
@@ -63,3 +63,4 @@ request({method: 'GET',url: URL, form: { p_case_select: req.body.p_case_select, 
         console.log(JSON.stringify(object));
         return object;
 });
+}

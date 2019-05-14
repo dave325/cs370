@@ -6,7 +6,8 @@ const URL3 = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.retrieve_interfa
 var postData = "p_usr_username=" + "chdo3872" + "&" + "p_usr_password=" + "ehdtn123";
 
 //usernam - req.body.p_usr_username
-request({ method: 'POST', url: URL1, form: { p_usr_username: req.body.p_usr_username, p_usr_password: req.body.p_usr_password} },
+module.exports.login_post_req = (req, response) => {
+    request({ method: 'POST', url: URL1, form: { p_usr_username: req.body.p_usr_username, p_usr_password: req.body.p_usr_password} },
     (err, res, body) => {
         if (err) return console.error(err);
 
@@ -120,3 +121,4 @@ request({ method: 'POST', url: URL1, form: { p_usr_username: req.body.p_usr_user
         )
         
     });
+}
