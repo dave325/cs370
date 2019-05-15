@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ListPage } from './list.page';
+import { ProxyService } from '../proxy.service';
 
 @NgModule({
   imports: [
@@ -14,10 +15,13 @@ import { ListPage } from './list.page';
     RouterModule.forChild([
       {
         path: '',
-        component: ListPage
+        component: ListPage,
+        resolve: {
+          proxy: ProxyService
+        }
       }
     ])
   ],
   declarations: [ListPage]
 })
-export class ListPageModule {}
+export class ListPageModule { }

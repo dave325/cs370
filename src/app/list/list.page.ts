@@ -1,4 +1,6 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-list',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPage implements OnInit {
   private selectedItem: any;
+  caseList;
+  session;
   private icons = [
     'flask',
     'wifi',
@@ -20,7 +24,9 @@ export class ListPage implements OnInit {
     'build'
   ];
   public items: Array<{ title: string; note: string; icon: string, url:string }> = [];
-  constructor() {
+  constructor(
+    private route: ActivatedRoute
+  ) {
     for (let i = 1; i < 11; i++) {
       this.items.push({
         title: 'Case ' + i,
@@ -32,6 +38,13 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
+    this.route.data.subscribe(
+      (res) =>{
+        this.session = res.proxy.slice(0,1);
+        this.caseList = res.proxy.slice(1,5);
+        console.log(this.caseList)
+      }
+    )
   }
   // add back when alpha.4 is out
   // navigate(item) {

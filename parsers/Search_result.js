@@ -13,7 +13,7 @@ const options = {
     }
     */
 };
-
+let json = [];
 
 module.exports.SearchResult = (req, response) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'

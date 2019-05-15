@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Resolve, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProxyService {
+export class ProxyService implements Resolve<any> {
   private _url: string = "";
   private type: number;
   private httpOptions;
   private id;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
-
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    let id = route.paramMap.get('id');
+ 
+    return this.http.post('/api/SearchResult', {id: id});
+  }
   login(user): Promise<any> {
     let headers = new HttpHeaders();
     headers.append("Access-Control-Allow-Credentials", "true");
