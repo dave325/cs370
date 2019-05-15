@@ -39,6 +39,10 @@ const routes: Routes = [
   {
     path: 'upload',
     loadChildren: './upload/upload.module#UploadPageModule'
+  },
+  {
+    path: 'case',
+    loadChildren: './case/case.module#CasePageModule'
   }
  
 

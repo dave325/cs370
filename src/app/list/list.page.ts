@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CasePage } from '../case/case.page';
+
 
 @Component({
   selector: 'app-list',
@@ -19,6 +21,10 @@ export class ListPage implements OnInit {
     'bluetooth',
     'build'
   ];
+
+
+  caseViewPage = CasePage;
+
   public items: Array<{ title: string; note: string; icon: string }> = [];
   constructor() {
     for (let i = 1; i < 11; i++) {

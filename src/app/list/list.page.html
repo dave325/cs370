@@ -10,15 +10,26 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar></ion-searchbar>
+  <div padding>
+      <ion-searchbar></ion-searchbar>
+  </div>
 
   <ion-list>
+    <ion-item-divider color="light">Results</ion-item-divider>
+
     <ion-item *ngFor="let item of items">
       {{item.title}}
+
+
+      <ion-button routerLink="/case" routerDirection="forward">   View</ion-button>
+
+
+
       
       <div class="item-note" slot="end">
         {{item.note}}
       </div>
+
     </ion-item>
   </ion-list>
 </ion-content>
