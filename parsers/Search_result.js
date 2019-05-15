@@ -1,8 +1,9 @@
 var  cheerio = require('cheerio')
 var  request = require('request')
 var  fs = require('fs')
-var  url = "http://bonnet19.cs.qc.cuny.edu";
-var  method = "7778";
+var path = require('path')
+var  url = "";
+var  method = "";
 
 var  options = {
     url: url,
@@ -52,7 +53,7 @@ module.exports.SearchResult = (req, response) => {
 
 
 module.exports.test = (req, res) => {
-    fs.readFile(__dirname + '/Raw Html/search by key word.html', 'utf8', (err, html) => {
+    fs.readFile(path.join(__dirname,'/Raw Html/search by key word.html'), 'utf8', (err, html) => {
         console.log(err);
         var $ = cheerio.load(html);
         var p_session = $('form input').attr('value');

@@ -20,7 +20,7 @@ var  CommunityUserList = require('../parsers/List_of_users_in_community');
 
 
 var  bonnett_port = 7778;
-var  bonnett_host = 'http://bonnet19.cs.qc.cuny.edu';
+var  bonnett_host = 'bonnet19.cs.qc.cuny.edu';
 router.post("/login",
 
   (req, res) => {
