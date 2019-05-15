@@ -67,7 +67,7 @@ router.post('/thread-test', threadCase.test)
 /**
  * All four Search by ID, name, keyword and date returns 
  * same html, so the following two routes works for all of them
- */;
+ */
 router.post('/SearchResult', SearchResult.test);
 router.post('/SearchResultFile', SearchResultFileLink.test);
 
