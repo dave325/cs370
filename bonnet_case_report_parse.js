@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const request = require('request');
 const URL = "http://localhost:8080";
-
+const fs = require('fs')
 module.exports.case = (req, response) => {
     request({ method: 'GET', url: URL },
         (err, res, body) => {
@@ -55,4 +55,12 @@ module.exports.case = (req, response) => {
             //console.log(JSON.stringify(object));
             return object;
         });
+}
+
+
+module.exports.test = (req, res) => {
+    fs.readFile(__dirname + '/Raw Html/search by date html.html', 'utf8', (err, html) => {
+        console.log(err);
+        console.log(html)
+    })
 }
