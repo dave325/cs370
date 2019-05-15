@@ -25,12 +25,12 @@ export class ProxyService {
   private getDecodedId(): String {
     if (this.getToken()) {
       try {
-        var decoded = jwt_decode(this.getToken());
+     //   var decoded = jwt_decode(this.getToken());
       } catch (Error) {
         console.log(Error);
         return null;
       }
-      return decoded._id + decoded.iat.toString();
+    //  return decoded._id + decoded.iat.toString();
     }
   }
   /**

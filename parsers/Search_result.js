@@ -52,7 +52,7 @@ module.exports.SearchResult = (req, response) => {
 
 
 module.exports.test = (req, res) => {
-    fs.readFile(__dirname + '/Raw Html/search by date.html.html', 'utf8', (err, html) => {
+    fs.readFile(__dirname + '/Raw Html/search by key word.html', 'utf8', (err, html) => {
         console.log(err);
         let $ = cheerio.load(html);
         let p_session = $('form input').attr('value');
@@ -77,7 +77,7 @@ module.exports.test = (req, res) => {
     
         });
 
-        
+        console.log(json);
         res.json(json).status(200)
         return JSON.stringify(json);
     })

@@ -8,6 +8,7 @@ var login = require('../parsers/bonnet_login_parse');
 var threadCase = require('../parsers/parseThreadedCase');
 const SearchResult = require('../parsers/Search_result');
 const SearchResultFileLink = require('../parsers/Search_result_final_link');
+const CommunityUserList = require('../parsers/List_of_users_in_community');
 
 
 const bonnett_port = 7778;
@@ -62,6 +63,19 @@ router.post('/test', caseReport.test)
 //threaded might need to delete latter, look at /SearchResult
 router.post('/thread-test', threadCase.test)
 
-router.post('/SearchResult', SearchResult.test)
-router.post('/SearchResultFile', SearchResultFileLink.test)
+
+/**
+ * All four Search by ID, name, keyword and date returns 
+ * same html, so the following two routes works for all of them
+ */;
+router.post('/SearchResult', SearchResult.test);
+router.post('/SearchResultFile', SearchResultFileLink.test);
+
+
+/**
+ * if we end up doing User list
+ */
+router.post('/CommunityUserList', CommunityUserList.test);
+
+
 module.exports = router;
