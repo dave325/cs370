@@ -6,13 +6,13 @@ var caseLoad = require('../parsers/bonnet_case_load_parse');
 var caseCreate = require('../parsers/bonnet_create_case_parse');
 var login = require('../parsers/bonnet_login_parse');
 var threadCase = require('../parsers/parseThreadedCase');
-const SearchResult = require('../parsers/Search_result');
-const SearchResultFileLink = require('../parsers/Search_result_final_link');
-const CommunityUserList = require('../parsers/List_of_users_in_community');
+var  SearchResult = require('../parsers/Search_result');
+var  SearchResultFileLink = require('../parsers/Search_result_final_link');
+var  CommunityUserList = require('../parsers/List_of_users_in_community');
 
 
-const bonnett_port = 7778;
-const bonnett_host = 'http://bonnet19.cs.qc.cuny.edu';
+var  bonnett_port = 7778;
+var  bonnett_host = 'http://bonnet19.cs.qc.cuny.edu';
 router.post("/login",
 
   (req, res) => {

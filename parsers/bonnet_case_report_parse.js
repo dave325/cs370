@@ -1,7 +1,7 @@
-const cheerio = require('cheerio');
-const request = require('request');
-const URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.retrieve_interface";
-const fs = require('fs')
+var  cheerio = require('cheerio');
+var  request = require('request');
+var  URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.retrieve_interface";
+var  fs = require('fs')
 //case report
 //p_media_select: "img" or "aud" or "vid" or "ole"
 //p_attachOrReply: "Get-attachment" || "Reply" || "Bookmark case"||"Add user to my hotlist"||"Create my new resource group"
@@ -10,8 +10,8 @@ module.exports.caseCreate = (req, response) => {
         (err, res, body) => {
             if (err) return console.error(err);
 
-            let $ = cheerio.load(body);
-            let object = {};
+            var $ = cheerio.load(body);
+            var object = {};
             object["form-action"] = $("form").attr('action');
 
             object["title"] = $("title").text();
@@ -22,7 +22,7 @@ module.exports.caseCreate = (req, response) => {
                     && !($(this).text().trimRight() == "Q2.")
                     && !($(this).text().trimRight() == "Case Description:")) {
                     if (e.next) {
-                        let l = $(this).text().trim().length;
+                        var l = $(this).text().trim().length;
                         object[$(this).text().trim().substring(0, l - 1)] = e.next.data.trim();
 
                     }
@@ -37,7 +37,7 @@ module.exports.caseCreate = (req, response) => {
                 } else if ($(this).find('a').text() == "Bon Sy.") {
                     object["mailto link"] = $(this).find('a').attr('href');
                 } else {
-                    let type = $(this).find('input').attr('value');
+                    var type = $(this).find('input').attr('value');
                     if ((type == "img") ||
                         (type == "aud") ||
                         (type == "vid") ||
@@ -71,8 +71,8 @@ module.exports.test = (req, res) => {
         console.log(err);
         if (err) return console.error(err);
 
-        let $ = cheerio.load(html);
-        let object = {};
+        var $ = cheerio.load(html);
+        var object = {};
         object["form-action"] = $("form").attr('action');
 
         object["title"] = $("title").text();
@@ -83,7 +83,7 @@ module.exports.test = (req, res) => {
                 && !($(this).text().trimRight() == "Q2.")
                 && !($(this).text().trimRight() == "Case Description:")) {
                 if (e.next) {
-                    let l = $(this).text().trim().length;
+                    var l = $(this).text().trim().length;
                     object[$(this).text().trim().substring(0, l - 1)] = e.next.data.trim();
 
                 }
@@ -98,7 +98,7 @@ module.exports.test = (req, res) => {
             } else if ($(this).find('a').text() == "Bon Sy.") {
                 object["mailto link"] = $(this).find('a').attr('href');
             } else {
-                let type = $(this).find('input').attr('value');
+                var type = $(this).find('input').attr('value');
                 if ((type == "img") ||
                     (type == "aud") ||
                     (type == "vid") ||

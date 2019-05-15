@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { UploadPage } from './upload.page';
 
-const routes: Routes = [
+var  routes: Routes = [
   {
     path: '',
     component: UploadPage

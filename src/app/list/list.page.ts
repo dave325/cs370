@@ -27,7 +27,7 @@ export class ListPage implements OnInit {
   constructor(
     private route: ActivatedRoute
   ) {
-    for (let i = 1; i < 11; i++) {
+    for (var i = 1; i < 11; i++) {
       this.items.push({
         title: 'Case ' + i,
         note: 'This is item #' + i,

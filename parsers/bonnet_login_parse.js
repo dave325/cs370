@@ -1,14 +1,14 @@
-const cheerio = require('cheerio');
-const request = require('request');
-const URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.access_check";
+var  cheerio = require('cheerio');
+var  request = require('request');
+var  URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.access_check";
 
 module.exports.login = (req, response) => {
     request({ method: 'GET', url: URL },
         (err, res, body) => {
             if (err) return console.error(err);
 
-            let object = {}
-            let $ = cheerio.load(body);
+            var object = {}
+            var $ = cheerio.load(body);
 
             object["form-action"] = $("link").attr('href');
 

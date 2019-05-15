@@ -16,12 +16,12 @@ export class ProxyService implements Resolve<any> {
     private router: Router
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let id = route.paramMap.get('id');
+    var id = route.paramMap.get('id');
  
     return this.http.post('/api/SearchResult', {id: id});
   }
   login(user): Promise<any> {
-    let headers = new HttpHeaders();
+    var headers = new HttpHeaders();
     headers.append("Access-Control-Allow-Credentials", "true");
     headers.append("Access-Control-Allow-Origin", "*");
     return this.http.post('/api/login', { username: user.p_usr_username, password: user.p_usr_password }, { headers: headers }).toPromise();

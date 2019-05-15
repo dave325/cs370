@@ -1,14 +1,14 @@
-const cheerio = require('cheerio');
-const request = require('request');
-const URL = "http://localhost:8080";
-const fs = require('fs')
+var  cheerio = require('cheerio');
+var  request = require('request');
+var  URL = "http://localhost:8080";
+var  fs = require('fs')
 module.exports.case = (req, response) => {
     request({ method: 'GET', url: URL },
         (err, res, body) => {
             if (err) return console.error(err);
-            const arr = [];
-            let object = {}
-            let $ = cheerio.load(body);
+            var  arr = [];
+            var object = {}
+            var $ = cheerio.load(body);
             object["form-action"] = $("link").attr('href');
 
             object["title"] = $("title").text();
@@ -19,7 +19,7 @@ module.exports.case = (req, response) => {
                     && !($(this).text().trimRight() == "Q2.")
                     && !($(this).text().trimRight() == "Case Description:")) {
                     if (e.next) {
-                        let l = $(this).text().trim().length;
+                        var l = $(this).text().trim().length;
                         object[$(this).text().trim().substring(0, l - 1)] = e.next.data.trim();
 
                     }
@@ -33,12 +33,12 @@ module.exports.case = (req, response) => {
 
                 } else if ($(this).text().includes("Oracle Y2K compliant system date reporting today as:")) {
 
-                    let l = $(this).text().length;
+                    var l = $(this).text().length;
                     object["compliant system date"] = $(this).text().substring(53, l).trim();
                 } else if ($(this).find('a').text() == "Bon Sy.") {
                     object["mailto link"] = $(this).find('a').attr('href');
                 } else {
-                    let type = $(this).find('input').attr('value');
+                    var type = $(this).find('input').attr('value');
                     if ((type == "img") ||
                         (type == "aud") ||
                         (type == "vid") ||

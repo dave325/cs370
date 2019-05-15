@@ -1,10 +1,10 @@
-const cheerio = require('cheerio')
-const request = require('request')
-const fs = require('fs')
-const url = "";
-const method = "";
+var  cheerio = require('cheerio')
+var  request = require('request')
+var  fs = require('fs')
+var  url = "";
+var  method = "";
 
-const options = {
+var  options = {
     url: url,
     method: method
     /*
@@ -13,7 +13,7 @@ const options = {
     }
     */
 };
-let json = [];
+var json = [];
 
 module.exports.SearchResult = (req, response) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
@@ -21,19 +21,19 @@ module.exports.SearchResult = (req, response) => {
         if (error) {
             console.log(`error requesting ${url}`);
         } else {
-            let $ = cheerio.load(body);
+            var $ = cheerio.load(body);
 
-            let p_session = $('form input').attr('value');
+            var p_session = $('form input').attr('value');
             json.push({"p_session" : p_session });
         
             $('tr').each(function(i, elem) {
                 if(i > 0){    
-                    let getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
-                    let date = $(this).children('td:nth-child(2)').text().trim();
-                    let author = $(this).children('td:nth-child(3)').text().trim();
-                    let subject = $(this).children('td:nth-child(4)').text().trim();
+                    var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
+                    var date = $(this).children('td:nth-child(2)').text().trim();
+                    var author = $(this).children('td:nth-child(3)').text().trim();
+                    var subject = $(this).children('td:nth-child(4)').text().trim();
                     
-                    let obj = {
+                    var obj = {
                         "GetCase" : getCase_value,
                         "Date" : date,
                         "Author" : author,
@@ -54,18 +54,18 @@ module.exports.SearchResult = (req, response) => {
 module.exports.test = (req, res) => {
     fs.readFile(__dirname + '/Raw Html/search by key word.html', 'utf8', (err, html) => {
         console.log(err);
-        let $ = cheerio.load(html);
-        let p_session = $('form input').attr('value');
+        var $ = cheerio.load(html);
+        var p_session = $('form input').attr('value');
         json.push({"p_session" : p_session });
     
         $('tr').each(function(i, elem) {
             if(i > 0){    
-                let getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
-                let date = $(this).children('td:nth-child(2)').text().trim();
-                let author = $(this).children('td:nth-child(3)').text().trim();
-                let subject = $(this).children('td:nth-child(4)').text().trim();
+                var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
+                var date = $(this).children('td:nth-child(2)').text().trim();
+                var author = $(this).children('td:nth-child(3)').text().trim();
+                var subject = $(this).children('td:nth-child(4)').text().trim();
                 
-                let obj = {
+                var obj = {
                     "GetCase" : getCase_value,
                     "Date" : date,
                     "Author" : author,

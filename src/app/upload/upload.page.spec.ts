@@ -4,8 +4,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UploadPage } from './upload.page';
 
 describe('UploadPage', () => {
-  let component: UploadPage;
-  let fixture: ComponentFixture<UploadPage>;
+  var component: UploadPage;
+  var fixture: ComponentFixture<UploadPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

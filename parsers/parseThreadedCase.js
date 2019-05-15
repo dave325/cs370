@@ -1,10 +1,10 @@
-const cheerio = require('cheerio')
-const request = require('request')
-const fs = require('fs')
-const url = "";
-const method = "";
+var  cheerio = require('cheerio')
+var  request = require('request')
+var  fs = require('fs')
+var  url = "";
+var  method = "";
 
-const options = {
+var  options = {
     url: url,
     method: method
     /*
@@ -21,23 +21,23 @@ module.exports.threadCase = (req, response) => {
         if (error) {
             console.log(`error requesting ${url}`);
         } else {
-            let $ = cheerio.load(body);
+            var $ = cheerio.load(body);
             //Form 
-            let form_action = $('form').attr('action');
-            let method = $('form').attr('method');
+            var form_action = $('form').attr('action');
+            var method = $('form').attr('method');
 
             //Hidden
-            let name = $('form input').attr('name');
-            let value = $('form input').attr('value');
+            var name = $('form input').attr('name');
+            var value = $('form input').attr('value');
 
 
             //table: 
-            let get_case = $('tr:nth-child(2) td:nth-child(1) input').attr('value');
-            let date = $('tr:nth-child(2) td:nth-child(2)').text();
-            let author = $('tr:nth-child(2) td:nth-child(3)').text();
-            let subject = $('tr:nth-child(2) td:nth-child(4)').text();
+            var get_case = $('tr:nth-child(2) td:nth-child(1) input').attr('value');
+            var date = $('tr:nth-child(2) td:nth-child(2)').text();
+            var author = $('tr:nth-child(2) td:nth-child(3)').text();
+            var subject = $('tr:nth-child(2) td:nth-child(4)').text();
 
-            let json = {
+            var json = {
                 "form_action": form_action,
                 "method": method,
                 "hidden_input":
@@ -64,23 +64,23 @@ module.exports.threadCase = (req, response) => {
 module.exports.test = (req, res) => {
     fs.readFile(__dirname + '/Raw Html/search by date.html.html', 'utf8', (err, html) => {
         console.log(err);
-        let $ = cheerio.load(html);
+        var $ = cheerio.load(html);
         //Form 
-        let form_action = $('form').attr('action');
-        let method = $('form').attr('method');
+        var form_action = $('form').attr('action');
+        var method = $('form').attr('method');
 
         //Hidden
-        let name = $('form input').attr('name');
-        let value = $('form input').attr('value');
+        var name = $('form input').attr('name');
+        var value = $('form input').attr('value');
 
 
         //table: 
-        let get_case = $('tr:nth-child(2) td:nth-child(1) input').attr('value');
-        let date = $('tr:nth-child(2) td:nth-child(2)').text();
-        let author = $('tr:nth-child(2) td:nth-child(3)').text();
-        let subject = $('tr:nth-child(2) td:nth-child(4)').text();
+        var get_case = $('tr:nth-child(2) td:nth-child(1) input').attr('value');
+        var date = $('tr:nth-child(2) td:nth-child(2)').text();
+        var author = $('tr:nth-child(2) td:nth-child(3)').text();
+        var subject = $('tr:nth-child(2) td:nth-child(4)').text();
 
-        let json = {
+        var json = {
             "form_action": form_action,
             "method": method,
             "hidden_input":

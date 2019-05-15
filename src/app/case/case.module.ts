@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { CasePage } from './case.page';
 
-const routes: Routes = [
+var  routes: Routes = [
   {
     path: '',
     component: CasePage

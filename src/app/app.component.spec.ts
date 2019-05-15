@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
 
-  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
+  var statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
 
   beforeEach(async(() => {
     statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
@@ -31,8 +31,8 @@ describe('AppComponent', () => {
   }));
 
   it('should create the app', async () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
+    var  fixture = TestBed.createComponent(AppComponent);
+    var  app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
@@ -45,20 +45,20 @@ describe('AppComponent', () => {
   });
 
   it('should have menu labels', async () => {
-    const fixture = await TestBed.createComponent(AppComponent);
+    var  fixture = await TestBed.createComponent(AppComponent);
     await fixture.detectChanges();
-    const app = fixture.nativeElement;
-    const menuItems = app.querySelectorAll('ion-label');
+    var  app = fixture.nativeElement;
+    var  menuItems = app.querySelectorAll('ion-label');
     expect(menuItems.length).toEqual(2);
     expect(menuItems[0].textContent).toContain('Home');
     expect(menuItems[1].textContent).toContain('List');
   });
 
   it('should have urls', async () => {
-    const fixture = await TestBed.createComponent(AppComponent);
+    var  fixture = await TestBed.createComponent(AppComponent);
     await fixture.detectChanges();
-    const app = fixture.nativeElement;
-    const menuItems = app.querySelectorAll('ion-item');
+    var  app = fixture.nativeElement;
+    var  menuItems = app.querySelectorAll('ion-item');
     expect(menuItems.length).toEqual(2);
     expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/home');
     expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual('/list');

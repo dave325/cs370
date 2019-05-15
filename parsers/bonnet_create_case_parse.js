@@ -1,14 +1,14 @@
-const cheerio = require('cheerio');
-const request = require('request');
-const URL = "http://localhost:8080";
+var  cheerio = require('cheerio');
+var  request = require('request');
+var  URL = "http://localhost:8080";
 
 module.exports.caseCreate = (req, response) => {
     request({ method: 'GET', url: URL },
         (err, res, body) => {
             if (err) return console.error(err);
 
-            let object = {}
-            let $ = cheerio.load(body);
+            var object = {}
+            var $ = cheerio.load(body);
 
             object["form-action"] = $("link").attr('href');
 

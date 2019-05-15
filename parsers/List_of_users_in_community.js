@@ -1,10 +1,10 @@
-const cheerio = require('cheerio')
-const request = require('request')
-const fs = require('fs')
-const url = "";
-const method = "";
+var  cheerio = require('cheerio')
+var  request = require('request')
+var  fs = require('fs')
+var  url = "";
+var  method = "";
 
-const options = {
+var  options = {
     url: url,
     method: method
     /*
@@ -21,15 +21,15 @@ module.exports.CommunityUsers = (req, response) => {
         if (error) {
             console.log(`error requesting ${url}`);
         } else {
-            let $ = cheerio.load(body);
+            var $ = cheerio.load(body);
             
-            let json = [];
+            var json = [];
             
             $('tr').each(function(i, elem) {
                 if(i > 0){    
-                    let name = $(this).children('td:nth-child(1)').text().trim()
-                    let email = $(this).children('td:nth-child(2)').text().trim()
-                    let url = $(this).children('td:nth-child(3)').text().trim()
+                    var name = $(this).children('td:nth-child(1)').text().trim()
+                    var email = $(this).children('td:nth-child(2)').text().trim()
+                    var url = $(this).children('td:nth-child(3)').text().trim()
                     
                     json.push({"name": name, "email" : email, "url" : url});
                 }
@@ -46,16 +46,16 @@ module.exports.CommunityUsers = (req, response) => {
 module.exports.test = (req, res) => {
     fs.readFile(__dirname + '/Raw Html/Show All Users in a Community.html', 'utf8', (err, html) => {
         console.log(err);
-        let $ = cheerio.load(html);
+        var $ = cheerio.load(html);
 
-        let json = [];
+        var json = [];
     
 
         $('tr').each(function(i, elem) {
             if(i > 0){    
-                let name = $(this).children('td:nth-child(1)').text().trim()
-                let email = $(this).children('td:nth-child(2)').text().trim()
-                let url = $(this).children('td:nth-child(3)').text().trim()
+                var name = $(this).children('td:nth-child(1)').text().trim()
+                var email = $(this).children('td:nth-child(2)').text().trim()
+                var url = $(this).children('td:nth-child(3)').text().trim()
                 
                 json.push({"name": name, "email" : email, "url" : url});
             }

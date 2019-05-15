@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { UploadPageModule } from './upload/upload.module';
 import { CasePageModule } from './case/case.module';
 
-const routes: Routes = [
+var  routes: Routes = [
   {
     path: '',
     redirectTo: 'home',

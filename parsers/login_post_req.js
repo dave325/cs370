@@ -1,8 +1,8 @@
-const cheerio = require('cheerio');
-const request = require('request');
-const URL1 = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.access_check";
-const URL2 = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.find_cases_by_name";
-const URL3 = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.retrieve_interface";
+var  cheerio = require('cheerio');
+var  request = require('request');
+var  URL1 = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.access_check";
+var  URL2 = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.find_cases_by_name";
+var  URL3 = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.retrieve_interface";
 var postData = "p_usr_username=" + "chdo3872" + "&" + "p_usr_password=" + "ehdtn123";
 
 //usernam - req.body.p_usr_username
@@ -13,7 +13,7 @@ module.exports.login_post_req = (req, response) => {
 
         var $ = cheerio.load(body);
 
-        let object = {};
+        var object = {};
         
         $('INPUT').each(function (i, e) {
             
@@ -38,9 +38,9 @@ module.exports.login_post_req = (req, response) => {
                 if (err) return console.error(err);
 
                 var $ = cheerio.load(body);
-                let object2 = {};
+                var object2 = {};
 
-                let j = 0;
+                var j = 0;
                 $('INPUT').each(function (i, e) {
                     if ($(this).attr('name')) {
                         
@@ -63,8 +63,8 @@ module.exports.login_post_req = (req, response) => {
                     (err, res, body) => {
                     if (err) return console.error(err);
         
-                    let $ = cheerio.load(body);
-                    let object = {};
+                    var $ = cheerio.load(body);
+                    var object = {};
                     object["form-action"] = $("form").attr('action');
         
                     object["title"] = $("title").text();
@@ -75,7 +75,7 @@ module.exports.login_post_req = (req, response) => {
                             &&!($(this).text().trimRight() == "Q2.")
                             &&!($(this).text().trimRight() == "Case Description:")){
                             if(e.next){  
-                                let l = $(this).text().trim().length;
+                                var l = $(this).text().trim().length;
                                 object[$(this).text().trim().substring(0, l-1)] = e.next.data.trim();
                 
                             }
@@ -90,7 +90,7 @@ module.exports.login_post_req = (req, response) => {
                         }else if($(this).find('a').text() == "Bon Sy."){
                             object["mailto link"] = $(this).find('a').attr('href');
                         }else{
-                            let type = $(this).find('input').attr('value');
+                            var type = $(this).find('input').attr('value');
                             if((type == "img")||
                                 (type == "aud")||
                                 (type == "vid")||
