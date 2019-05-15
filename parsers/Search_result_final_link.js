@@ -1,8 +1,8 @@
 var  cheerio = require('cheerio')
 var  request = require('request')
 var  fs = require('fs')
-var  url = "";
-var  method = "";
+var  url = "http://bonnet19.cs.qc.cuny.edu";
+var  method = "7778";
 
 var  options = {
     url: url,
@@ -19,7 +19,7 @@ module.exports.SearchResultFileLink = (req, response) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     request(options, (error, response, body) => {
         if (error) {
-            console.log(`error requesting ${url}`);
+            console.log(err);
         } else {
             var $ = cheerio.load(body);
             var json =  {

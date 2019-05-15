@@ -5,9 +5,17 @@ var caseReport = require('../parsers/bonnet_case_report_parse');
 var caseLoad = require('../parsers/bonnet_case_load_parse');
 var caseCreate = require('../parsers/bonnet_create_case_parse');
 var login = require('../parsers/bonnet_login_parse');
+//delete later
 var threadCase = require('../parsers/parseThreadedCase');
-var  SearchResult = require('../parsers/Search_result');
+//Search
+var  SearchByKeyWord = require('../parsers/Search_By_keyword');
+var  SearchByDate = require('../parsers/Search_By_date');
+var  SearchByCaseNumber = require('../parsers/Search_By_case_number');
+var  SearchByDate = require('../parsers/Search_By_date');
 var  SearchResultFileLink = require('../parsers/Search_result_final_link');
+//delete later
+var  SearchResult = require('../parsers/Search_result');
+//
 var  CommunityUserList = require('../parsers/List_of_users_in_community');
 
 
@@ -68,7 +76,13 @@ router.post('/thread-test', threadCase.test)
  * All four Search by ID, name, keyword and date returns 
  * same html, so the following two routes works for all of them
  */
+router.post('/SearchResult', SearchByCaseNumber.test);
+router.post('/SearchResult', SearchByDate.test);
+router.post('/SearchResult', SearchByKeyWord.test);
+router.post('/SearchResult', SearchByCaseNumber.test);
+//
 router.post('/SearchResult', SearchResult.test);
+
 router.post('/SearchResultFile', SearchResultFileLink.test);
 
 

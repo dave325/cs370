@@ -17,7 +17,7 @@ var  options = {
 
 request(options, (error, response, body) => {
     if(error){
-        console.log(`error requesting ${url}`);
+        console.log(err);
     }else{
         
         var $ = cheerio.load(body);

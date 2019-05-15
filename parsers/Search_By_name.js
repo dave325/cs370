@@ -6,7 +6,8 @@ var  method = "7778";
 
 var  options = {
     url: url,
-    method: method
+    method: method,
+    path: '/pls/forum/ec_forum.find_cases_by_name'
     /*
     header: {
         ...
@@ -19,7 +20,7 @@ module.exports.SearchResult = (req, response) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     request(options, (error, response, body) => {
         if (error) {
-            console.log(err);
+            console.log(`error requesting ${url}`);
         } else {
             var $ = cheerio.load(body);
 

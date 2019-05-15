@@ -6,7 +6,8 @@ var  method = "7778";
 
 var  options = {
     url: url,
-    method: method
+    method: method,
+    path: '/pls/forum/ec_forum.find_cases_by_date'
     /*
     header: {
         ...
