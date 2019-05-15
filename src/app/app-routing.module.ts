@@ -1,3 +1,4 @@
+import { CasePage } from './case/case.page';
 import { AboutComponent } from './about/about.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
@@ -12,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { UploadPageModule } from './upload/upload.module';
 import { CasePageModule } from './case/case.module';
 
-const routes: Routes = [
+var  routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
@@ -30,7 +31,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  
+  {
+    path: 'case/:id',
+    component:CasePage
+  },
   //list,upload,case handled by @DeepakKhemraj drk3931@gmail.com
   {
     path: 'list',

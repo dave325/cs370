@@ -1,4 +1,4 @@
-const CONFIG = [
+var  CONFIG = [
     {
         context: ["/api"],
         "target": "http://localhost:" + (process.env.PORT || '3000'),

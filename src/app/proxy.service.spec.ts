@@ -6,7 +6,7 @@ describe('ProxyService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ProxyService = TestBed.get(ProxyService);
+    var  service: ProxyService = TestBed.get(ProxyService);
     expect(service).toBeTruthy();
   });
 });

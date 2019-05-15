@@ -1,10 +1,10 @@
-const cheerio = require('cheerio')
-const request = require('request')
+var  cheerio = require('cheerio')
+var  request = require('request')
 
-const url = "";
-const method = "";
+var  url = "";
+var  method = "";
 
-const options = {
+var  options = {
     url:url,
     method: method 
     /*
@@ -20,15 +20,15 @@ request(options, (error, response, body) => {
         console.log(`error requesting ${url}`);
     }else{
         
-        let $ = cheerio.load(body);
-        let json = [];
+        var $ = cheerio.load(body);
+        var json = [];
         
 
         $('tr').each(function(i, elem) {
             if(i > 0){    
-                let name = $(this).children('td:nth-child(1)').text().trim()
-                let email = $(this).children('td:nth-child(2)').text().trim()
-                let url = $(this).children('td:nth-child(3)').text().trim()
+                var name = $(this).children('td:nth-child(1)').text().trim()
+                var email = $(this).children('td:nth-child(2)').text().trim()
+                var url = $(this).children('td:nth-child(3)').text().trim()
                 
                 json.push({"name": name, "email" : email, "url" : url});
             }

@@ -1,8 +1,8 @@
 var passport = require('passport');
-const passportJWT = require("passport-jwt");
-const LocalStrategy = require('passport-local').Strategy;
-const JWTStrategy = passportJWT.Strategy;
-const ExtractJWT = passportJWT.ExtractJwt;
+var  passportJWT = require("passport-jwt");
+var  LocalStrategy = require('passport-local').Strategy;
+var  JWTStrategy = passportJWT.Strategy;
+var  ExtractJWT = passportJWT.ExtractJwt;
 
 
 passport.use(new LocalStrategy({

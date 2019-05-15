@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-case',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CasePage implements OnInit {
 
-  constructor() { }
+  str;
+  constructor(private route: ActivatedRoute) { 
+    this.str = this.route.snapshot.params.id;
+  }
 
   ngOnInit() {
   }

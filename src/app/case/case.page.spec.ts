@@ -4,8 +4,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CasePage } from './case.page';
 
 describe('CasePage', () => {
-  let component: CasePage;
-  let fixture: ComponentFixture<CasePage>;
+  var component: CasePage;
+  var fixture: ComponentFixture<CasePage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

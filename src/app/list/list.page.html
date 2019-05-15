@@ -15,19 +15,12 @@
   </div>
 
   <ion-list>
-    <ion-item-divider color="light">Results</ion-item-divider>
-
-    <ion-item *ngFor="let item of items">
-      {{item.title}}
-
-
-      <ion-button routerLink="/case" routerDirection="forward">   View</ion-button>
-
-
-
+    <ion-item *ngFor="var item of caseList" [routerDirection]="'root'" [routerLink]="'/case/' + item.GetCase">
+      {{item.Subject}} by {{item.Author}}<br >
+      {{item.Date}} 
       
       <div class="item-note" slot="end">
-        {{item.note}}
+        {{item.GetCase}}
       </div>
 
     </ion-item>

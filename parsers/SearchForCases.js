@@ -1,10 +1,10 @@
-const cheerio = require('cheerio')
-const request = require('request')
+var  cheerio = require('cheerio')
+var  request = require('request')
 
-const url = "";
-const method = "";
+var  url = "";
+var  method = "";
 
-const options = {
+var  options = {
     url:url,
     method: method
     /*
@@ -21,14 +21,14 @@ request(options, (error, response, body) => {
         console.log(`error requesting ${url}`);
     }else{
             
-        let $ = cheerio.load(body);
+        var $ = cheerio.load(body);
         
-        let p_community_id = $('form:nth-of-type(2) input:nth-child(3)').attr('value');
+        var p_community_id = $('form:nth-of-type(2) input:nth-child(3)').attr('value');
 
-        let p_session = $('form:nth-of-type(2) input:nth-child(4)').attr('value');
+        var p_session = $('form:nth-of-type(2) input:nth-child(4)').attr('value');
 
 
-        let json = {
+        var json = {
             "hidden" : {
                 "p_community_id" : p_community_id,
                 "p_session" : p_session

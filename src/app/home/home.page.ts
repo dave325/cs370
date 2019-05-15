@@ -13,7 +13,7 @@ export class HomePage {
     private modal: ModalController
   ) {}
   async sub(){
-    const modal = await this.modal.create({
+    var  modal = await this.modal.create({
       component: LoginComponent
     });
     return await modal.present();

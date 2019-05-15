@@ -1,60 +1,102 @@
-const cheerio = require('cheerio')
-const request = require('request')
+var  cheerio = require('cheerio')
+var  request = require('request')
+var  fs = require('fs')
+var  url = "";
+var  method = "";
 
-const url = "";
-const method = "";
-
-const options = {
-    url:url,
+var  options = {
+    url: url,
     method: method
     /*
     header: {
         ...
     }
-    */  
+    */
 };
 
 
+module.exports.threadCase = (req, response) => {
+    //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
+    request(options, (error, response, body) => {
+        if (error) {
+            console.log(`error requesting ${url}`);
+        } else {
+            var $ = cheerio.load(body);
+            //Form 
+            var form_action = $('form').attr('action');
+            var method = $('form').attr('method');
 
-//using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
-request(options, (error, response, body) => {
-    if(error){
-        console.log(`error requesting ${url}`);
-    }else{
-        let $ = cheerio.load(body);
-        //Form 
-        let form_action = $('form').attr('action');
-        let method =  $('form').attr('method');
-        
-        //Hidden
-        let name = $('form input').attr('name');
-        let value = $('form input').attr('value');
+            //Hidden
+            var name = $('form input').attr('name');
+            var value = $('form input').attr('value');
 
 
-        //table: 
-        let get_case = $('tr:nth-child(2) td:nth-child(1) input').attr('value');
-        let date = $('tr:nth-child(2) td:nth-child(2)').text();
-        let author = $('tr:nth-child(2) td:nth-child(3)').text();
-        let subject = $('tr:nth-child(2) td:nth-child(4)').text();
-    
-        let json =  {
-                "form_action" : form_action,
-                "method" : method,
+            //table: 
+            var get_case = $('tr:nth-child(2) td:nth-child(1) input').attr('value');
+            var date = $('tr:nth-child(2) td:nth-child(2)').text();
+            var author = $('tr:nth-child(2) td:nth-child(3)').text();
+            var subject = $('tr:nth-child(2) td:nth-child(4)').text();
+
+            var json = {
+                "form_action": form_action,
+                "method": method,
                 "hidden_input":
                 {
                     "name": name,
                     "value": value
                 },
                 "table":
-                    {
-                        "get_case" : get_case, 
-                        "date" : date,
-                        "author": author,
-                        "subject": subject
-                    }
-                };
-        
+                {
+                    "get_case": get_case,
+                    "date": date,
+                    "author": author,
+                    "subject": subject
+                }
+            };
+
+            return JSON.stringify(json);
+        }
+        return null;
+    });
+}
+
+
+module.exports.test = (req, res) => {
+    fs.readFile(__dirname + '/Raw Html/search by date.html.html', 'utf8', (err, html) => {
+        console.log(err);
+        var $ = cheerio.load(html);
+        //Form 
+        var form_action = $('form').attr('action');
+        var method = $('form').attr('method');
+
+        //Hidden
+        var name = $('form input').attr('name');
+        var value = $('form input').attr('value');
+
+
+        //table: 
+        var get_case = $('tr:nth-child(2) td:nth-child(1) input').attr('value');
+        var date = $('tr:nth-child(2) td:nth-child(2)').text();
+        var author = $('tr:nth-child(2) td:nth-child(3)').text();
+        var subject = $('tr:nth-child(2) td:nth-child(4)').text();
+
+        var json = {
+            "form_action": form_action,
+            "method": method,
+            "hidden_input":
+            {
+                "name": name,
+                "value": value
+            },
+            "table":
+            {
+                "get_case": get_case,
+                "date": date,
+                "author": author,
+                "subject": subject
+            }
+        };
+        res.json(json).status(200)
         return JSON.stringify(json);
-    }
-    return null;
-});
+    })
+}
