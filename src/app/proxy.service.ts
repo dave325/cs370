@@ -19,9 +19,9 @@ export class ProxyService implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
     var headers = new HttpHeaders();
-    headers.append("Access-Control-Allow-Credentials", "true");
+    //headers.append("Access-Control-Allow-Credentials", "true");
     //headers.append("Access-Control-Allow-Origin", "http://localhost:8100");
-    return this.http.post('http://149.4.223.218:3000/api/login', {}, { headers: headers ,withCredentials:true});
+    return this.http.post('http://149.4.223.218:3000/api/login', {});
   
     //return this.getCaseByName();
   }

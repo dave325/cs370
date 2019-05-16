@@ -25,12 +25,15 @@ export class ListPage implements OnInit {
     this.route.data.toPromise().then(
       (res) =>{
 
+        console.log('GETTING RESULTS');
         console.log(res);
 
         
       },
       (err)=>
       {
+        console.log('GETTING RESULTS');
+
         console.log(err);
       }
     )
