@@ -25,7 +25,7 @@ module.exports.SearchResultFileLink = (req, res) => {
             p_media_select: "ole",
             p_attach_ole: req.body.p_attach_ole,
             p_ses : req.body.p_ses,
-            p_case_id: p_case_id
+            p_case_id: req.body.p_case_id
         }}, (error, response, body) => {
         if (error) {
             console.log(err);
