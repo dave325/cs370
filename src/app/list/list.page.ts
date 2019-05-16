@@ -55,7 +55,8 @@ export class ListPage implements OnInit {
     {
 
       this.doSearch(this.proxyService.ENDPOINTS.getByKeyword,{
-        p_keyword : this.searchQuery
+        p_keyword : this.searchQuery,
+        p_s_choice : 3
       });
     }
 
