@@ -41,17 +41,3 @@ module.exports.SearchResultFileLink = (req, res) => {
 }
 
 
-module.exports.test = (req, res) => {
-    fs.readFile(__dirname + '/Raw Html/search by date.html.html', 'utf8', (err, html) => {
-        console.log(err);
-        var $ = cheerio.load(html);
-        
-        var json =  {
-            "download_link" : $('b a').attr('href')
-        };
-
-        
-        res.json(json).status(200)
-        return JSON.stringify(json);
-    })
-}
