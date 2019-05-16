@@ -17,7 +17,14 @@ var  options = {
 
 module.exports.SearchResultFileLink = (req, response) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
-    request(options, (error, response, body) => {
+    request({
+        url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.retrieve_interface",
+        method: "POST",
+       // path: '/pls/forum/ec_forum.find_cases_by_name',
+        form: {
+            p_case_select: req.body.p_case_select,
+            p_session: req.body.p_session
+        }}, (error, response, body) => {
         if (error) {
             console.log(err);
         } else {
