@@ -33,13 +33,13 @@ router.post("/login",
     var reqToBonnett = http.request(options,
       (response) => {
         htmlResponse = "";
-        htmlResponse += "<h1>THIS IS THE RETURNED RESPONSE FROM DEEPAK'S SERVER</h1>";
 
         response.setEncoding('utf8');
         response.on('data', function (chunk) {
-          htmlResponse += chunk;
+           htmlResponse += chunk;
         });
         response.on('end', function () {
+          
           res.send(htmlResponse);
         })
       }
