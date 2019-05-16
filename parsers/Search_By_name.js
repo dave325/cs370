@@ -1,30 +1,22 @@
 var  cheerio = require('cheerio')
 var  request = require('request')
 var  fs = require('fs')
-var  url = "http://bonnet19.cs.qc.cuny.edu";
-var  method = "7778";
 
-var  options = {
-    url: url,
-    method: method,
-    path: '/pls/forum/ec_forum.find_cases_by_name',
-    form: {
-        p_lname: req.body.p_lname,
-        p_fname: req.body.p_fname,
-        p_session: req.body.p_session,
-        p_community_id: req.body.p_community_id
-    }
-    /*
-    header: {
-        ...
-    }
-    */
-};
 var json = [];
 
 module.exports.SearchResult = (req, response) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
-    request(options, (error, response, body) => {
+    request({
+        url: url,
+        method: method,
+        path: '/pls/forum/ec_forum.find_cases_by_name',
+        form: {
+            p_lname: req.body.p_lname,
+            p_fname: req.body.p_fname,
+            p_session: req.body.p_session,
+            p_community_id: req.body.p_community_id
+        }
+    }, (error, response, body) => {
         if (error) {
             console.log(`error requesting ${url}`);
         } else {
