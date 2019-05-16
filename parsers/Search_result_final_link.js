@@ -30,9 +30,11 @@ module.exports.SearchResultFileLink = (req, res) => {
         if (error) {
             console.log(err);
         } else {
+            
             var $ = cheerio.load(body);
+            var link = $('b').find('a').attr('href');
             var json =  {
-                "download_link" : $('b').find('a').attr('href')
+                "download_link" : link
             };
             res.json(json).status(200);
         }
