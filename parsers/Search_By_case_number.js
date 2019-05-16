@@ -47,6 +47,7 @@ module.exports.SearchResult = (req, res) => {
                 }
         
             });
+            console.log(json);
             res.json(json).status(200);
             return JSON.stringify(json);
         }
