@@ -11,5 +11,7 @@ export class UploadPage implements OnInit {
 
   ngOnInit() {
   }
-
+  register(form) {
+    return;
+  }
 }
