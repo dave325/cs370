@@ -7,7 +7,13 @@ var  method = "7778";
 var  options = {
     url: url,
     method: method,
-    path: '/pls/forum/ec_forum.find_cases_by_name'
+    path: '/pls/forum/ec_forum.find_cases_by_name',
+    form: {
+        p_lname: req.body.p_lname,
+        p_fname: req.body.p_fname,
+        p_session: req.body.p_session,
+        p_community_id: req.body.p_community_id
+    }
     /*
     header: {
         ...
