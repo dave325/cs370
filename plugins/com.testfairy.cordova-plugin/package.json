@@ -1,0 +1,61 @@
+{
+  "_from": "com.testfairy.cordova-plugin",
+  "_id": "com.testfairy.cordova-plugin@2.18.0",
+  "_inBundle": false,
+  "_integrity": "sha512-iRRccByl/wDT7DvZ2gcnZzkR+mh6caUopPkPXJE6CMHrhwd78wVNQxQ/K1C1LQecbcAhRLc5J1SYhb3NeL5QwQ==",
+  "_location": "/com.testfairy.cordova-plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "com.testfairy.cordova-plugin",
+    "name": "com.testfairy.cordova-plugin",
+    "escapedName": "com.testfairy.cordova-plugin",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/com.testfairy.cordova-plugin/-/com.testfairy.cordova-plugin-2.18.0.tgz",
+  "_shasum": "45e62cb838cf6c308320798ae0cb7f86ebbf8622",
+  "_spec": "com.testfairy.cordova-plugin",
+  "_where": "/Users/daviddataram/Desktop/Spring2019/CS370/bonnetUpdate",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/testfairy/testfairy-cordova-plugin/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "com.testfairy.cordova-plugin",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "TestFairy SDK plugin for Cordova",
+  "homepage": "https://github.com/testfairy/testfairy-cordova-plugin",
+  "keywords": [
+    "cordova",
+    "testfairy",
+    "tests",
+    "monitoring",
+    "distribution",
+    "testflight",
+    "cordova-ios",
+    "cordova-android",
+    "ecosystem:cordova"
+  ],
+  "license": "Apache 2.0",
+  "name": "com.testfairy.cordova-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/testfairy/testfairy-cordova-plugin.git"
+  },
+  "version": "2.18.0"
+}
