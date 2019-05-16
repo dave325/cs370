@@ -25,7 +25,7 @@ module.exports.SearchResult = (req, res) => {
         form: {
             p_keyword: req.body.p_keyword,
             p_s_choice: req.body.p_s_choice,
-            p_session: req.body.p_session,
+            p_session: req.body.p_session_id,
             p_community_id: req.body.p_community_id
         }
     }, (error, response, body) => {
