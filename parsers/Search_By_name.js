@@ -24,7 +24,7 @@ module.exports.SearchResult = (req, res) => {
 
             var p_session = $('form input').attr('value');
             json.push({"p_session" : p_session });
-        
+            
             $('tr').each(function(i, elem) {
                 if(i > 0){    
                     var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
@@ -44,7 +44,7 @@ module.exports.SearchResult = (req, res) => {
         
             });
             console.log(json);
-            res.json(json).status(200);
+            res.json(body).status(200);
             return;
         }
         return null;
