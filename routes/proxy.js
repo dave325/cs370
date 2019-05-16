@@ -43,7 +43,7 @@ router.post('/search/name', SearchByName.SearchResult);
 //
 router.post('/SearchResult', SearchResult.test);
 
-router.post('/SearchResultFile', SearchResultFileLink.test);
+router.post('/SearchResultFile', SearchResultFileLink.SearchResultFileLink);
 
 
 /**
