@@ -78,8 +78,8 @@ router.post('/thread-test', threadCase.test)
  */
 router.post('/search/id', SearchByCaseNumber.SearchResult);
 router.post('/search/date', SearchByDate.SearchResult);
-router.post('/Search/keyword', SearchByKeyWord.SearchResult);
-router.post('/Search/name', SearchByName.SearchResult);
+router.post('/search/keyword', SearchByKeyWord.SearchResult);
+router.post('/search/name', SearchByName.SearchResult);
 //
 router.post('/SearchResult', SearchResult.test);
 

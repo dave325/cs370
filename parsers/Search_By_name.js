@@ -7,9 +7,9 @@ var json = [];
 module.exports.SearchResult = (req, response) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     request({
-        url: url,
-        method: method,
-        path: '/pls/forum/ec_forum.find_cases_by_name',
+        url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_name",
+        method: "POST",
+       // path: '/pls/forum/ec_forum.find_cases_by_name',
         form: {
             p_lname: req.body.p_lname,
             p_fname: req.body.p_fname,
