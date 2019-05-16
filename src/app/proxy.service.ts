@@ -88,7 +88,7 @@ export class ProxyService implements Resolve<any> {
 
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Access-Control-Allow-Origin', '*');
-    return this.http.post('http://149.4.223.218:3000/login', {}).toPromise().then(
+    return this.http.post('http://149.4.223.218:3000/api/login', {}).toPromise().then(
 
       (res: any) => {
 
