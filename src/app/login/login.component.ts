@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   submit(){
+    /*
     this.proxyService.login(this.formData).then(
       (res) =>{
         console.log(res)
@@ -27,5 +28,6 @@ export class LoginComponent implements OnInit {
         console.log(err);
       }
     )
+    */
   }
 }

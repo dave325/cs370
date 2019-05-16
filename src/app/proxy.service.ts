@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Resolve, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,21 +17,19 @@ export class ProxyService implements Resolve<any> {
     private router: Router
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    
-    var id = route.paramMap.get('id');
+
     var headers = new HttpHeaders();
     headers.append("Access-Control-Allow-Credentials", "true");
-    headers.append("Access-Control-Allow-Origin", "*");
-    return this.http.post('http://149.4.223.218:3000/api/search/name', {  }, { headers: headers });
-    
-
+    //headers.append("Access-Control-Allow-Origin", "http://localhost:8100");
+    return this.http.post('http://149.4.223.218:3000/api/login', {}, { headers: headers ,withCredentials:true});
+  
     //return this.getCaseByName();
   }
-  login(user): Promise<any> {
+  login(): Promise<any> {
     var headers = new HttpHeaders();
     headers.append("Access-Control-Allow-Credentials", "true");
     headers.append("Access-Control-Allow-Origin", "*");
-    return this.http.post('/api/login', { username: user.p_usr_username, password: user.p_usr_password }, { headers: headers }).toPromise();
+    return this.http.post('/api/login', {}, { headers: headers ,withCredentials:true}).toPromise();
   }
   /**
   * 
@@ -91,44 +90,42 @@ export class ProxyService implements Resolve<any> {
   public getCaseByName() {
 
 
-    return this.http.post('http://149.4.223.218:3000/api/login',{}).toPromise().then(
+    return this.http.post('http://149.4.223.218:3000/api/login', {}).toPromise().then(
 
-        (res:any)=>
-        {
+      (res: any) => {
 
-          
-          var credentialsAsJSON = JSON.parse(res);
-          console.log(res);
 
-          return this.http.post('http://149.4.223.218:3000/api/search/name', {
+        var credentialsAsJSON = JSON.parse(res);
+        console.log(res);
 
-            p_lname: "Sy",
-            p_fname: "",
-            p_session: credentialsAsJSON.p_session_id,
-            p_community_id: 183
-      
-          }).toPromise().then(
-            (res: any) => {
-              return JSON.parse(res);
-            },
-            (err) => {
-              console.log("COULD NOT RETRIEVE CASES BY NAME");
-              return 100;
-      
-            }
-          );
+        return this.http.post('http://149.4.223.218:3000/api/search/name', {
 
-        },
-        (err)=>
-        {
-            console.log("COULD NOT PERFORM LOGIN FUNCTIONALITY");
-            console.log(err);
-        }
+          p_lname: "Sy",
+          p_fname: "",
+          p_session: credentialsAsJSON.p_session_id,
+          p_community_id: 183
+
+        }).toPromise().then(
+          (res: any) => {
+            return JSON.parse(res);
+          },
+          (err) => {
+            console.log("COULD NOT RETRIEVE CASES BY NAME");
+            return 100;
+
+          }
+        );
+
+      },
+      (err) => {
+        console.log("COULD NOT PERFORM LOGIN FUNCTIONALITY");
+        console.log(err);
+      }
 
 
 
     );
 
- 
+
   }
 }

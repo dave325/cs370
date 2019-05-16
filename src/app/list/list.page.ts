@@ -21,18 +21,20 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
-    this.route.data.subscribe(
+    
+    this.route.data.toPromise().then(
       (res) =>{
 
         console.log(res);
-        //this.session = res.proxy.slice(0,1);
-        //this.caseList = res.proxy.slice(1,5);
-       // console.log(this.caseList)
+
+        
+      },
+      (err)=>
+      {
+        console.log(err);
       }
     )
   }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
+ 
+  
 }
