@@ -13,7 +13,7 @@ module.exports.SearchResult = (req, res) => {
         form: {
             p_lname: req.body.p_lname,
             p_fname: req.body.p_fname,
-            p_session: req.body.p_session,
+            p_session: req.body.p_session_id,
             p_community_id: req.body.p_community_id
         }
     }, (error, response, body) => {
