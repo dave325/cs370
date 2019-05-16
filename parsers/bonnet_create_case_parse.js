@@ -34,6 +34,7 @@ module.exports.caseCreate = (req, response) => {
                 }
             })
             object['descripition-text'] = $('textarea').attr('name');
+            res.json(object).status(200);
             console.log(JSON.stringify(object));
             return object;
         });

@@ -15,7 +15,7 @@
   </div>
 
   <ion-list>
-    <ion-item *ngFor="var item of caseList" [routerDirection]="'root'" [routerLink]="'/case/' + item.GetCase">
+    <ion-item *ngFor="let item of caseList" [routerDirection]="'root'" [routerLink]="'/case/' + item.GetCase">
       {{item.Subject}} by {{item.Author}}<br >
       {{item.Date}} 
       
