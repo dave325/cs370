@@ -16,11 +16,15 @@ export class ProxyService implements Resolve<any> {
     private router: Router
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    
     var id = route.paramMap.get('id');
     var headers = new HttpHeaders();
     headers.append("Access-Control-Allow-Credentials", "true");
     headers.append("Access-Control-Allow-Origin", "*");
-    return this.http.post('http://149.4.223.218:3000/api/search/name', {id: id}, { headers: headers });
+    return this.http.post('http://149.4.223.218:3000/api/search/name', {  }, { headers: headers });
+    
+
+    //return this.getCaseByName();
   }
   login(user): Promise<any> {
     var headers = new HttpHeaders();
@@ -34,12 +38,12 @@ export class ProxyService implements Resolve<any> {
   private getDecodedId(): String {
     if (this.getToken()) {
       try {
-     //   var decoded = jwt_decode(this.getToken());
+        //   var decoded = jwt_decode(this.getToken());
       } catch (Error) {
         console.log(Error);
         return null;
       }
-    //  return decoded._id + decoded.iat.toString();
+      //  return decoded._id + decoded.iat.toString();
     }
   }
   /**
@@ -84,7 +88,47 @@ export class ProxyService implements Resolve<any> {
     window.sessionStorage.removeItem('token');
   }
 
-  public getCaseByName(){
-    return this.http.post('http://149.4.223.218:3000/api/login', {});
+  public getCaseByName() {
+
+
+    return this.http.post('http://149.4.223.218:3000/api/login',{}).toPromise().then(
+
+        (res:any)=>
+        {
+
+          
+          var credentialsAsJSON = JSON.parse(res);
+          console.log(res);
+
+          return this.http.post('http://149.4.223.218:3000/api/search/name', {
+
+            p_lname: "Sy",
+            p_fname: "",
+            p_session: credentialsAsJSON.p_session_id,
+            p_community_id: 183
+      
+          }).toPromise().then(
+            (res: any) => {
+              return JSON.parse(res);
+            },
+            (err) => {
+              console.log("COULD NOT RETRIEVE CASES BY NAME");
+              return 100;
+      
+            }
+          );
+
+        },
+        (err)=>
+        {
+            console.log("COULD NOT PERFORM LOGIN FUNCTIONALITY");
+            console.log(err);
+        }
+
+
+
+    );
+
+ 
   }
 }
