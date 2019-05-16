@@ -8,19 +8,19 @@ var login = require('../parsers/bonnet_login_parse');
 //delete later
 var threadCase = require('../parsers/parseThreadedCase');
 //Search
-var  SearchByKeyWord = require('../parsers/Search_By_keyword');
-var  SearchByDate = require('../parsers/Search_By_date');
-var  SearchByCaseNumber = require('../parsers/Search_By_case_number');
-var  SearchByName = require('../parsers/Search_By_name');
-var  SearchResultFileLink = require('../parsers/Search_result_final_link');
+var SearchByKeyWord = require('../parsers/Search_By_keyword');
+var SearchByDate = require('../parsers/Search_By_date');
+var SearchByCaseNumber = require('../parsers/Search_By_case_number');
+var SearchByName = require('../parsers/Search_By_name');
+var SearchResultFileLink = require('../parsers/Search_result_final_link');
 //delete later
-var  SearchResult = require('../parsers/Search_result');
+var SearchResult = require('../parsers/Search_result');
 //
-var  CommunityUserList = require('../parsers/searchAllUserersInACommunity');
+var CommunityUserList = require('../parsers/searchAllUserersInACommunity');
 
 
-var  bonnett_port = 7778;
-var  bonnett_host = 'bonnet19.cs.qc.cuny.edu';
+var bonnett_port = 7778;
+var bonnett_host = 'bonnet19.cs.qc.cuny.edu';
 
 router.post('/case', caseReport.caseCreate);
 router.post('/caseload', caseLoad.caseLoad);
