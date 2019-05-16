@@ -45,9 +45,8 @@ export class ListPage implements OnInit {
 
     if(this.choice === 'lastname')
     {
-      console.log(this.searchQuery);
       this.doSearch(this.proxyService.ENDPOINTS.getByName,{
-        p_lname : "khemraj",
+        p_lname : this.searchQuery,
         p_fname : ""
       });
     }
@@ -70,6 +69,7 @@ export class ListPage implements OnInit {
     ).then(
       (res:any)=>
       {
+        this.caseList = [];
         console.log(res);
         let tmp = res;
         tmp.unshift();
@@ -78,13 +78,12 @@ export class ListPage implements OnInit {
         {
 
           let element = tmp[i];
-          if(element.p_session){
-            tmp.splice(i,1);
+          if(Object.keys(element).length > 2){
+            this.caseList.push(element);
           }
         }
 
-        this.caseList = tmp;
-
+       this.caseList.reverse();
  
       }
     );
