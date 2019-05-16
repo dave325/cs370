@@ -31,7 +31,7 @@ export class ListPage implements OnInit {
   {
 
     console.log("CHOICE IS " + this.choice);
-    console.log(this.searchQuery);
+    console.log("QUERY IS" + this.searchQuery);
 
 
     if(this.choice ===  'id')
@@ -69,16 +69,17 @@ export class ListPage implements OnInit {
     ).then(
       (res:any)=>
       {
+
         this.caseList = [];
+      
         console.log(res);
-        let tmp = res;
-        tmp.unshift();
-        var i = tmp.length;
+
+        var i = res.length;
         while(i--)
         {
 
-          let element = tmp[i];
-          if(Object.keys(element).length > 2){
+          let element = res[i];
+          if(Object.keys(element).length > 1){
             this.caseList.push(element);
           }
         }
