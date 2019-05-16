@@ -1,6 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Route } from '@angular/compiler/src/core';
+import { ProxyService } from '../proxy.service';
 
 @Component({
   selector: 'app-list',
@@ -9,34 +10,42 @@ import { Route } from '@angular/compiler/src/core';
 })
 export class ListPage implements OnInit {
   private selectedItem: any;
-  caseList = [];
+  caseList:Array<any>;
 
-  public items: Array<{ title: string; note: string; icon: string, url:string }> = [];
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute, private proxyService: ProxyService
   ) {
-    for (var i = 1; i < 11; i++) {
-     
-    }
+    
   }
 
   ngOnInit() {
     
-    this.route.data.toPromise().then(
-      (res) =>{
-
-        console.log('GETTING RESULTS');
-        console.log(res);
-
-        
-      },
-      (err)=>
+    this.proxyService.getCaseBy(this.proxyService.ENDPOINTS.getByName,
       {
-        console.log('GETTING RESULTS');
-
-        console.log(err);
+        p_lname : "sy",
+        p_fname : ""
       }
-    )
+    ).then(
+      (res:any)=>
+      {
+        console.log(res);
+        let tmp = res;
+        tmp.unshift();
+        var i = tmp.length;
+        while(i--)
+        {
+
+          let element = tmp[i];
+          if(element.p_session){
+            tmp.splice(i,1);
+          }
+        }
+
+        this.caseList = tmp;
+
+ 
+      }
+    );
   }
  
   

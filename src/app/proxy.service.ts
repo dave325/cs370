@@ -18,22 +18,19 @@ export class ProxyService implements Resolve<any> {
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    var headers = new HttpHeaders();
-    //headers.append("Access-Control-Allow-Credentials", "true");
-    //headers.append("Access-Control-Allow-Origin", "http://localhost:8100");
-    return this.http.post('http://149.4.223.218:3000/api/login', {});
+    
+    
   
-    //return this.getCaseByName();
   }
-  login(): Promise<any> {
-    var headers = new HttpHeaders();
-    headers.append("Access-Control-Allow-Credentials", "true");
-    headers.append("Access-Control-Allow-Origin", "*");
-    return this.http.post('/api/login', {}, { headers: headers ,withCredentials:true}).toPromise();
+
+  public ENDPOINTS = {
+    getByName : 'http://149.4.223.218:3000/api/search/name',
+    getByID : 'http://149.4.223.218:3000/api/search/id',
+    getByKeyword: 'http://149.4.223.218:3000/api/search/keyword',
+
   }
-  /**
-  * 
-  */
+ 
+ 
   private getDecodedId(): String {
     if (this.getToken()) {
       try {
@@ -87,32 +84,26 @@ export class ProxyService implements Resolve<any> {
     window.sessionStorage.removeItem('token');
   }
 
-  public getCaseByName() {
+  public getCaseBy(endpoint: string, info: any) {
 
 
     return this.http.post('http://149.4.223.218:3000/api/login', {}).toPromise().then(
 
       (res: any) => {
 
+        var credentialsAsJSON = res;
 
-        var credentialsAsJSON = JSON.parse(res);
-        console.log(res);
+        var postParams =info;
+        postParams.p_session_id = credentialsAsJSON.p_session_id;
+        postParams.p_community_id = credentialsAsJSON.p_community_id;
 
-        return this.http.post('http://149.4.223.218:3000/api/search/name', {
-
-          p_lname: "Sy",
-          p_fname: "",
-          p_session: credentialsAsJSON.p_session_id,
-          p_community_id: 183
-
-        }).toPromise().then(
+        return this.http.post(endpoint, postParams).toPromise().then(
           (res: any) => {
-            return JSON.parse(res);
+            return res;
           },
           (err) => {
             console.log("COULD NOT RETRIEVE CASES BY NAME");
-            return 100;
-
+            return {};
           }
         );
 
