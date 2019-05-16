@@ -43,7 +43,7 @@ module.exports.SearchResult = (req, response) => {
                 }
         
             });
-            res.json(json).status(200);
+            response.json(json).status(200);
             return JSON.stringify(json);
         }
         return null;
