@@ -5,10 +5,10 @@ var  fs = require('fs')
 //case report
 //p_media_select: "img" or "aud" or "vid" or "ole"
 //p_attachOrReply: "Get-attachment" || "Reply" || "Bookmark case"||"Add user to my hotlist"||"Create my new resource group"
-module.exports.caseCreate = (req, response) => {
-    request({ method: 'GET', url: URL, form: { p_case_select: req.body.p_case_select, p_session: req.body.p_session } },
-        (err, res, body) => {
-            if (err) return console.error(err);
+module.exports.caseCreate = (req, res) => {
+    request({ method: 'POST', url: URL, form: { p_case_select: req.body.p_case_select, p_session: req.body.p_session } },
+        (err, response, body) => {
+            if (err) return console.log(`error requesting ${url}`);
 
             var $ = cheerio.load(body);
             var object = {};
@@ -59,9 +59,7 @@ module.exports.caseCreate = (req, response) => {
                 }
 
             })
-
-            console.log(JSON.stringify(object));
-            return object;
+            res.json(object).status(200);
         });
 }
 
