@@ -4,20 +4,21 @@ var  fs = require('fs')
 
 var  url = "http://bonnet19.cs.qc.cuny.edu";
 var  method = "7778";
+// 5992
 
 var  options = {
-    url: url,
-    method: method,
-    path: '/pls/forum/ec_forum.find_case'
-    /*
-    header: {
-        ...
+    url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_case",
+    method: "POST",
+   // path: '/pls/forum/ec_forum.find_cases_by_name',
+    form: {
+        p_case_select: req.body.case_id,
+        p_session: req.body.p_session_id,
+        p_community_id: req.body.p_community_id
     }
-    */
 };
 var json = [];
 
-module.exports.SearchResult = (req, response) => {
+module.exports.SearchResult = (req, res) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     request(options, (error, response, body) => {
         if (error) {
@@ -46,6 +47,7 @@ module.exports.SearchResult = (req, response) => {
                 }
         
             });
+            res.json(json).status(200);
             return JSON.stringify(json);
         }
         return null;

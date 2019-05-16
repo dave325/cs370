@@ -31,13 +31,13 @@ export class ListPage implements OnInit {
   {
 
     console.log("CHOICE IS " + this.choice);
-    console.log("QUERY IS" + this.searchQuery);
+    console.log("QUERY IS " + this.searchQuery);
 
 
     if(this.choice ===  'id')
     {
       this.doSearch(this.proxyService.ENDPOINTS.getByID,{
-        p_lname : this.searchQuery,
+        case_id : this.searchQuery,
 
       });
       
@@ -64,13 +64,14 @@ export class ListPage implements OnInit {
 
   doSearch(endpoint:string, info:any)
   {
+    this.caseList = [];
     this.proxyService.getCaseBy(endpoint,
       info
     ).then(
       (res:any)=>
       {
 
-        this.caseList = [];
+        
       
         console.log(res);
 
@@ -94,7 +95,7 @@ export class ListPage implements OnInit {
   ngOnInit() {
 
     this.doSearch(this.proxyService.ENDPOINTS.getByName,{
-      p_lname : "sy",
+      p_lname : "Khemraj",
       p_fname : ""
     });
     
