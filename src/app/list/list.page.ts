@@ -32,7 +32,9 @@ export class ListPage implements OnInit {
     console.log("CHOICE IS " + this.choice);
     console.log("QUERY IS " + this.searchQuery);
 
-
+    if(this.choice == undefined){
+      this.choice = 'lastname';
+    }
     if (this.choice === 'id') {
       this.doSearch(this.proxyService.ENDPOINTS.getByID, {
         case_id: this.searchQuery,

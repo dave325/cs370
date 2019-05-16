@@ -33,7 +33,7 @@ module.exports.SearchResult = (req, res) => {
             console.log(`error requesting ${url}`);
         } else {
             var $ = cheerio.load(body);
-
+            var json = [];
             var p_session = $('form input').attr('value');
             json.push({"p_session" : p_session });
             
