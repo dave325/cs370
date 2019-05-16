@@ -35,6 +35,7 @@ module.exports.list = (req, res) => {
             res.json(json).status(200);
         }
     });
+};
    /* 
 request(options, (error, response, body) => {
     if(error){
@@ -64,5 +65,3 @@ request(options, (error, response, body) => {
 });
 
 */
-
-
