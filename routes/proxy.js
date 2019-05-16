@@ -41,7 +41,7 @@ router.post('/thread-test', threadCase.test)
  * All four Search by ID, name, keyword and date returns 
  * same html, so the following two routes works for all of them
  */
-router.post('/search/id', caseReport.caseCreate);
+router.post('/search/id', SearchByCaseNumber.SearchResult);
 router.post('/search/date', SearchByDate.SearchResult);
 router.post('/search/keyword', SearchByKeyWord.SearchResult);
 router.post('/search/name', SearchByName.SearchResult);
