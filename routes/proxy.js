@@ -21,6 +21,12 @@ var CommunityUserList = require('../parsers/searchAllUserersInACommunity');
 
 var bonnett_port = 7778;
 var bonnett_host = 'bonnet19.cs.qc.cuny.edu';
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 router.post('/case', caseReport.caseCreate);
 router.post('/caseload', caseLoad.caseLoad);
 router.post('/caseCreate', caseCreate.caseCreate);
