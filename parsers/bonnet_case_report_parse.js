@@ -15,7 +15,7 @@ module.exports.caseCreate = (req, res) => {
             object["form-action"] = $("form").attr('action');
 
             object["title"] = $("title").text();
-
+            console.log(body)
             object['body-background'] = $('body').attr('background');
             $('b').each(function (index, e) {
                 if (!($(this).text().trimRight() == "Q1.")
