@@ -11,7 +11,6 @@ import { ListPageModule } from './list/list.module';
 import { HomePage } from './home/home.page';
 import { LoginComponent } from './login/login.component';
 import { UploadPageModule } from './upload/upload.module';
-import { CasePageModule } from './case/case.module';
 
 var  routes: Routes = [
   {
@@ -43,15 +42,7 @@ var  routes: Routes = [
   {
     path: 'upload',
     loadChildren: './upload/upload.module#UploadPageModule'
-  },
-  {
-    path: 'case',
-    loadChildren: './case/case.module#CasePageModule'
   }
- 
-
-
-
 ];
 
 @NgModule({

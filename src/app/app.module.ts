@@ -25,11 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     LoginComponent,
     AboutComponent,
-  
+    CasePage
   ],
   entryComponents: [
     LoginComponent,
-    CasePage
   ],
   imports: [
     BrowserModule,
