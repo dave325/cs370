@@ -34,7 +34,7 @@ module.exports.SearchResultFileLink = (req, res) => {
             var json =  {
                 "download_link" : $('b a').attr('href')
             };
-            res.json(object).status(200);
+            res.json(json).status(200);
         }
         
     });
