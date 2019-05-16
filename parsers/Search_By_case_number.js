@@ -30,7 +30,7 @@ module.exports.SearchResult = (req, res) => {
         console.log(body)
             $('tr').each(function(i, elem) {
                 if(i > 0){    
-                    var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
+                   // var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
                     var date = $(this).children('td:nth-child(2)').text().trim();
                     var author = $(this).children('td:nth-child(3)').text().trim();
                     var subject = $(this).children('td:nth-child(4)').text().trim();
