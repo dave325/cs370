@@ -17,8 +17,10 @@ export class ProxyService implements Resolve<any> {
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     var id = route.paramMap.get('id');
- 
-    return this.http.post('/api/SearchResult', {id: id});
+    var headers = new HttpHeaders();
+    headers.append("Access-Control-Allow-Credentials", "true");
+    headers.append("Access-Control-Allow-Origin", "*");
+    return this.http.post('http://149.4.223.218:3000/api/search/name', {id: id}, { headers: headers });
   }
   login(user): Promise<any> {
     var headers = new HttpHeaders();
@@ -80,5 +82,9 @@ export class ProxyService implements Resolve<any> {
   public logout() {
     window.sessionStorage.removeItem('user_' + this.getDecodedId());
     window.sessionStorage.removeItem('token');
+  }
+
+  public getCaseByName(){
+    return this.http.post('http://149.4.223.218:3000/api/login', {});
   }
 }
