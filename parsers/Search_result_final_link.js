@@ -15,9 +15,18 @@ var  options = {
 };
 
 
-module.exports.SearchResultFileLink = (req, response) => {
+module.exports.SearchResultFileLink = (req, res) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
-    request(options, (error, response, body) => {
+    request({
+        url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.action_interface",
+        method: "POST",
+       // path: '/pls/forum/ec_forum.find_cases_by_name',
+        form: {
+            p_media_select: "ole",
+            p_attach_ole: req.body.p_attach_ole,
+            p_ses : req.body.p_ses,
+            p_case_id: p_case_id
+        }}, (error, response, body) => {
         if (error) {
             console.log(err);
         } else {
@@ -25,9 +34,9 @@ module.exports.SearchResultFileLink = (req, response) => {
             var json =  {
                 "download_link" : $('b a').attr('href')
             };
-            return JSON.stringify(json);
+            res.json(object).status(200);
         }
-        return null;
+        
     });
 }
 
