@@ -16,7 +16,7 @@ var  SearchResultFileLink = require('../parsers/Search_result_final_link');
 //delete later
 var  SearchResult = require('../parsers/Search_result');
 //
-var  CommunityUserList = require('../parsers/List_of_users_in_community');
+var  CommunityUserList = require('../parsers/searchAllUserersInACommunity');
 
 
 var  bonnett_port = 7778;
@@ -49,7 +49,7 @@ router.post('/SearchResultFile', SearchResultFileLink.SearchResultFileLink);
 /**
  * if we end up doing User list
  */
-router.post('/CommunityUserList', CommunityUserList.test);
+router.post('/CommunityUserList', CommunityUserList.list);
 
 
 module.exports = router;
