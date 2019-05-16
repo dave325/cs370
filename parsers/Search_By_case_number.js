@@ -14,7 +14,6 @@ module.exports.SearchResult = (req, res) => {
     request({
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_case",
         method: "POST",
-       // path: '/pls/forum/ec_forum.find_cases_by_name',
         form: {
             p_case_select: req.body.case_id,
             p_session: req.body.p_session_id,
