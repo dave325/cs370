@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { Route } from '@angular/compiler/src/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Route, createHostListener } from '@angular/compiler/src/core';
 import { ProxyService } from '../proxy.service';
 
 @Component({
@@ -8,6 +8,10 @@ import { ProxyService } from '../proxy.service';
   templateUrl: 'list.page.html',
   styleUrls: ['list.page.scss']
 })
+
+
+
+
 export class ListPage implements OnInit {
   private selectedItem: any;
   caseList:Array<any>;
@@ -18,13 +22,51 @@ export class ListPage implements OnInit {
     
   }
 
-  ngOnInit() {
-    
-    this.proxyService.getCaseBy(this.proxyService.ENDPOINTS.getByName,
-      {
-        p_lname : "sy",
+  searchQuery;
+  searchChoice;
+  choice = 'lastname';
+
+  
+  search($event:any)
+  {
+
+    console.log("CHOICE IS " + this.choice);
+    console.log(this.searchQuery);
+
+
+    if(this.choice ===  'id')
+    {
+      this.doSearch(this.proxyService.ENDPOINTS.getByID,{
+        p_lname : this.searchQuery,
+
+      });
+      
+    }
+
+    if(this.choice === 'lastname')
+    {
+      console.log(this.searchQuery);
+      this.doSearch(this.proxyService.ENDPOINTS.getByName,{
+        p_lname : "khemraj",
         p_fname : ""
-      }
+      });
+    }
+
+    if(this.choice === 'keyword')
+    {
+
+      this.doSearch(this.proxyService.ENDPOINTS.getByKeyword,{
+        p_keyword : this.searchQuery
+      });
+    }
+
+  }
+
+
+  doSearch(endpoint:string, info:any)
+  {
+    this.proxyService.getCaseBy(endpoint,
+      info
     ).then(
       (res:any)=>
       {
@@ -46,6 +88,17 @@ export class ListPage implements OnInit {
  
       }
     );
+
+  }
+
+  ngOnInit() {
+
+    this.doSearch(this.proxyService.ENDPOINTS.getByName,{
+      p_lname : "sy",
+      p_fname : ""
+    });
+    
+    
   }
  
   
