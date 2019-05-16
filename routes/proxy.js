@@ -11,7 +11,7 @@ var threadCase = require('../parsers/parseThreadedCase');
 var  SearchByKeyWord = require('../parsers/Search_By_keyword');
 var  SearchByDate = require('../parsers/Search_By_date');
 var  SearchByCaseNumber = require('../parsers/Search_By_case_number');
-var  SearchByDate = require('../parsers/Search_By_date');
+var  SearchByName = require('../parsers/Search_By_name');
 var  SearchResultFileLink = require('../parsers/Search_result_final_link');
 //delete later
 var  SearchResult = require('../parsers/Search_result');
@@ -76,10 +76,10 @@ router.post('/thread-test', threadCase.test)
  * All four Search by ID, name, keyword and date returns 
  * same html, so the following two routes works for all of them
  */
-router.post('/SearchResult', SearchByCaseNumber.test);
-router.post('/SearchResult', SearchByDate.test);
-router.post('/SearchResult', SearchByKeyWord.test);
-router.post('/SearchResult', SearchByCaseNumber.test);
+router.post('/search/id', SearchByCaseNumber.SearchResult);
+router.post('/search/date', SearchByDate.SearchResult);
+router.post('/Search/keyword', SearchByKeyWord.SearchResult);
+router.post('/Search/name', SearchByName.SearchResult);
 //
 router.post('/SearchResult', SearchResult.test);
 
