@@ -45,7 +45,7 @@ module.exports.SearchResult = (req, res) => {
         
             });
             console.log(json);
-            res.json(body).status(200);
+            res.json(json).status(200);
             return;
         }
         return null;
