@@ -22,7 +22,7 @@ module.exports.SearchResult = (req, res) => {
         } else {
             var $ = cheerio.load(body);
             console.log(req.body)
-
+            var json = [];
             var p_session = $('form input').attr('value');
             json.push({"p_session" : p_session });
             console.log(body)
