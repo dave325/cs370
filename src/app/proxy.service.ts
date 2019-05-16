@@ -97,7 +97,7 @@ export class ProxyService implements Resolve<any> {
         var postParams =info;
         postParams.p_session_id = res.p_session_id;
         postParams.p_community_id = res.p_community_id;
-        console.log(postParams);
+        console.log(res);
         return this.http.post(endpoint, postParams).toPromise().then(
           (res: any) => {
             return res;

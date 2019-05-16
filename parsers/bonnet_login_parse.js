@@ -3,14 +3,14 @@ var  request = require('request');
 var  URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.access_check";
 
 module.exports.login = (req, res) => {
-    request({ method: 'POST', url: URL, form: { p_usr_username: "test", p_usr_password: "test"} },
+    request({ method: 'POST', url: URL, form: { p_usr_username: "dave325", p_usr_password: "d32594"} },
     (err, response, body) => {
         if (err) return console.error(err);
 
         var $ = cheerio.load(body);
 
         var object = {};
-        
+        console.log(body)
         $('INPUT').each(function (i, e) {
             
             if ($(this).attr('name')) {
