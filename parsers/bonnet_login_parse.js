@@ -3,7 +3,7 @@ var  request = require('request');
 var  URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.access_check";
 
 module.exports.login = (req, res) => {
-    request({ method: 'POST', url: URL, form: { p_usr_username: "dave325", p_usr_password: "d32594"} },
+    request({ method: 'POST', url: URL, form: { p_usr_username: "hona7436", p_usr_password: "23327436"} },
     (err, response, body) => {
         if (err) return console.error(err);
 
