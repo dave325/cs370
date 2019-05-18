@@ -18,13 +18,13 @@ module.exports.list = (req, res) => {
             console.log(`error requesting ${url}`);
         } else {
             var $ = cheerio.load(body);
-        
+            console.log(body);
 
             $('tr').each(function(i, elem) {
                 if(i > 0){    
-                    var name = $(this).children('td:nth-child(1)').text().trim()
-                    var email = $(this).children('td:nth-child(2)').text().trim()
-                    var url = $(this).children('td:nth-child(3)').text().trim()
+                    var name = $(this).children('td:nth-child(1)').text().trim();
+                    var email = $(this).children('td:nth-child(2)').text().trim();
+                    var url = $(this).children('td:nth-child(3)').text().trim();
                     
                     json.push({"name": name, "email" : email, "url" : url});
                 }
