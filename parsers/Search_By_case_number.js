@@ -15,7 +15,7 @@ module.exports.SearchResult = (req, res) => {
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_case",
         method: "POST",
         form: {
-            p_case_select: req.body.case_id,
+            p_case_select: req.body.p_case_select,
             p_session: req.body.p_session_id,
             p_community : req.body.p_community
         }
