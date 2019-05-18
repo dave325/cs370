@@ -22,7 +22,7 @@ export class ProxyService implements Resolve<any> {
     console.log(route.params.id);
     if (route.routeConfig.path === "case/:id") {
       return this.getCaseBy(this.ENDPOINTS.getByID,
-        {case_id : route.params.id }
+        {p_case_select : route.params.id }
       );
     }
   }
