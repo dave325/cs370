@@ -7,7 +7,7 @@ var json = [];
 module.exports.list = (req, res) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     request({
-        url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.access_check",
+        url: "hhttp://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_admin.show_users_dispatch",
         method: "POST",
         form: {
             p_usr_username: "hona7436",
