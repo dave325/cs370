@@ -24,9 +24,16 @@ module.exports.SearchResult = (req, res) => {
             console.log(err);
         } else {
             console.log("Body: " + body);
+            if(body === "Your selected case does not belong to your community"){
+                let msg = {
+                    error: "Your selected case does not belong to your community"
+                }
+                res.json(msg).status(200);
+                return;
+            }
             var $ = cheerio.load(body);
 
-   
+            
             object["form-action"] = $("form").attr('action');
 
             object["title"] = $("title").text();
