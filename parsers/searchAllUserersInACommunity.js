@@ -2,6 +2,13 @@ var  cheerio = require('cheerio')
 var  request = require('request')
 var  fs = require('fs')
 
+/**
+ * This page takes in a user name and password
+ * returns info on all of the users in the community; 
+ */
+
+
+
 var json = [];
 
 module.exports.list = (req, res) => {
@@ -10,15 +17,15 @@ module.exports.list = (req, res) => {
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_admin.show_users_dispatch",
         method: "POST",
         form: {
-            p_usr_username: "hona7436",
-            p_usr_password: "23327436"
+            p_usr_username: req.body.p_usr_username,
+            p_usr_password: req.body.p_usr_password
         }
     }, (error, response, body) => {
         if (error) {
             console.log(`error requesting ${url}`);
         } else {
             var $ = cheerio.load(body);
-            console.log(body);
+           // console.log(body);
 
             $('tr').each(function(i, elem) {
                 if(i > 0){    

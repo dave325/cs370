@@ -5,6 +5,12 @@ var path = require('path')
 var  url = "";
 var  method = "";
 
+
+/**
+ * OFFLINE TEST, delete later
+ * 
+ */
+
 var  options = {
     url: url,
     method: method
