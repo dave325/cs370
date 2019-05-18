@@ -12,12 +12,12 @@ var object = {};
 module.exports.SearchResult = (req, res) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     request({
-        url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.retrieve_interface",
+        url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_case",
         method: "POST",
         form: {
             p_case_select: req.body.p_case_select,
-            p_session: req.body.p_session,
-            p_community : req.body.p_community
+            p_session: req.body.p_session_id,
+            p_community : req.body.p_community_id
         }
     }, (error, response, body) => {
         if (error) {
