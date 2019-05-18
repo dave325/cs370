@@ -36,7 +36,7 @@ module.exports.SearchResult = (req, res) => {
                     var subject = $(this).children('td:nth-child(4)').text().trim();
                     
                     var obj = {
-                        "GetCase" : getCase_value,
+                        "GetCase" : req.body.case_id,
                         "Date" : date,
                         "Author" : author,
                         "Subject" : subject
