@@ -43,7 +43,9 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      TestFairy.begin("SDK-YVcCMumT");
+      if ((<any>window).TestFairy) {
+        TestFairy.begin("SDK-YVcCMumT");
+      }
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
