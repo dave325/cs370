@@ -67,9 +67,8 @@ module.exports.SearchResult = (req, res) => {
                         $(this).find('option').each(function (i, e) {
                             //object[type + "" + i] = $(this).attr('value');
                             // if(type == "ole"){
-                                var key = "VALUE " + i ;
                                 option["Option " + i ] = {
-                                    key : $(this).attr('value'),
+                                    "value" : $(this).attr('value'),
                                     "text" : $(this).text()
                                 }
                              //}
