@@ -24,6 +24,7 @@ module.exports.SearchResult = (req, res) => {
         if (error) {
             console.log(err);
         } else {
+            console.log(response)
             var $ = cheerio.load(body);
 
             var p_session = $('form input').attr('value');
