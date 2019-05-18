@@ -23,7 +23,7 @@ module.exports.SearchResult = (req, res) => {
         if (error) {
             console.log(err);
         } else {
-            console.log(response)
+            console.log(body);
             var $ = cheerio.load(body);
 
    

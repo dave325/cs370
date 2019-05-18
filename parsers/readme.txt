@@ -6,6 +6,13 @@ Search for case parsers:
         - method: post
         - input: p_session (hiddent), p_community_id (hidden)
         - p_case_select (user input) 
+		
+{
+	"p_case_select": "19490",
+	"p_community_id" : "183",
+	"p_session" : "139252"
+}
+		
     - Name:
         - action: http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_name
         - method: post
@@ -60,3 +67,4 @@ download link:
     "p_ses" : "138816",
     "p_case_id": "18131"
 }
+139252
