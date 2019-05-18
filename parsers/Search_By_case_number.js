@@ -46,7 +46,7 @@ module.exports.SearchResult = (req, res) => {
                     && !($(this).text().trimRight() == "Case Description:")) {
                     if (e.next) {
                         var l = $(this).text().trim().length;
-                        case_header[$(this).text().trim().substring(0, l - 1)] = e.next.data.trim();
+                        case_header[$(this).text().trim().substring(0, l - 1).replace(/ /g, '')] = e.next.data.trim();
         
                     }
                 }
