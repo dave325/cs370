@@ -10,25 +10,21 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>SIG: {{case.case_header.SIG}}</ion-card-title>
+      <ion-card-title>SIG: {{case.case_header.SIG}} ({{case.case_header.Authoremail}})</ion-card-title>
       <ion-card-subtitle>Author: {{case.case_header.CaseAuthor}}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      Author: {{case.case_header.Subject}}<br >
+      Date: {{case.case_header.Date}}<br >
+      Author URL: <a href="{{case.case_header.AuthorURL}}">{{case.case_header.AuthorURL}}</a><br >
     </ion-card-content>
   </ion-card>
   <ion-item>
-    <ion-label>Files</ion-label>
+    <ion-label>OLE Document Attachment: </ion-label>
     <ion-select multiple="true" cancelText="Cancel" okText="Download">
-      <ion-select-option value="file1">File 1</ion-select-option>
-      <ion-select-option value="file1">File 1</ion-select-option>
-      <ion-select-option value="file1">File 1</ion-select-option>
-      <ion-select-option value="file1">File 1</ion-select-option>
-      <ion-select-option value="file1">File 1</ion-select-option>
-      <ion-select-option value="file1">File 1</ion-select-option>
-      <ion-select-option value="file1">File 1</ion-select-option>
+      <ion-select-option value="{{option.value}}" *ngFor="let option of case.select_radio_options">{{option.text}}</ion-select-option>
+      
     </ion-select>
   </ion-item>
   <ion-item-divider>

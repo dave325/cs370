@@ -1,9 +1,9 @@
-var  cheerio = require('cheerio')
-var  request = require('request')
-var  fs = require('fs')
+var cheerio = require('cheerio')
+var request = require('request')
+var fs = require('fs')
 
-var  url = "http://bonnet19.cs.qc.cuny.edu";
-var  method = "7778";
+var url = "http://bonnet19.cs.qc.cuny.edu";
+var method = "7778";
 // 5992
 
 
@@ -17,14 +17,14 @@ module.exports.SearchResult = (req, res) => {
         form: {
             p_case_select: req.body.p_case_select,
             p_session: req.body.p_session_id,
-            p_community : req.body.p_community_id
+            p_community: req.body.p_community_id
         }
     }, (error, response, body) => {
         if (error) {
             console.log(err);
         } else {
             console.log(response);
-            if(body == "Your selected case does not belong to your community\n"){
+            if (body == "Your selected case does not belong to your community\n") {
                 var msg = {
                     error: "Your selected case does not belong to your community"
                 }
@@ -33,12 +33,12 @@ module.exports.SearchResult = (req, res) => {
             }
             var $ = cheerio.load(body);
 
-            
+
             object["form-action"] = $("form").attr('action');
 
             object["title"] = $("title").text();
-        
-        
+
+
             var case_header = {};
             $('b').each(function (index, e) {
                 if (!($(this).text().trimRight() == "Q1.")
@@ -47,21 +47,21 @@ module.exports.SearchResult = (req, res) => {
                     if (e.next) {
                         var l = $(this).text().trim().length;
                         case_header[$(this).text().trim().substring(0, l - 1).replace(/ /g, '')] = e.next.data.trim();
-        
+
                     }
                 }
             });
-        
+
             object["case_header"] = case_header;
             $('p').each(function (index, en) {
                 if (($(this).find('b').text().trimRight() == "Case Description:")) {
-                    object["about_case"]  = {
-                        "Case_Description_link": $(this).find('a').attr('href') ,
+                    object["about_case"] = {
+                        "Case_Description_link": $(this).find('a').attr('href'),
                         "Case_Description": $(this).find('td').text()
                     }
-              //      object["Case Description link"] = $(this).find('a').attr('href');
-                //    object["Case Description"] = $(this).find('td').text();
-                   
+                    //      object["Case Description link"] = $(this).find('a').attr('href');
+                    //    object["Case Description"] = $(this).find('td').text();
+
                 } else if ($(this).find('a').text() == "Bon Sy.") {
                     object["mailto link"] = $(this).find('a').attr('href');
                 } else {
@@ -70,32 +70,35 @@ module.exports.SearchResult = (req, res) => {
                         (type == "aud") ||
                         (type == "vid") ||
                         (type == "ole")) {
-                        var option = {};
+                        var option = [];
                         $(this).find('option').each(function (i, e) {
                             //object[type + "" + i] = $(this).attr('value');
                             // if(type == "ole"){
-                                option["Option " + i ] = {
-                                    "value" : $(this).attr('value'),
-                                    "text" : $(this).text()
-                                }
-                             //}
+                            if ($(this).attr('value').length > 1) {
+                                option.push
+                                    ({
+                                        "value": $(this).attr('value'),
+                                        "text": $(this).text()
+                                    });
+                            }
+                            //}
                             //download file
                         });
-        
-                        
+
+
                         object["select_radio_options"] = option;
-        
+
                     }
                 }
             })
-        
+
             $('input').each(function (i, e) {
                 if ($(this).attr('name') == "p_case_id") {
                     object["p_case_id"] = $(this).attr("value");
                 } else if ($(this).attr("name") == "p_ses") {
                     object["p_ses"] = $(this).attr("value");
                 }
-        
+
             })
             res.json(object).status(200);
         }
@@ -108,25 +111,25 @@ module.exports.test = (req, res) => {
         console.log(err);
         var $ = cheerio.load(html);
         var p_session = $('form input').attr('value');
-        json.push({"p_session" : p_session });
-    
-        $('tr').each(function(i, elem) {
-            if(i > 0){    
-                var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
+        json.push({ "p_session": p_session });
+
+        $('tr').each(function (i, elem) {
+            if (i > 0) {
+                var getCase_value = $(this).children('td:nth-child(1)').children('input').attr('value');
                 var date = $(this).children('td:nth-child(2)').text().trim();
                 var author = $(this).children('td:nth-child(3)').text().trim();
                 var subject = $(this).children('td:nth-child(4)').text().trim();
-                
+
                 var obj = {
-                    "GetCase" : getCase_value,
-                    "Date" : date,
-                    "Author" : author,
-                    "Subject" : subject
+                    "GetCase": getCase_value,
+                    "Date": date,
+                    "Author": author,
+                    "Subject": subject
                 };
-    
+
                 json.push(obj);
             }
-    
+
         });
 
         console.log(json);
