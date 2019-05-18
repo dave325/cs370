@@ -24,7 +24,7 @@ module.exports.SearchResult = (req, res) => {
             console.log(err);
         } else {
             console.log("Body: " + body);
-            if(body === "Your selected case does not belong to your community"){
+            if(body == "Your selected case does not belong to your community"){
                 var msg = {
                     error: "Your selected case does not belong to your community"
                 }

@@ -14,6 +14,7 @@ export class CasePage implements OnInit {
     console.log(this.str);
     this.route.data.subscribe(
       (res) =>{
+        console.log(res)
         if(res.error){
           console.log(res.error);
           return;
