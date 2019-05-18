@@ -1,3 +1,4 @@
+import { ProxyService } from './proxy.service';
 import { CasePage } from './case/case.page';
 import { AboutComponent } from './about/about.component';
 import { NgModule } from '@angular/core';
@@ -32,7 +33,10 @@ var  routes: Routes = [
   },
   {
     path: 'case/:id',
-    component:CasePage
+    component:CasePage,
+    resolve: {
+      proxy: ProxyService
+    }
   },
   //list,upload,case handled by @DeepakKhemraj drk3931@gmail.com
   {

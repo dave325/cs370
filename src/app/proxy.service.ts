@@ -17,20 +17,24 @@ export class ProxyService implements Resolve<any> {
     private router: Router
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-
-    
-    
-  
+    console.log(route.routeConfig.path);
+    console.log(this.ENDPOINTS.getByID);
+    console.log(route.params.id);
+    if (route.routeConfig.path === "case/:id") {
+      return this.getCaseBy(this.ENDPOINTS.getByID,
+        {case_id : route.params.id }
+      );
+    }
   }
 
   public ENDPOINTS = {
-    getByName : 'http://149.4.223.218:3000/api/search/name',
-    getByID : 'http://149.4.223.218:3000/api/search/id',
+    getByName: 'http://149.4.223.218:3000/api/search/name',
+    getByID: 'http://149.4.223.218:3000/api/search/id',
     getByKeyword: 'http://149.4.223.218:3000/api/search/keyword',
 
   }
- 
- 
+
+
   private getDecodedId(): String {
     if (this.getToken()) {
       try {
@@ -86,15 +90,13 @@ export class ProxyService implements Resolve<any> {
 
   public getCaseBy(endpoint: string, info: any) {
 
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Access-Control-Allow-Origin', '*');
     return this.http.post('http://149.4.223.218:3000/api/login', {}).toPromise().then(
 
       (res: any) => {
 
         var credentialsAsJSON = res;
 
-        var postParams =info;
+        var postParams = info;
         postParams.p_session_id = res.p_session_id;
         postParams.p_community_id = res.p_community_id;
         console.log(res);

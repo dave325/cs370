@@ -15,10 +15,7 @@ import { ProxyService } from '../proxy.service';
     RouterModule.forChild([
       {
         path: '',
-        component: ListPage,
-        resolve: {
-          proxy: ProxyService
-        }
+        component: ListPage
       }
     ])
   ],

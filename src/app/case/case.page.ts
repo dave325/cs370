@@ -11,6 +11,21 @@ export class CasePage implements OnInit {
   str;
   constructor(private route: ActivatedRoute) { 
     this.str = this.route.snapshot.params.id;
+    console.log(this.str);
+    this.route.data.subscribe(
+      (res) =>{
+        res.then(
+          (res) => {
+            console.log(res);
+          }, 
+          (err) => {
+            console.log(err);
+          }
+        )
+      }, (err) => {
+        console.log(err);
+      }
+    )
   }
 
   ngOnInit() {
