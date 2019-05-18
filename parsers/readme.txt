@@ -8,10 +8,11 @@ Search for case parsers:
         - p_case_select (user input) 
 		
 {
-	"p_case_select": "19490",
-	"p_community_id" : "183",
+	"p_case_select": "14119",
+	"p_community" : "183",
 	"p_session" : "139252"
 }
+curl -d "p_community=183&p_session=139251&p_case_select=19490" -X POST http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_case
 		
     - Name:
         - action: http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_name

@@ -28,26 +28,33 @@ module.exports.SearchResult = (req, res) => {
 
    
             object["form-action"] = $("form").attr('action');
-        
+
             object["title"] = $("title").text();
-            object['body-background'] = $('body').attr('background');
+        
+        
+            var case_header = {};
             $('b').each(function (index, e) {
                 if (!($(this).text().trimRight() == "Q1.")
                     && !($(this).text().trimRight() == "Q2.")
                     && !($(this).text().trimRight() == "Case Description:")) {
                     if (e.next) {
                         var l = $(this).text().trim().length;
-                        object[$(this).text().trim().substring(0, l - 1)] = e.next.data.trim();
+                        case_header[$(this).text().trim().substring(0, l - 1)] = e.next.data.trim();
         
                     }
                 }
-            })
+            });
         
+            object["case_header"] = case_header;
             $('p').each(function (index, en) {
                 if (($(this).find('b').text().trimRight() == "Case Description:")) {
-                    object["Case Description link"] = $(this).find('a').attr('href');
-                    object["Case Description"] = $(this).find('td').text();
-        
+                    object["about_case"]  = {
+                        "Case_Description_link": $(this).find('a').attr('href') ,
+                        "Case_Description": $(this).find('td').text()
+                    }
+              //      object["Case Description link"] = $(this).find('a').attr('href');
+                //    object["Case Description"] = $(this).find('td').text();
+                   
                 } else if ($(this).find('a').text() == "Bon Sy.") {
                     object["mailto link"] = $(this).find('a').attr('href');
                 } else {
@@ -56,14 +63,25 @@ module.exports.SearchResult = (req, res) => {
                         (type == "aud") ||
                         (type == "vid") ||
                         (type == "ole")) {
+                        var option = {};
                         $(this).find('option').each(function (i, e) {
-                            object[type + "" + i] = $(this).attr('value');
+                            //object[type + "" + i] = $(this).attr('value');
+                            // if(type == "ole"){
+                                var key = "VALUE " + i ;
+                                option["Option " + i ] = {
+                                    key : $(this).attr('value'),
+                                    "text" : $(this).text()
+                                }
+                             //}
                             //download file
-                        })
+                        });
+        
+                        
+                        object["select_radio_options"] = option;
         
                     }
                 }
-            });
+            })
         
             $('input').each(function (i, e) {
                 if ($(this).attr('name') == "p_case_id") {
