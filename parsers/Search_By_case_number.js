@@ -23,7 +23,6 @@ module.exports.SearchResult = (req, res) => {
         if (error) {
             console.log(err);
         } else {
-            console.log(response);
             if (body == "Your selected case does not belong to your community\n") {
                 var msg = {
                     error: "Your selected case does not belong to your community"
@@ -74,7 +73,7 @@ module.exports.SearchResult = (req, res) => {
                         $(this).find('option').each(function (i, e) {
                             //object[type + "" + i] = $(this).attr('value');
                             // if(type == "ole"){
-                            if ($(this).attr('value').length > 1) {
+                            if ($(this).attr('value') == "None") {
                                 option.push
                                     ({
                                         "value": $(this).attr('value'),

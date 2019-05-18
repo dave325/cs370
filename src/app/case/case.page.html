@@ -15,26 +15,56 @@
     </ion-card-header>
 
     <ion-card-content>
-      Author: {{case.case_header.Subject}}<br >
-      Date: {{case.case_header.Date}}<br >
-      Author URL: <a href="{{case.case_header.AuthorURL}}">{{case.case_header.AuthorURL}}</a><br >
+      Author: {{case.case_header.Subject}}<br>
+      Date: {{case.case_header.Date}}<br>
+      Author URL: <a href="{{case.case_header.AuthorURL}}">{{case.case_header.AuthorURL}}</a><br>
     </ion-card-content>
   </ion-card>
   <ion-item>
     <ion-label>OLE Document Attachment: </ion-label>
-    <ion-select multiple="true" cancelText="Cancel" okText="Download">
-      <ion-select-option value="{{option.value}}" *ngFor="let option of case.select_radio_options">{{option.text}}</ion-select-option>
-      
+    <ion-select cancelText="Cancel" okText="Download" interface="action-sheet" (ionChange)="onSelectChange($event)">
+      <ion-select-option value="{{option.value}}" *ngFor="let option of case.select_radio_options">{{option.text}}
+      </ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-item-divider>
-    <ion-label>
-      Comments
-    </ion-label>
-  </ion-item-divider>
-  <ion-item-divider>
-    <ion-label>
-      Comments
-    </ion-label>
-  </ion-item-divider>
+  <ion-item>
+    <ion-label>Get attachment or reply: </ion-label>
+    <ion-select cancelText="Cancel" okText="Ok">
+      <ion-select-option value="Get-attachment">Get Attachment
+      </ion-select-option>
+      <ion-select-option value="Reply">Reply
+      </ion-select-option>
+      <ion-select-option value="Bookmark case">Bookmark case
+      </ion-select-option>
+      <ion-select-option value="Add user to my hotlist">Add user to my hotlist
+      </ion-select-option>
+      <ion-select-option value="Create my new resource group">Create my new resource group
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Q1. I find the level of this case is</ion-label>
+    <ion-select [(ngModel)]="p_rating_level" cancelText="Cancel" okText="Ok">
+      <ion-select-option value="1">Basic
+      </ion-select-option>
+      <ion-select-option value="2">Intermediate
+      </ion-select-option>
+      <ion-select-option value="3">Advance
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Q2. I find this case</ion-label>
+    <ion-select [(ngModel)]="p_rating_quality" cancelText="Cancel" okText="Ok">
+      <ion-select-option value="1">Trivial
+      </ion-select-option>
+      <ion-select-option value="2">Useful
+      </ion-select-option>
+      <ion-select-option value="3">Good
+      </ion-select-option>
+      <ion-select-option value="4">Excellent
+      </ion-select-option>
+    </ion-select>
+    <input type="submit" name="p_attachOrReply" value="Send-Rating" (click)="submitRating()">
+  </ion-item>
 </ion-content>
