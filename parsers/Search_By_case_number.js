@@ -12,7 +12,7 @@ var json = [];
 module.exports.SearchResult = (req, res) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     request({
-        url: "http://bonnet19.cs.qc.edu:7778/",
+        url: "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.access_check",
         method: "POST",
         form: {
             p_case_select: req.body.case_id,
