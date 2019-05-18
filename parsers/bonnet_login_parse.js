@@ -6,7 +6,7 @@ module.exports.login = (req, res) => {
     request({ method: 'POST', url: URL, form: { p_usr_username: "hona7436", p_usr_password: "23327436"} },
     (err, response, body) => {
         if (err) return console.error(err);
-
+        console.log(response)
         var $ = cheerio.load(body);
 
         var object = {};
