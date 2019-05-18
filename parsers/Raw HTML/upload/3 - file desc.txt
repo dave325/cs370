@@ -1,0 +1,82 @@
+<html><head>
+<title>Deposit a Media Document</title>
+</head>
+<body background="/wedimage/owasbkg.jpg">
+<form action="/pls/forum/EC_forum.add_attachment_dispatch" method="POST">
+<table 0="" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="left">
+<font size="2" face="Arial,Helvetica">
+Document owner: Mr Hossain, Nazmul
+</font></td>
+</tr>
+<tr>
+<td align="left">
+<font size="2" face="Arial,Helvetica">
+Date: 15-MAY-19
+</font></td>
+</tr>
+<input type="hidden" name="p_BFile_file_location" value="">
+</tbody></table>
+<p>
+</p>
+<p>
+</p><table 0="" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>
+Specify the file type of the attachment: 
+</td>
+<td>
+<select name="p_BFile_type">
+<option value="ole">OLE document
+</option><option value="img">image document
+</option><option value="aud">audio document
+</option><option value="vid">video document
+</option></select>
+</td>
+</tr>
+<tr>
+<td align="left">
+<font size="2" face="Arial,Helvetica">
+Subject information for the attachment: 
+</font></td>
+<td align="left">
+<font size="2" face="Arial,Helvetica">
+<input type="text" name="p_BFile_subject" size="40" maxlength="40">
+</font></td>
+</tr>
+<tr>
+<td align="left" valign="top">
+<font size="2" face="Arial,Helvetica">
+Caption information for the attachment:
+</font></td>
+<td align="left">
+<font size="2" face="Arial,Helvetica">
+<textarea name="p_BFile_caption" rows="10" cols="60" align="Subject: "></textarea>
+</font></td>
+</tr>
+<input type="hidden" name="p_case" value="19959">
+<input type="hidden" name="p_ses" value="139208">
+<tr>
+<td><br></td>
+<td><br><input type="submit" value="Send Attachment!"></td>
+</tr>
+</tbody></table>
+<input type="reset" value="Reset Details">
+</form>
+<p>
+This page is generated using Oracle stored procedure powered by Oracle Web Application Server. 
+</p><p>
+Oracle Y2K compliant system date reporting today as: 
+15-MAY-19
+</p><p>
+Please e-mail any comments/errors to 
+<a href="mailto:bon@bunny.cs.qc.edu">Bon Sy.</a>
+</p><hr>
+<p>
+<font size="1">
+Copyright © 1999, Bon K. Sy
+</font>
+
+
+</p></body></html>

@@ -1,0 +1,77 @@
+<html><head>
+<title>Create a case</title>
+</head>
+<body background="/wedimage/owasbkg.jpg">
+<form action="/pls/forum/EC_forum.send_dispatch" method="POST">
+<input type="hidden" name="p_ses" value="139208">
+<input type="hidden" name="p_ref_case_owner" value="">
+Community: Software Engineering PIN #:183
+<p>
+Select Special Interest Group to post: 
+<select name="p_sig">
+<option value="209">Unified Modeling Language
+</option><option value="210">Specification and Requirement
+</option><option value="211">Coding
+</option><option value="212">Quality assurance and testing
+</option><option value="213">Verification and Validation
+</option><option value="214">Security
+</option><option value="215">Other topics
+</option></select><table 0="" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+</tr>
+</tbody></table>
+</p><p>
+Date:  15-MAY-19
+<table 0="" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td>New Case </td>
+<input type="hidden" name="p_ref_case" value="">
+</tr>
+</tbody></table>
+</p><p>
+Subject:
+<input type="text" name="p_subject" size="30" maxlength="80">
+</p><p>
+</p><p>
+Keyword list:
+<input type="text" name="p_keyword" size="30" maxlength="64">
+</p><p>
+Additional details (if any) at URL 
+<input type="text" name="p_url" size="60" value="http://">
+</p><p>
+<p>
+</p><table 0="" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="left" valign="top">
+<font size="2" face="Arial,Helvetica">
+Enter New Case Description:
+</font></td>
+<td align="left">
+<font size="2" face="Arial,Helvetica">
+<textarea name="p_text" rows="10" cols="60"></textarea>
+</font></td>
+</tr>
+<tr>
+<td><br></td>
+<td><br><input type="submit" value="Commit!"></td>
+</tr>
+</tbody></table>
+<input type="reset" value="Reset Details">
+</p></form>
+<p>
+This page is generated using Oracle stored procedure powered by Oracle Web Application Server. 
+</p><p>
+Oracle Y2K compliant system date reporting today as: 
+15-MAY-19
+</p><p>
+Please e-mail any comments/errors to 
+<a href="mailto:bon@bunny.cs.qc.edu">Bon Sy.</a>
+</p><hr>
+<p>
+<font size="1">
+Copyright © 1999, Bon K. Sy
+</font>
+
+
+</p></body></html>

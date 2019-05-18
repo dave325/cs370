@@ -1,0 +1,9 @@
+<html><head><title>E-Community: Select Attachment File</title></head>
+<body background="images/owasbkg.jpg" bgcolor="#c0c0c0">
+<h2>Select File</h2>
+<form enctype="multipart/form-data" method="POST" action="/ecommunity/Attachment">
+<p><em>Please click "Browse" to select the file,and press the "Attach" to upload the file.</em></p>
+<input type="file" name="filename" size="60"><br>
+<p><input type="submit" value=" Attach "><input type="reset" value="Reset"></p>
+</form>
+</body></html>
