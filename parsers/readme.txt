@@ -22,7 +22,15 @@ Search for case parsers:
         - action: http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_keyword
         - method: post
         - input: p_session (hiddent), p_community (hidden)
-        -  p_keyword (user input) , 2/3/4  (Select values) (subject heading, keyword field, document description)
+        -  p_keyword (user input) , p_s_choice : 2/3/4  (Select values) (subject heading, keyword field, document description)
+   {
+    "p_keyword": "%java%",
+    "p_s_choice": "2",
+    "p_community_id": "183",
+    "p_session": "139247"
+}
+   
+   
     -date:
         - action: http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_date
         - method: post

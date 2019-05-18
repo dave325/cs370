@@ -10,8 +10,8 @@ module.exports.list = (req, res) => {
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.access_check",
         method: "POST",
         form: {
-            p_usr_username: req.body.p_usr_username,
-            p_usr_password: req.body.p_usr_password
+            p_usr_username: "hona7436",
+            p_usr_password: "23327436"
         }
     }, (error, response, body) => {
         if (error) {
