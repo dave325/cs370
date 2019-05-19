@@ -56,6 +56,16 @@ curl -d "p_increment_date=ALL_DAY&p_session=139411&p_community_id=183&p_from_dat
 	"p_community_id" : "183"
 }
 
+    - group
+     - action: http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.retrieve_case_relay
+     - method: post
+     - p_session_id (input), p_usr_choice (select value: -1, 211, 215, 212, 214, 210, 209, 213)
+
+     {
+    "p_session_id": "139437",
+    "p_usr_choice": "211"
+}
+
 2: case_report
 	- action: "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.retrieve_interface"
 	- method: post
