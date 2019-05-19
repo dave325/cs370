@@ -73,7 +73,7 @@ module.exports.SearchResult = (req, res) => {
                         $(this).find('option').each(function (i, e) {
                             //object[type + "" + i] = $(this).attr('value');
                             // if(type == "ole"){
-                            if ($(this).attr('value') == "None") {
+                            if ($(this).attr('value') != "None") {
                                 option.push
                                     ({
                                         "value": $(this).attr('value'),
