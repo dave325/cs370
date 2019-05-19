@@ -111,8 +111,10 @@ module.exports.SearchResultFileLink = (req, res) => {
                         file.pipe(temp);
                         temp.on('finish', function () {
                             temp.close(function(){
-                                res.set('Content-disposition', 'attachment; filename=test.pptx')
-                                res.download(temp);
+                                var newFile = fs.createReadStream('file.pptx');
+                                res.download(newFile);
+                                fs.unlink('file.pptx');
+                                return;
                             });  // close() is async, call cb after close completes.
                         });
                     })
