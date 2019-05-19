@@ -89,6 +89,9 @@ module.exports.SearchResultFileLink = (req, res) => {
             console.log(err);
         } else {
             console.log(body);
+            console.log(response);
+            console.log(req.body)
+            console.log(formOptions)
             var $ = cheerio.load(body);
             var title = $('TITLE').text();
             if (title === "404 Not Found"){
