@@ -102,11 +102,11 @@ module.exports.SearchResultFileLink = (req, res) => {
                         console.log(file.statusCode) // 200
                         console.log(file.headers) // 'image/png'
                         var filename = "33.jpg";
-                        var stat = fs.statSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
-                        var fileToSend = fs.readFileSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
+                        //var stat = fs.statSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
+                        //var fileToSend = fs.readFileSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
                         res.set('Content-Type', file.headers['content-type']);
-                        res.set('Content-Length', stat.size);
-                        res.set('Content-Disposition', filename);
+                        //res.set('Content-Length', stat.size);
+                        r//es.set('Content-Disposition', filename);
                         res.send(fileToSend).status(200);
                     })
                     .on('error', function(fileErr){
