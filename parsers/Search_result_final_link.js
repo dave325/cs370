@@ -114,7 +114,15 @@ module.exports.SearchResultFileLink = (req, res) => {
                                 //var newFile = fs.createReadStream('file.pptx');
                                 var newFile = path.join(__dirname, "../", "file.pptx");
                                 console.log(newFile);
-                                res.download('file.pptx');
+                                res.download('file.pptx', function(resFile){
+                                    if(resFile){
+                                        console.log(resFile);
+                                        res.json(resFile).status(500);
+                                        return;
+                                    }
+                                    fs.unlink(newFile);
+                                    return;
+                                });
 
                                 return;
                             });  // close() is async, call cb after close completes.
