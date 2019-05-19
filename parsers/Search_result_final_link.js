@@ -113,7 +113,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                             temp.close(function(){
                                 //var newFile = fs.createReadStream('file.pptx');
                                 res.download('file.pptx');
-                                fs.unlink('file.pptx');
+                               
                                 return;
                             });  // close() is async, call cb after close completes.
                         });
@@ -122,7 +122,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                         console.log(fileErr)
                         return;
                     });
-
+                    fs.unlink('file.pptx');
                 return;
             }
             var $ = cheerio.load(body);
