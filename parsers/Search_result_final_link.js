@@ -64,10 +64,10 @@ module.exports.SearchResultFileLink = (req, res) => {
         case "Send-Rating":
             formOptions = {
                 p_media_select: "",
-                p_attach_ole: "",
-                p_attach_video: "",
-                p_attach_audio: "",
-                p_attach_image: "",
+                p_attach_ole: "None",
+                p_attach_video: "None",
+                p_attach_audio: "None",
+                p_attach_image: "None",
                 p_group_id: "",
                 p_rating_quality: req.body.p_rating_quality,
                 p_rating_level: req.body.p_rating_level,
@@ -94,7 +94,9 @@ module.exports.SearchResultFileLink = (req, res) => {
         if (error) {
             console.log(err);
         } else {
-            console.log(body);
+            console.log(response);
+            console.log(formOptions)
+
             var $ = cheerio.load(body);
             var title = $('TITLE').text();
             if (title === "404 Not Found"){
