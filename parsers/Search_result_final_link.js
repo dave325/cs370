@@ -89,7 +89,7 @@ module.exports.SearchResultFileLink = (req, res) => {
         } else {
             console.log(body);
             var $ = cheerio.load(body);
-            let title = $('TITLE').text();
+            var title = $('TITLE').text();
             if (title === "404 Not Found"){
                 res.json({error: "Route does not exist"}).status(400);
                 return;
