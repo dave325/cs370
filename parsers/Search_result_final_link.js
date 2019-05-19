@@ -94,10 +94,10 @@ module.exports.SearchResultFileLink = (req, res) => {
         if (error) {
             console.log(err);
         } else {
-            console.log(response);
             console.log(formOptions)
-            if(formOptions.p_attachOrReply === "Get-Attachment"){
-                request.get("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx")
+            if(formOptions.p_attachOrReply === "Get-attachment"){
+                request
+                .get("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx")
                 .on('response', function(file) {
                     console.log(file.statusCode) // 200
                     console.log(file.headers['content-type']) // 'image/png'
