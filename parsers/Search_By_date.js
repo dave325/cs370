@@ -38,6 +38,7 @@ module.exports.SearchResult = (req, res) => {
             var p_session = $('form input').attr('value');
             json.push({"p_session" : p_session });
             var data = [];
+            console.log(body)
             $('tr').each(function(i, elem) {
                 if(i > 0){    
                     var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');

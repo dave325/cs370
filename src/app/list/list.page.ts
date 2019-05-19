@@ -24,6 +24,9 @@ export class ListPage implements OnInit {
 
   searchQuery;
   searchChoice;
+  p_from_date;
+  p_to_date;
+  p_increment_date;
   choice = 'lastname';
 
 
@@ -32,7 +35,7 @@ export class ListPage implements OnInit {
     console.log("CHOICE IS " + this.choice);
     console.log("QUERY IS " + this.searchQuery);
 
-    if(this.choice == undefined){
+    if (this.choice == undefined) {
       this.choice = 'lastname';
     }
     if (this.choice === 'id') {
@@ -89,7 +92,22 @@ export class ListPage implements OnInit {
     );
 
   }
-
+  submitDate() {
+    let info = {
+      p_from_date: this.p_from_date,
+      p_to_date: this.p_to_date,
+      p_increment_date: this.p_increment_date
+    };
+    console.log(info);
+    this.proxyService.getCaseBy(this.proxyService.ENDPOINTS.getByDate, info)
+      .then(
+        (res) => {
+          console.log(res);
+        }, (err) => {
+          console.log(err);
+        }
+      )
+  }
   ngOnInit() {
 
 

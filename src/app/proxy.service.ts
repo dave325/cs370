@@ -35,6 +35,7 @@ export class ProxyService implements Resolve<any> {
     getByName: 'http://149.4.223.218:3000/api/search/name',
     getByID: 'http://149.4.223.218:3000/api/search/id',
     getByKeyword: 'http://149.4.223.218:3000/api/search/keyword',
+    getByDate: 'http://149.4.223.218:3000/api/search/date',
     caseAction: 'http://149.4.223.218:3000/api/SearchResultFile'
   }
 
