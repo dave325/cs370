@@ -99,7 +99,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                 request
                     .get("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx")
                     .on('response', function (file) {
-                        console.log(file.statusCode) // 200
+                        console.log(file) // 200
                         console.log(file.headers) // 'image/png'
                         var filename = "33.jpg";
                         //var stat = fs.statSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
@@ -107,7 +107,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                         res.set('Content-Type', file.headers['content-type']);
                         //res.set('Content-Length', stat.size);
                         //res.set('Content-Disposition', filename);
-                        res.send(file).status(200);
+                        res.pipe(file);
                     })
                     .on('error', function(fileErr){
                         console.log(fileErr)

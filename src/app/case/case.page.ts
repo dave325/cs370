@@ -42,7 +42,7 @@ export class CasePage implements OnInit {
     console.log(ev);
     let options = {
       p_attachOrReply: 'Get-attachment',
-      p_media_select:"ole",
+      p_media_select: "ole",
       p_attach_ole: ev.detail.value,
       p_case_id: this.str
     }
@@ -51,8 +51,10 @@ export class CasePage implements OnInit {
         console.log(response);
         var data = response.data;
         var headers = response.headers;
-        var blob = new Blob([data], { type: 'audio/mpeg' });
-       // var fileName = headers('content-disposition');
+        var blob = new Blob([response.data], { type: headers['content-type'] });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+        // var fileName = headers('content-disposition');
         //saveAs(blob, fileName);
       },
       (err) => {
