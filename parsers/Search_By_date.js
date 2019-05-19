@@ -37,7 +37,7 @@ module.exports.SearchResult = (req, res) => {
 
             var p_session = $('form input').attr('value');
             json.push({"p_session" : p_session });
-        
+            var data = [];
             $('tr').each(function(i, elem) {
                 if(i > 0){    
                     var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
@@ -52,10 +52,11 @@ module.exports.SearchResult = (req, res) => {
                         "Subject" : subject
                     };
         
-                    json.push(obj);
+                    data.push(obj);
                 }
         
             });
+            json.push(data);
             res.json(json).status(200);
         }
     });
