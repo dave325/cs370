@@ -79,9 +79,9 @@ module.exports.SearchResultFileLink = (req, res) => {
         default:
             formOptions = null;
             break;
-    } 
-    if(formOptions === null){
-        res.json({error: "You do not have the right information"}).status(400);
+    }
+    if (formOptions === null) {
+        res.json({ error: "You do not have the right information" }).status(400);
         return;
     }
     //formOptions.p_community = req.body.p_community_id;
@@ -95,22 +95,15 @@ module.exports.SearchResultFileLink = (req, res) => {
             console.log(err);
         } else {
             console.log(formOptions)
-            if(formOptions.p_attachOrReply === "Get-attachment"){
-                request
-                .get("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx")
-                .on('response', function(file) {
-                    console.log(file.statusCode) // 200
-                    console.log(file.headers['content-type']) // 'image/png'
-                    console.log(file);
-                    res.attachment(file).status(file.statusCode);
-                  });
-                  
-                  return;
+            if (formOptions.p_attachOrReply === "Get-attachment") {
+                res.attachment("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx").status(file.statusCode);
+
+                return;
             }
             var $ = cheerio.load(body);
             var title = $('TITLE').text();
-            if (title === "404 Not Found"){
-                res.json({error: "Route does not exist"}).status(400);
+            if (title === "404 Not Found") {
+                res.json({ error: "Route does not exist" }).status(400);
                 return;
             }
             var link = $('b').find('a').attr('href');
