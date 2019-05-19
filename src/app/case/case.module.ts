@@ -9,11 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { CasePage } from './case.page';
 
 var  routes: Routes = [
-  {
-    path: '',
-    component: CasePage,
-
-  }
+  
 ];
 
 @NgModule({
@@ -23,6 +19,6 @@ var  routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CasePage]
+  declarations: []
 })
 export class CasePageModule {}

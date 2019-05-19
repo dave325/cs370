@@ -1,0 +1,50 @@
+== Info: getaddrinfo(3) failed for post:80
+== Info: Couldn't resolve host 'post'
+== Info: Closing connection #0
+== Info: About to connect() to bonnet19.cs.qc.cuny.edu port 7778 (#0)
+== Info:   Trying 149.4.223.220... == Info: connected
+=> Send header, 213 bytes (0xd5)
+0000: 47 45 54 20 2f 70 6c 73 2f 66 6f 72 75 6d 2f 65 GET /pls/forum/e
+0010: 63 5f 66 6f 72 75 6d 2e 61 63 74 69 6f 6e 5f 69 c_forum.action_i
+0020: 6e 74 65 72 66 61 63 65 20 48 54 54 50 2f 31 2e nterface HTTP/1.
+0030: 31 0d 0a 55 73 65 72 2d 41 67 65 6e 74 3a 20 63 1..User-Agent: c
+0040: 75 72 6c 2f 37 2e 32 32 2e 30 20 28 69 36 38 36 url/7.22.0 (i686
+0050: 2d 70 63 2d 6c 69 6e 75 78 2d 67 6e 75 29 20 6c -pc-linux-gnu) l
+0060: 69 62 63 75 72 6c 2f 37 2e 32 32 2e 30 20 4f 70 ibcurl/7.22.0 Op
+0070: 65 6e 53 53 4c 2f 31 2e 30 2e 31 20 7a 6c 69 62 enSSL/1.0.1 zlib
+0080: 2f 31 2e 32 2e 33 2e 34 20 6c 69 62 69 64 6e 2f /1.2.3.4 libidn/
+0090: 31 2e 32 33 20 6c 69 62 72 74 6d 70 2f 32 2e 33 1.23 librtmp/2.3
+00a0: 0d 0a 48 6f 73 74 3a 20 62 6f 6e 6e 65 74 31 39 ..Host: bonnet19
+00b0: 2e 63 73 2e 71 63 2e 63 75 6e 79 2e 65 64 75 3a .cs.qc.cuny.edu:
+00c0: 37 37 37 38 0d 0a 41 63 63 65 70 74 3a 20 2a 2f 7778..Accept: */
+00d0: 2a 0d 0a 0d 0a                                  *....
+<= Recv header, 17 bytes (0x11)
+0000: 48 54 54 50 2f 31 2e 31 20 32 30 30 20 4f 4b 0d HTTP/1.1 200 OK.
+0010: 0a                                              .
+<= Recv header, 37 bytes (0x25)
+0000: 44 61 74 65 3a 20 53 61 74 2c 20 31 38 20 4d 61 Date: Sat, 18 Ma
+0010: 79 20 32 30 31 39 20 31 30 3a 32 33 3a 32 38 20 y 2019 10:23:28 
+0020: 47 4d 54 0d 0a                                  GMT..
+<= Recv header, 160 bytes (0xa0)
+0000: 53 65 72 76 65 72 3a 20 4f 72 61 63 6c 65 20 48 Server: Oracle H
+0010: 54 54 50 20 53 65 72 76 65 72 20 50 6f 77 65 72 TTP Server Power
+0020: 65 64 20 62 79 20 41 70 61 63 68 65 2f 31 2e 33 ed by Apache/1.3
+0030: 2e 32 32 20 28 55 6e 69 78 29 20 6d 6f 64 5f 70 .22 (Unix) mod_p
+0040: 6c 73 71 6c 2f 33 2e 30 2e 39 2e 38 2e 33 62 20 lsql/3.0.9.8.3b 
+0050: 6d 6f 64 5f 73 73 6c 2f 32 2e 38 2e 35 20 4f 70 mod_ssl/2.8.5 Op
+0060: 65 6e 53 53 4c 2f 30 2e 39 2e 36 62 20 6d 6f 64 enSSL/0.9.6b mod
+0070: 5f 66 61 73 74 63 67 69 2f 32 2e 32 2e 31 32 20 _fastcgi/2.2.12 
+0080: 6d 6f 64 5f 70 65 72 6c 2f 31 2e 32 35 20 6d 6f mod_perl/1.25 mo
+0090: 64 5f 6f 70 72 6f 63 6d 67 72 2f 31 2e 30 0d 0a d_oprocmgr/1.0..
+<= Recv header, 28 bytes (0x1c)
+0000: 54 72 61 6e 73 66 65 72 2d 45 6e 63 6f 64 69 6e Transfer-Encodin
+0010: 67 3a 20 63 68 75 6e 6b 65 64 0d 0a             g: chunked..
+<= Recv header, 25 bytes (0x19)
+0000: 43 6f 6e 74 65 6e 74 2d 54 79 70 65 3a 20 74 65 Content-Type: te
+0010: 78 74 2f 68 74 6d 6c 0d 0a                      xt/html..
+<= Recv header, 2 bytes (0x2)
+0000: 0d 0a                                           ..
+<= Recv data, 5 bytes (0x5)
+0000: 30 0d 0a 0d 0a                                  0....
+== Info: Connection #0 to host bonnet19.cs.qc.cuny.edu left intact
+== Info: Closing connection #0
