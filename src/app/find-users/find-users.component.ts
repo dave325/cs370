@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindUsersComponent implements OnInit {
 
+  users;
   constructor(
     private route: ActivatedRoute
   ) { 
@@ -18,7 +19,7 @@ export class FindUsersComponent implements OnInit {
           console.log(res.proxy.error);
           return;
         } else {
-          console.log(res.proxy)
+          this.users = res.proxy;
         }
       }, (err) => {
         console.log(err);
