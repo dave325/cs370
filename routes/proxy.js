@@ -27,8 +27,8 @@ express().use(function(req, res, next) {
     next();
   });
   
-router.post('/case', caseReport.caseCreate);
-router.post('/caseload', caseLoad.caseLoad);
+router.post('/case', caseReport.caseCreate); 
+router.post('/caseload', caseLoad.caseLoad);  
 router.post('/caseCreate', caseCreate.caseCreate);
 router.post('/login', login.login);
 router.post('/threadCase', threadCase.threadCase);
