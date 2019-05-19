@@ -63,6 +63,9 @@ module.exports.SearchResultFileLink = (req, res) => {
             break;
         case "Send-Rating":
             formOptions = {
+                p_media_select: "",
+                p_attach_ole: "",
+                p_group_id: "",
                 p_rating_quality: req.body.p_rating_quality,
                 p_rating_level: req.body.p_rating_level,
                 p_ses: req.body.p_session_id,
@@ -83,7 +86,7 @@ module.exports.SearchResultFileLink = (req, res) => {
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.action_interface",
         method: "POST",
         // path: '/pls/forum/ec_forum.find_cases_by_name',
-        form: {}
+        form: formOptions
     }, (error, response, body) => {
         if (error) {
             console.log(err);
