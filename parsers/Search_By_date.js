@@ -56,9 +56,8 @@ module.exports.SearchResult = (req, response) => {
                 }
         
             });
-            return JSON.stringify(json);
+            res.json(json).status(200);
         }
-        return null;
     });
 }
 
