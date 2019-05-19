@@ -42,7 +42,7 @@ export class CasePage implements OnInit {
   }
   submitRating() {
     let options = {
-      p_attachOrReply: 'submitRating',
+      p_attachOrReply: 'Send-Rating',
       p_rating_level: this.p_rating_level,
       p_rating_quality: this.p_rating_quality
     }
