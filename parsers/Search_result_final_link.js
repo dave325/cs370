@@ -110,10 +110,12 @@ module.exports.SearchResultFileLink = (req, res) => {
                         //res.set('Content-Disposition', filename);
                         file.pipe(temp);
                         temp.on('finish', function () {
-                            temp.close(function(){
+                            temp.close(function () {
                                 //var newFile = fs.createReadStream('file.pptx');
+                                var newFile = path.join(__dirname, "../", "file.pptx");
+                                console.log(newFile);
                                 res.download('file.pptx');
-                               
+
                                 return;
                             });  // close() is async, call cb after close completes.
                         });
@@ -122,7 +124,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                         console.log(fileErr)
                         return;
                     });
-                    fs.unlink('file.pptx');
+                fs.unlink('file.pptx');s
                 return;
             }
             var $ = cheerio.load(body);
