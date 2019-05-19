@@ -8,6 +8,8 @@ module.exports.caseLoad = (req, res) => {
         (err, response, body) => {
             if (err) return console.error(err);
 
+            console.log(body)
+            
             var $ = cheerio.load(body);
             var object = {};
             object["form-action"] = $("link").attr('href');

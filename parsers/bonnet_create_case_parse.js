@@ -10,7 +10,6 @@ module.exports.caseCreate = (req, res) => {
             var object = {}
             var $ = cheerio.load(body);
 
-            console.log(body)
 
             object["form-action"] = $("link").attr('href');
 
