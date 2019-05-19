@@ -107,7 +107,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                         res.set('Content-Type', file.headers['content-type']);
                         //res.set('Content-Length', stat.size);
                         //res.set('Content-Disposition', filename);
-                        res.send(fileToSend).status(200);
+                        res.send(file).status(200);
                     })
                     .on('error', function(fileErr){
                         console.log(fileErr)

@@ -48,10 +48,11 @@ export class CasePage implements OnInit {
     }
     this.proxy.getCaseBy(this.proxy.ENDPOINTS.caseAction, options).then(
       (response) => {
+        console.log(response);
         var data = response.data;
         var headers = response.headers;
         var blob = new Blob([data], { type: 'audio/mpeg' });
-        var fileName = headers('content-disposition');
+       // var fileName = headers('content-disposition');
         //saveAs(blob, fileName);
       },
       (err) => {
