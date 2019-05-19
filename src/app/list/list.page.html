@@ -17,9 +17,35 @@
 
     <ion-col size="9">
 
-
-        <ion-searchbar [(ngModel)]="searchQuery" name="searchQuery"(keyup.enter)="search($event)" #searchBar></ion-searchbar>
-
+      <div *ngIf="choice != 'date'">
+        <ion-searchbar [(ngModel)]="searchQuery" name="searchQuery" (keyup.enter)="search($event)" #searchBar>
+        </ion-searchbar>
+      </div>
+      <div *ngIf="choice == 'date'">
+        <ion-searchbar [(ngModel)]="p_from_date" name="from_data">
+        </ion-searchbar>
+        <ion-searchbar [(ngModel)]="p_to_date" name="to_date">
+        </ion-searchbar>
+        <ion-select [(ngModel)]="p_increment_date">
+          <ion-select-option value="ALL_DAY">Get cases of every weekday
+          </ion-select-option>
+          <ion-select-option value="MONDAY">Get cases of Monday only
+          </ion-select-option>
+          <ion-select-option value="TUESDAY">Get cases of Tuesday only
+          </ion-select-option>
+          <ion-select-option value="WEDNESDAY">Get cases of Wednesday only
+          </ion-select-option>
+          <ion-select-option value="THURSDAY">Get cases of Thursday only
+          </ion-select-option>
+          <ion-select-option value="FRIDAY">Get cases of Friday only
+          </ion-select-option>
+          <ion-select-option value="SATURDAY">Get cases of Saturday only
+          </ion-select-option>
+          <ion-select-option value="SUNDAY">Get cases of Sunday only
+          </ion-select-option>
+        </ion-select>
+        <ion-button size="small" fill="outline" color="primary" (click)="submitDate()">Submit</ion-button>
+      </div>
 
 
     </ion-col>
@@ -30,11 +56,11 @@
     <ion-col size="3">
       <ion-label>Search By</ion-label>
 
-      <ion-select value="lastname" okText="Okay" cancelText="Dismiss" #filterChoice
-        [(ngModel)]="choice">
+      <ion-select value="lastname" okText="Okay" cancelText="Dismiss" #filterChoice [(ngModel)]="choice">
         <ion-select-option value="keyword">Keyword</ion-select-option>
         <ion-select-option value="id">ID</ion-select-option>
         <ion-select-option value="lastname">Lastname</ion-select-option>
+        <ion-select-option value="date">Date</ion-select-option>
       </ion-select>
     </ion-col>
   </ion-row>
@@ -42,7 +68,7 @@
   <div padding>
   </div>
   <ion-item>
-    
+
   </ion-item>
   <ion-list>
     <ion-item *ngFor="let item of caseList" [routerDirection]="'root'" [routerLink]="'/case/' + item.GetCase">

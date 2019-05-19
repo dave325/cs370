@@ -17,15 +17,15 @@ module.exports.list = (req, res) => {
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_admin.show_users_dispatch",
         method: "POST",
         form: {
-            p_usr_username: req.body.p_usr_username,
-            p_usr_password: req.body.p_usr_password
+            p_usr_username: "david325",
+            p_usr_password: "d32594"
         }
     }, (error, response, body) => {
         if (error) {
             console.log(`error requesting ${url}`);
         } else {
             var $ = cheerio.load(body);
-           // console.log(body);
+           console.log(body);
 
             $('tr').each(function(i, elem) {
                 if(i > 0){    

@@ -7,7 +7,7 @@ var  method = "7778";
 var  options = {
     url: url,
     method: method,
-    path: '/pls/forum/ec_forum.find_cases_by_date'
+    path: '/pls/forum/ec_forum.find_cases_by_keyword'
     /*
     header: {
         ...
@@ -19,26 +19,26 @@ var json = [];
 module.exports.SearchResult = (req, res) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     request({
-        url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_date",
+        url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.retrieve_case_relay",
         method: "POST",
        // path: '/pls/forum/ec_forum.find_cases_by_name',
         form: {
-            p_increment_date: req.body.p_increment_date,
-            p_from_date: req.body.p_from_date,
-            p_to_date: req.body.p_to_date,
-            p_session: req.body.p_session_id,
-            p_community_id: req.body.p_community_id
+            p_usr_choice: req.body.p_usr_choice,
+            p_session_id: req.body.p_session_id
         }
     }, (error, response, body) => {
         if (error) {
-            console.log(err);
+            console.log(`error requesting ${url}`);
         } else {
             var $ = cheerio.load(body);
-
+            var json = [];
+            var action = $('form').attr('action');
             var p_session = $('form input').attr('value');
+            json.push({"form_action" : action });
             json.push({"p_session" : p_session });
-            var data = [];
-            console.log(body)
+            
+            console.log(body);
+            var temp = [];
             $('tr').each(function(i, elem) {
                 if(i > 0){    
                     var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
@@ -52,14 +52,16 @@ module.exports.SearchResult = (req, res) => {
                         "Author" : author,
                         "Subject" : subject
                     };
-        
-                    data.push(obj);
+                    
+                    temp.push(obj);
                 }
         
             });
-            json.push(data);
+            json.push(temp);
             res.json(json).status(200);
+           // return JSON.stringify(json);
         }
+        return null;
     });
 }
 

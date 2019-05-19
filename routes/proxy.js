@@ -12,6 +12,7 @@ var SearchByKeyWord = require('../parsers/Search_By_keyword');
 var SearchByDate = require('../parsers/Search_By_date');
 var SearchByCaseNumber = require('../parsers/Search_By_case_number');
 var SearchByName = require('../parsers/Search_By_name');
+var SearchByGroup = require('../parsers/Search_By_group');
 var SearchResultFileLink = require('../parsers/Search_result_final_link');
 //delete later
 var SearchResult = require('../parsers/Search_result');
@@ -45,6 +46,7 @@ router.post('/search/id', SearchByCaseNumber.SearchResult);
 router.post('/search/date', SearchByDate.SearchResult);
 router.post('/search/keyword', SearchByKeyWord.SearchResult);
 router.post('/search/name', SearchByName.SearchResult);
+router.post('/search/group', SearchByGroup.SearchResult);
 //
 router.post('/SearchResult', SearchResult.test);
 

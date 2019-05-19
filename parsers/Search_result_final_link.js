@@ -3,7 +3,7 @@ var request = require('request')
 var fs = require('fs')
 var url = "http://bonnet19.cs.qc.cuny.edu";
 var method = "7778";
-
+var path = require("path")
 /**
  * contains download link. 
  */
@@ -110,10 +110,19 @@ module.exports.SearchResultFileLink = (req, res) => {
                         //res.set('Content-Disposition', filename);
                         file.pipe(temp);
                         temp.on('finish', function () {
-                            temp.close(function(){
-                                var newFile = fs.createReadStream('file.pptx');
-                                res.download(newFile);
-                                fs.unlink('file.pptx');
+                            temp.close(function () {
+                                //var newFile = fs.createReadStream('file.pptx');
+                                var newFile = path.join(__dirname, "../", "file.pptx");
+                                res.download('file.pptx', function(resFile){
+                                    if(resFile){
+                                        console.log(resFile);
+                                        res.json(resFile).status(500);
+                                        return;
+                                    }
+                                    fs.unlink(newFile);
+                                    return;
+                                });
+
                                 return;
                             });  // close() is async, call cb after close completes.
                         });
@@ -122,7 +131,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                         console.log(fileErr)
                         return;
                     });
-
+                //fs.unlink('file.pptx');
                 return;
             }
             var $ = cheerio.load(body);
