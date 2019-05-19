@@ -111,7 +111,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                         file.pipe(temp);
                         temp.on('finish', function () {
                             temp.close(function(){
-                                res.send(temp);
+                                res.download(temp);
                             });  // close() is async, call cb after close completes.
                         });
                     })
