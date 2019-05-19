@@ -103,6 +103,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                     console.log(file.headers['content-type']) // 'image/png'
                     console.log(file);
                   });
+                  return;
             }
             var $ = cheerio.load(body);
             var title = $('TITLE').text();
