@@ -84,7 +84,7 @@ module.exports.SearchResultFileLink = (req, res) => {
         res.json({error: "You do not have the right information"}).status(400);
         return;
     }
-    formOptions.p_community = req.body.p_community_id;
+    //formOptions.p_community = req.body.p_community_id;
     request({
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.action_interface",
         method: "POST",
