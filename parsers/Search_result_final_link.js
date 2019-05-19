@@ -96,7 +96,14 @@ module.exports.SearchResultFileLink = (req, res) => {
         } else {
             console.log(response);
             console.log(formOptions)
-
+            if(formOptions.p_attachOrReply === "Get-Attachment"){
+                request.get("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx")
+                .on('response', function(file) {
+                    console.log(file.statusCode) // 200
+                    console.log(file.headers['content-type']) // 'image/png'
+                    console.log(file);
+                  });
+            }
             var $ = cheerio.load(body);
             var title = $('TITLE').text();
             if (title === "404 Not Found"){

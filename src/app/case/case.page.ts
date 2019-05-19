@@ -48,7 +48,7 @@ export class CasePage implements OnInit {
     }
     this.proxy.getCaseBy(this.proxy.ENDPOINTS.caseAction, options).then(
       (res) => {
-        console.log(res);
+        console.log(res)
       },
       (err) => {
         console.log(err);
