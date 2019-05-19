@@ -1,13 +1,12 @@
 var  cheerio = require('cheerio');
 var  request = require('request');
-var  URL = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.send_dispatch";
+var  URL = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment";
 
 module.exports.caseLoad = (req, res) => {
-    request({ method: 'POST', url: URL, form: {p_ses: req.body.p_ses, p_sig: req.body.p_sig, p_subject: req.body.p_subject,
-        p_keyword: req.body.p_keyword, p_url: req.body.p_url, p_text: req.body.p_text}},//p_sig: 209 to 215
+    request({ method: 'POST', url: URL, form: {p_ses:req.body.p_ses, p_case:req.body.p_case, p_owner_name: req.body.p_owner_name}},
         (err, response, body) => {
             if (err) return console.error(err);
-
+            
             var $ = cheerio.load(body);
             var object = {};
             object["form-action"] = $("link").attr('href');
@@ -24,9 +23,8 @@ module.exports.caseLoad = (req, res) => {
                 }
 
             })
-
-            res.json(object).status(200);
             
+            res.json(object).status(200);        
         }
     );
 }
