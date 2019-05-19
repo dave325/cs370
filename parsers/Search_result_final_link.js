@@ -113,7 +113,6 @@ module.exports.SearchResultFileLink = (req, res) => {
                             temp.close(function () {
                                 //var newFile = fs.createReadStream('file.pptx');
                                 var newFile = path.join(__dirname, "../", "file.pptx");
-                                console.log(newFile);
                                 res.download('file.pptx', function(resFile){
                                     if(resFile){
                                         console.log(resFile);

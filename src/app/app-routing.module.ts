@@ -1,3 +1,4 @@
+import { FindUsersComponent } from './find-users/find-users.component';
 import { ProxyService } from './proxy.service';
 import { CasePage } from './case/case.page';
 import { AboutComponent } from './about/about.component';
@@ -36,6 +37,13 @@ var  routes: Routes = [
     component:CasePage,
     resolve: {
       proxy: ProxyService
+    }
+  },
+  {
+    path:'listUsers',
+    component:FindUsersComponent,
+    resolve:{
+      proxy:ProxyService
     }
   },
   //list,upload,case handled by @DeepakKhemraj drk3931@gmail.com

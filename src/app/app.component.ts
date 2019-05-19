@@ -30,6 +30,11 @@ export class AppComponent {
       title: 'About',
       url: '/about',
       icon: 'list'
+    },
+    {
+      title: 'List Users',
+      url: '/listUsers',
+      icon: 'list'
     }
   ];
 

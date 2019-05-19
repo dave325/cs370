@@ -17,8 +17,8 @@ module.exports.list = (req, res) => {
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_admin.show_users_dispatch",
         method: "POST",
         form: {
-            p_usr_username: req.body.p_usr_username,
-            p_usr_password: req.body.p_usr_password
+            p_usr_username: "dave325",
+            p_usr_password: "d32594"
         }
     }, (error, response, body) => {
         if (error) {

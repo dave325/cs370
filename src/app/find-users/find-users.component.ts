@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindUsersComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { 
+    this.route.data.subscribe(
+      (res) => {
+        let a = res;
+        if (res.proxy.error) {
+          console.log(res.proxy.error);
+          return;
+        } else {
+          console.log(res.proxy)
+        }
+      }, (err) => {
+        console.log(err);
+      }
+    )
+  }
 
   ngOnInit() {}
 

@@ -1,3 +1,4 @@
+import { FindUsersComponent } from './find-users/find-users.component';
 import { CasePageModule } from './case/case.module';
 import { ProxyService } from './proxy.service';
 import { FormsModule } from '@angular/forms';
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     LoginComponent,
     AboutComponent,
-    CasePage
+    CasePage,
+    FindUsersComponent
   ],
   entryComponents: [
     LoginComponent,
