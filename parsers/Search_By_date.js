@@ -26,7 +26,7 @@ module.exports.SearchResult = (req, res) => {
             p_increment_date: req.body.p_increment_date,
             p_from_date: req.body.p_from_date,
             p_to_date: req.body.p_to_date,
-            p_session: req.body.p_session,
+            p_session: req.body.p_session_id,
             p_community_id: req.body.p_community_id
         }
     }, (error, response, body) => {
