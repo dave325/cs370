@@ -19,7 +19,7 @@ var json = [];
 module.exports.SearchResult = (req, response) => {
     //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     request({
-        url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_keyword",
+        url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_date",
         method: "POST",
        // path: '/pls/forum/ec_forum.find_cases_by_name',
         form: {
