@@ -102,8 +102,9 @@ module.exports.SearchResultFileLink = (req, res) => {
                     console.log(file.statusCode) // 200
                     console.log(file.headers['content-type']) // 'image/png'
                     console.log(file);
+                    res.attachment(file).status(file.statusCode);
                   });
-                  res.attachment(file).status(file.statusCode);
+                  
                   return;
             }
             var $ = cheerio.load(body);
