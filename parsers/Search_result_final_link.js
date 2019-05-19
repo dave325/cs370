@@ -79,9 +79,9 @@ module.exports.SearchResultFileLink = (req, res) => {
         default:
             formOptions = null;
             break;
-    } 
-    if(formOptions === null){
-        res.json({error: "You do not have the right information"}).status(400);
+    }
+    if (formOptions === null) {
+        res.json({ error: "You do not have the right information" }).status(400);
         return;
     }
     //formOptions.p_community = req.body.p_community_id;
@@ -94,13 +94,41 @@ module.exports.SearchResultFileLink = (req, res) => {
         if (error) {
             console.log(err);
         } else {
-            console.log(response);
             console.log(formOptions)
+            if (formOptions.p_attachOrReply === "Get-attachment") {
+                var temp = fs.createWriteStream("file.pptx");
+                request
+                    .get("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx")
+                    .on('response', function (file) {
+                        console.log(file) // 200
+                        console.log(file.headers) // 'image/png'
+                        var filename = "33.jpg";
+                        //var stat = fs.statSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
+                        //var fileToSend = fs.readFileSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
+                        res.set('Content-Type', file.headers['content-type']);
+                        //res.set('Content-Length', stat.size);
+                        //res.set('Content-Disposition', filename);
+                        file.pipe(temp);
+                        temp.on('finish', function () {
+                            temp.close(function(){
+                                var newFile = fs.createReadStream('file.pptx');
+                                res.download(newFile);
+                                fs.unlink('file.pptx');
+                                return;
+                            });  // close() is async, call cb after close completes.
+                        });
+                    })
+                    .on('error', function (fileErr) {
+                        console.log(fileErr)
+                        return;
+                    });
 
+                return;
+            }
             var $ = cheerio.load(body);
             var title = $('TITLE').text();
-            if (title === "404 Not Found"){
-                res.json({error: "Route does not exist"}).status(400);
+            if (title === "404 Not Found") {
+                res.json({ error: "Route does not exist" }).status(400);
                 return;
             }
             var link = $('b').find('a').attr('href');

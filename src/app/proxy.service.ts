@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Resolve, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Config } from '@ionic/angular';
 
 
 @Injectable({
@@ -99,6 +100,39 @@ export class ProxyService implements Resolve<any> {
         postParams.p_session_id = res.p_session_id;
         postParams.p_community_id = res.p_community_id;
         return this.http.post(endpoint, postParams).toPromise().then(
+          (res: any) => {
+            return res;
+          },
+          (err) => {
+            console.log("COULD NOT RETRIEVE CASES BY NAME");
+            return {};
+          }
+        );
+
+      },
+      (err) => {
+        console.log("COULD NOT PERFORM LOGIN FUNCTIONALITY");
+        console.log(err);
+      }
+
+
+
+    );
+
+
+  }
+
+  public downloadFile(endpoint: string, info: any) {
+    return this.http.post('http://149.4.223.218:3000/api/login', {}).toPromise().then(
+
+      (res: any) => {
+
+        var credentialsAsJSON = res;
+
+        var postParams = info;
+        postParams.p_session_id = res.p_session_id;
+        postParams.p_community_id = res.p_community_id;
+        return this.http.post<Config>(endpoint, postParams,{ observe: 'response' }).toPromise().then(
           (res: any) => {
             return res;
           },

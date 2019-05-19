@@ -42,13 +42,18 @@ export class CasePage implements OnInit {
     console.log(ev);
     let options = {
       p_attachOrReply: 'Get-attachment',
-      p_media_select:"ole",
+      p_media_select: "ole",
       p_attach_ole: ev.detail.value,
       p_case_id: this.str
     }
-    this.proxy.getCaseBy(this.proxy.ENDPOINTS.caseAction, options).then(
-      (res) => {
-        console.log(res);
+    this.proxy.downloadFile(this.proxy.ENDPOINTS.caseAction, options).then(
+      (response) => {
+        console.log(response);
+        var blob = new Blob([response.body], { type: response.headers.get("content-type") });
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+        // var fileName = headers('content-disposition');
+        //saveAs(blob, fileName);
       },
       (err) => {
         console.log(err);
