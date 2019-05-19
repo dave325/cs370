@@ -1,14 +1,16 @@
 var  cheerio = require('cheerio');
 var  request = require('request');
-var  URL = "http://localhost:8080";
+var  URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/EC_forum.send_interface";
 
-module.exports.caseCreate = (req, response) => {
-    request({ method: 'GET', url: URL },
-        (err, res, body) => {
-            if (err) return console.error(err);
+module.exports.caseCreate = (req, res) => {
+    request({ method: 'POST', url: URL, form: {p_usr_username: req.body.p_usr_username, p_usr_password: req.body.p_usr_password}},
+        (err, response, body) => {
+            if (err) return console.error(error);
 
             var object = {}
             var $ = cheerio.load(body);
+
+            console.log(body)
 
             object["form-action"] = $("link").attr('href');
 
@@ -33,9 +35,15 @@ module.exports.caseCreate = (req, response) => {
                     object['date'] = $(this).text().trim().substring(6, 18).trim();
                 }
             })
+            $('input').each(function (i,e){
+                if($(this).attr('type') == "hidden"){
+                    object[$(this).attr('name')] = $(this).attr('value');
+                }
+            })
+
+            
             object['descripition-text'] = $('textarea').attr('name');
             res.json(object).status(200);
-            console.log(JSON.stringify(object));
-            return object;
+            
         });
 }
