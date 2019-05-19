@@ -35,6 +35,13 @@ module.exports.caseCreate = (req, res) => {
                     object['date'] = $(this).text().trim().substring(6, 18).trim();
                 }
             })
+            $('input').each(function (i,e){
+                if($(this).attr('type') == "hidden"){
+                    object[$(this).attr('name')] = $(this).attr('value');
+                }
+            })
+
+            
             object['descripition-text'] = $('textarea').attr('name');
             res.json(object).status(200);
             
