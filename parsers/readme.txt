@@ -45,7 +45,14 @@ curl -d "p_community=183&p_session=139251&p_case_select=19490" -X POST http://bo
         - input: p_session (hiddent), p_community (hidden), 
         -  p_from_date (user input) , p_to_date (user input) , ALL_DAY, MONDAY, TUESDAY, etc.. (selection options) 
 		- Use the format MM/DD/YYYY for date entry; e.g., 03/15/2000 for March 15 of year 2000
-
+curl -d "p_increment_date=ALL_DAY&p_session=139411&p_community_id=183&p_from_date=01/31/2019&p_to_date=05/01/2019" -X POST http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_date
+ {
+    "p_increment_date": "ALL_DAY",
+    "p_from_date": "01/31/2019",
+    "p_to_date": "05/01/2019",
+    "p_session": "139411",
+	"p_community_id" : "183"
+}
 
 2: case_report
 	- action: "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.retrieve_interface"
