@@ -25,7 +25,7 @@ module.exports.SearchResultFileLink = (req, res) => {
     switch (req.body.p_attachOrReply) {
         case "Get-attachment":
             formOptions = {
-                p_media_select: req.body.p_media_selec,
+                p_media_select: req.body.p_media_select,
                 p_attach_ole: req.body.p_attach_ole,
                 p_ses: req.body.p_session_id,
                 p_case_id: req.body.p_case_id,

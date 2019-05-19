@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProxyService } from '../proxy.service';
+import { declareTypeAlias } from 'babel-types';
 
 @Component({
   selector: 'app-case',
@@ -39,6 +40,20 @@ export class CasePage implements OnInit {
   }
   onSelectChange(ev) {
     console.log(ev);
+    let options = {
+      p_attachOrReply: 'Get-attachment',
+      p_media_select:"ole",
+      p_attach_ole: ev.detail.value,
+      p_case_id: this.str
+    }
+    this.proxy.getCaseBy(this.proxy.ENDPOINTS.caseAction, options).then(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
   }
   submitRating() {
     let options = {
