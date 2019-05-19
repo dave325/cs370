@@ -44,7 +44,8 @@ export class CasePage implements OnInit {
     let options = {
       p_attachOrReply: 'Send-Rating',
       p_rating_level: this.p_rating_level,
-      p_rating_quality: this.p_rating_quality
+      p_rating_quality: this.p_rating_quality,
+      p_case_id: this.str
     }
     this.proxy.getCaseBy(this.proxy.ENDPOINTS.caseAction, options).then(
       (res) => {
