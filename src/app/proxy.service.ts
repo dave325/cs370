@@ -123,7 +123,7 @@ export class ProxyService implements Resolve<any> {
 
   }
 
-  public downloadFile(endpoint: string, info: any) {
+  public downloadFile(endpoint: string, info: any) : Promise<void | Observable<Config>>{
     return this.http.post('http://149.4.223.218:3000/api/login', {}).toPromise().then(
 
       (res: any) => {

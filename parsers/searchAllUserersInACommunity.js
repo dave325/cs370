@@ -25,7 +25,7 @@ module.exports.list = (req, res) => {
             console.log(`error requesting ${url}`);
         } else {
             var $ = cheerio.load(body);
-           // console.log(body);
+           console.log(body);
 
             $('tr').each(function(i, elem) {
                 if(i > 0){    
