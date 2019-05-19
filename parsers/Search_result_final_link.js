@@ -96,6 +96,7 @@ module.exports.SearchResultFileLink = (req, res) => {
         } else {
             console.log(formOptions)
             if (formOptions.p_attachOrReply === "Get-attachment") {
+                var temp = fs.createWriteStream("file.jpg");
                 request
                     .get("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx")
                     .on('response', function (file) {
@@ -107,9 +108,14 @@ module.exports.SearchResultFileLink = (req, res) => {
                         res.set('Content-Type', file.headers['content-type']);
                         //res.set('Content-Length', stat.size);
                         //res.set('Content-Disposition', filename);
-                        res.pipe(file);
+                        file.pipe(temp);
+                        temp.on('finish', function () {
+                            temp.close(function(){
+                                res.send(temp);
+                            });  // close() is async, call cb after close completes.
+                        });
                     })
-                    .on('error', function(fileErr){
+                    .on('error', function (fileErr) {
                         console.log(fileErr)
                         return;
                     });
