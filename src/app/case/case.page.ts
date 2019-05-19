@@ -53,7 +53,9 @@ export class CasePage implements OnInit {
         if (response instanceof Observable) {
           response.subscribe(
             (res) => {
-              var blob = new Blob([res.body], { type: res.headers.get("content-type") });
+              console.log(res);
+              //var blob = new Blob([res.body], { type: res.headers.get("content-type") });
+              var blob = res.body;
               // IE doesn't allow using a blob object directly as link href
               // instead it is necessary to use msSaveOrOpenBlob
               if (window.navigator && window.navigator.msSaveOrOpenBlob) {

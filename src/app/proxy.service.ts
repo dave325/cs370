@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Resolve, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Config } from '@ionic/angular';
@@ -124,7 +124,7 @@ export class ProxyService implements Resolve<any> {
 
   }
 
-  public downloadFile(endpoint: string, info: any) : Promise<void | Observable<Config>>{
+  public downloadFile(endpoint: string, info: any) : Promise<void | Observable<HttpResponse<Config>>>{
     return this.http.post('http://149.4.223.218:3000/api/login', {}).toPromise().then(
 
       (res: any) => {
@@ -134,7 +134,7 @@ export class ProxyService implements Resolve<any> {
         var postParams = info;
         postParams.p_session_id = res.p_session_id;
         postParams.p_community_id = res.p_community_id;
-        return this.http.post<Config>(endpoint, postParams, { observe: 'response' as 'body', responseType:'blob' as 'json' });
+        return this.http.post<HttpResponse<Config>>(endpoint, postParams, { observe: 'response' as 'body', responseType:'blob' as 'json' });
 
       },
       (err) => {
