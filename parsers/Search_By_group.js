@@ -32,7 +32,9 @@ module.exports.SearchResult = (req, res) => {
         } else {
             var $ = cheerio.load(body);
             var json = [];
+            var action = $('form').attr('action');
             var p_session = $('form input').attr('value');
+            json.push({"form_action" : action });
             json.push({"p_session" : p_session });
             
             console.log(body);
