@@ -50,6 +50,7 @@ module.exports.register = (req, res) => {
         if(error){
             res.json({"status" : "fail"}).status(200);
         }else{
+            console.log(body);
             res.json({"status" : "success"}).status(200);
         }
     });
