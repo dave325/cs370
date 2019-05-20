@@ -8,6 +8,7 @@ var login = require('../parsers/bonnet_login_parse');
 var fileDescription = require('../parsers/file_desc_parse');
 var attachment = require('../parsers/send_attachment_parse');
 var submissionConfirm = require('../parsers/file_submission_confirm_parse');
+var caseUpload = require('../parsers/case_upload_final');
 //delete later
 //var threadCase = require('../parsers/parseThreadedCase');
 //Search
@@ -40,6 +41,7 @@ router.post('/caseFileDesc', fileDescription.fileDescription);
 router.post('/caseload', caseLoad.caseLoad);  
 router.post('/caseCreate', caseCreate.caseCreate);
 router.post('/caseAttachConfirm', submissionConfirm.confirm);
+router.post('/caseUpload', caseUpload.caseUpload);
 
 router.post('/case', caseReport.caseCreate); 
 router.post('/login', login.login);
