@@ -25,7 +25,7 @@ module.exports.SearchResult = (req, res) => {
             var data = [];
             console.log(body)
             $('tr').each(function(i, elem) {
-                if(i == 1){    
+                //if(i == 1){    
                     var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
                     var date = $(this).children('td:nth-child(2)').text().trim();
                     var author = $(this).children('td:nth-child(3)').text().trim();
@@ -41,7 +41,7 @@ module.exports.SearchResult = (req, res) => {
                     
                     
                     
-                }
+                //}
         
             });
             json.push(data);
