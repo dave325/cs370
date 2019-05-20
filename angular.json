@@ -30,11 +30,7 @@
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
               },
-              {
-                "glob": "",
-                "input": "src/.htaccess",
-                "output": "/"
-              }
+              "src/.htaccess"
             ],
             "styles": [
               {
