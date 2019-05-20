@@ -1,19 +1,21 @@
-var  cheerio = require('cheerio')
-var  request = require('request')
-var  fs = require('fs')
+var  request = require('request');
 
 
-
-var json = [];
-
+/**
+REQUIRED: None of these fields can be empty: 
+	- Last name; 
+	- First name; 
+	- Email; 
+	- Username; 
+	- Password; 
+	- Community; 
+	- Category of profession.
+ */
 module.exports.register = (req, res) => {
-    //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     request({
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_admin.guest_registerDispatch",
         method: "POST",
-       // path: '/pls/forum/ec_forum.find_cases_by_name',
         form: {
-            //NAME AND PERSONAL INFORMATION
             p_usr_lname: req.body.p_usr_lname ,
             p_usr_fname: req.body.p_usr_fname ,
             p_usr_username: req.body.p_usr_username ,
@@ -22,48 +24,33 @@ module.exports.register = (req, res) => {
             p_usr_community: req.body.p_usr_community ,
             p_community_pin: req.body.p_community_pin ,
             p_usr_email: req.body.p_usr_email ,
-            p_usr_role: req.body.p_usr_role 
+            p_usr_title: req.body.p_usr_title ,
+            p_usr_jobtitle: req.body.p_usr_jobtitle ,
+            p_usr_flag: req.body.p_usr_flag ,
+            p_usr_company: req.body.p_usr_company ,
+            p_usr_contact: req.body.p_usr_contact ,
+            p_usr_role: req.body.p_usr_role ,
+            p_usr_street1: req.body.p_usr_street1 ,
+            p_usr_street2: req.body.p_usr_street2 ,
+            p_usr_apt: req.body.p_usr_apt ,
+            p_usr_city: req.body.p_usr_city ,
+            p_usr_state: req.body.p_usr_state ,
+            p_usr_state_symbol: req.body.p_usr_state_symbol ,
+            p_usr_postal_cd: req.body.p_usr_postal_cd ,
+            p_usr_country: req.body.p_usr_country ,
+            p_usr_country_code_p: req.body.p_usr_country_code_p ,
+            p_usr_area_code_p: req.body.p_usr_area_code_p ,
+            p_usr_phone: req.body.p_usr_phone ,
+            p_usr_country_code_f: req.body.p_usr_country_code_f ,
+            p_usr_area_code_f: req.body.p_usr_area_code_f ,
+            p_usr_fax: req.body.p_usr_fax ,
+            p_usr_url: req.body.p_usr_email 
         }
     }, (error, response, body) => {
         if(error){
-            console.log(body);
-            res.json({"Bad" : "OK"}).status(200);
+            res.json({"status" : "fail"}).status(200);
         }else{
-            console.log(body);
-            res.json({"Good" : "OK"}).status(200);
+            res.json({"status" : "success"}).status(200);
         }
     });
-}
-
-
-module.exports.test = (req, res) => {
-    fs.readFile(__dirname + '/Raw Html/search by key word.html', 'utf8', (err, html) => {
-        console.log(err);
-        var $ = cheerio.load(html);
-        var p_session = $('form input').attr('value');
-        json.push({"p_session" : p_session });
-    
-        $('tr').each(function(i, elem) {
-            if(i > 0){    
-                var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
-                var date = $(this).children('td:nth-child(2)').text().trim();
-                var author = $(this).children('td:nth-child(3)').text().trim();
-                var subject = $(this).children('td:nth-child(4)').text().trim();
-                
-                var obj = {
-                    "GetCase" : getCase_value,
-                    "Date" : date,
-                    "Author" : author,
-                    "Subject" : subject
-                };
-    
-                json.push(obj);
-            }
-    
-        });
-
-        console.log(json);
-        res.json(json).status(200)
-        return JSON.stringify(json);
-    })
 }

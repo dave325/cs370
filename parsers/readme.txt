@@ -89,4 +89,19 @@ download link:
     "p_ses" : "138816",
     "p_case_id": "18131"
 }
-139252
+
+
+
+SIGN UP:
+minimum fields: 
+{
+    "p_usr_lname":  "one",
+    "p_usr_fname":  "track",
+    "p_usr_username":  "trackone",
+    "p_usr_password":  "track",
+    "p_usr_password2": "track",
+    "p_usr_community": "Software Engineering PIN #:183",
+    "p_community_pin": "183",
+    "p_usr_email" : "nazmul789@gmail.com",
+    "p_usr_role": "14" 
+}
