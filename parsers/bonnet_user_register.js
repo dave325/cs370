@@ -12,13 +12,14 @@ module.exports.register = (req, res) => {
        // path: '/pls/forum/ec_forum.find_cases_by_name',
         form: {
             //NAME AND PERSONAL INFORMATION
-            p_keyword: req.body.p_keyword,
             p_usr_lname : req.body.p_usr_lname ,
             p_usr_fname: req.body.p_usr_fname ,
-            p_usr_title: req.body.p_usr_title ,
-            p_usr_jobtitle: req.body.p_usr_jobtitle ,
-            //User type (Select)
-            p_usr_flag: req.body.p_usr_flag 
+            p_usr_username: req.body.p_usr_username ,
+            p_usr_password: req.body.p_usr_password ,
+            p_usr_password2: req.body.p_usr_password2 ,
+            p_usr_community: req.body.p_usr_community ,
+            p_community_pin: req.body.p_community_pin ,
+            p_usr_role: req.body.p_usr_role 
         }
     }, (error, response, body) => {
         console.log(body);

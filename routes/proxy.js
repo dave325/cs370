@@ -50,7 +50,7 @@ router.post('/search/keyword', SearchByKeyWord.SearchResult);
 router.post('/search/name', SearchByName.SearchResult);
 router.post('/search/group', SearchByGroup.SearchResult);
 //
-router.post('/search/register', UserRegister.register);
+router.post('/register', UserRegister.register);
 //
 router.post('/SearchResult', SearchResult.test);
 
