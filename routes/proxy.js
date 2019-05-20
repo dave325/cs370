@@ -44,8 +44,8 @@ router.post('/caseAttachConfirm', submissionConfirm.confirm);
 
 router.post('/case', caseReport.caseCreate); 
 router.post('/login', login.login);
-router.post('/threadCase', threadCase.threadCase);
-router.post('/test', caseReport.test)
+//router.post('/threadCase', threadCase.threadCase);
+//router.post('/test', caseReport.test)
 //threaded might need to delete latter, look at /SearchResult
 router.post('/thread-test', threadCase.test)
 
