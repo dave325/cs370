@@ -30,22 +30,16 @@ module.exports.SearchResult = (req, res) => {
                     var date = $(this).children('td:nth-child(2)').text().trim();
                     var author = $(this).children('td:nth-child(3)').text().trim();
                     var subject = $(this).children('td:nth-child(4)').text().trim();
+                    var obj = {
+                        "GetCase" : getCase_value,
+                        "Date" : date,
+                        "Author" : author,
+                        "Subject" : subject
+                    };
+        
+                    data.push(obj);
                     
-                    if(getCase_value.length == 0 || 
-                        date.length == 0 ||
-                        author.length == 0 ||
-                        subject == 0){
-                            
-                        }else {
-                            var obj = {
-                                "GetCase" : getCase_value,
-                                "Date" : date,
-                                "Author" : author,
-                                "Subject" : subject
-                            };
-                
-                            data.push(obj);
-                        }
+                    
                     
                 }
         
