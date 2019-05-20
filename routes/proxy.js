@@ -47,7 +47,7 @@ router.post('/login', login.login);
 //router.post('/threadCase', threadCase.threadCase);
 //router.post('/test', caseReport.test)
 //threaded might need to delete latter, look at /SearchResult
-router.post('/thread-test', threadCase.test)
+//router.post('/thread-test', threadCase.test)
 
 
 
