@@ -55,7 +55,9 @@ var  routes: Routes = [
     path: 'upload',
     loadChildren: './upload/upload.module#UploadPageModule'
   },
-  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' }
+  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },  { path: 'register-success', loadChildren: './register-success/register-success.module#RegisterSuccessPageModule' },
+  { path: 'upload-success', loadChildren: './upload-success/upload-success.module#UploadSuccessPageModule' }
+
 
 ];
 

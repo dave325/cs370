@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <form #form="ngForm" (ngSubmit)="register(form)">
+  <form #form="ngForm" (ngSubmit)="doUpload(form)">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -19,19 +19,70 @@
           </div>
           <div padding>
             <ion-item>
-              <ion-label>Case Name:</ion-label>
-              <ion-input name="caseName" type="text" placeholder="What will we call your case?" ngModel required>
+              <ion-label>Username:</ion-label>
+              <ion-input name="p_usr_username" type="text" placeholder="What is your username?" ngModel required>
               </ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>Case Description:</ion-label>
-              <ion-textarea rows="6" cols="20" maxlength="500" name="caseName" type="text" placeholder="Give a short description of your case" ngModel
-                required></ion-textarea>
+              <ion-label>Password:</ion-label>
+              <ion-input name="p_usr_password" type="password" placeholder="What is your password?" ngModel required>
+              </ion-input>
             </ion-item>
+
+
             <ion-item>
-              <ion-label>Case File:</ion-label>
-              <ion-button color="primary" shape="round" fill="outline">Attach</ion-button>
+
+
+              <ion-label>Interest Group:</ion-label>
+
+              <ion-select name="p_sig" value="215" [(ngModel)]="p_sig" >
+                <ion-select-option value="209">Unified Modeling Language</ion-select-option>
+                <ion-select-option value="210">Specification and Requirement</ion-select-option>
+
+                <ion-select-option value="211">Coding</ion-select-option>
+                <ion-select-option value="212">QA Testing</ion-select-option>
+
+                <ion-select-option value="213">Verification and Validation</ion-select-option>
+                <ion-select-option value="214">Security</ion-select-option>
+
+                <ion-select-option value="215">Other Topics</ion-select-option>
+
+              </ion-select>
+
             </ion-item>
+
+
+            <ion-item>
+              <ion-label>Subject:</ion-label>
+              <ion-input name="p_subject" type="text" placeholder="What is the subject of the case?" ngModel required>
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Keywords:</ion-label>
+              <ion-input name="p_keyword" type="text" placeholder="What are the keywords of this subject?" ngModel
+                required>
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>URL:</ion-label>
+              <ion-input name="p_url" type="text" placeholder="Is there a relevant URL?" ngModel required>
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-textarea name="p_text" type="text" rows="6" cols="20" maxlength="500"
+                placeholder="What is the description of your case?" ngModel required>
+              </ion-textarea>
+            </ion-item>
+
+
+
+
+
+
+
           </div>
 
         </ion-col>
@@ -46,6 +97,7 @@
 
 <ion-footer>
   <div padding>
-    <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Upload</ion-button>
+    <ion-button (click)="doUpload(form)" size="large" type="submit" [disabled]="form.invalid" expand="block">Upload
+    </ion-button>
   </div>
 </ion-footer>

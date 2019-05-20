@@ -17,30 +17,55 @@ export class RegisterPage implements OnInit {
   }
 
 
-  async presentToast() {
+  async presentToastOnFailureToRegister() {
     const toast = await this.toastController.create({
       message: 'Could not sign up at this moment, please try again later.',
-      duration: 2400
+      duration: 2800,
     });
     toast.present();
   }
 
 
+  async presentToastOnFailureToHaveSamePasswords() {
+    const toast = await this.toastController.create({
+      message: 'Passwords do not match!',
+      duration: 3000,
+    });
+    toast.present();
+  }
+
+
+
   register(form)
   {
 
-    
-  
-      this.proxyService.registerUser(form.value).toPromise().then(
-        (res)=>
-        {
-            this.router.navigateByUrl('home');
-        },
-        (err) =>
-        {
-            this.presentToast();
-        }
-      )
+      let pass1 = form.value.p_usr_password;
+      let pass2 = form.value.p_usr_password2;
+
+      console.log(pass1);
+      console.log(pass2);
+      if(pass1 !== pass2)
+      {
+          this.presentToastOnFailureToHaveSamePasswords();
+          return;
+      }
+
+      else{
+
+        this.proxyService.registerUser(form.value).toPromise().then(
+          (res)=>
+          {
+              this.router.navigateByUrl('register-success');
+          },
+          (err) =>
+          {
+              this.presentToastOnFailureToRegister();
+          }
+        );
+
+      }
+
+      
 
       
 
