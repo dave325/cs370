@@ -20,7 +20,7 @@ var SearchResultFileLink = require('../parsers/Search_result_final_link');
 //
 var UserRegister = require('../parsers/bonnet_user_register');
 //delete later
-var SearchResult = require('../parsers/Search_result');
+//var SearchResult = require('../parsers/Search_result');
 //
 var CommunityUserList = require('../parsers/searchAllUserersInACommunity');
 
@@ -60,17 +60,16 @@ router.post('/search/date', SearchByDate.SearchResult);
 router.post('/search/keyword', SearchByKeyWord.SearchResult);
 router.post('/search/name', SearchByName.SearchResult);
 router.post('/search/group', SearchByGroup.SearchResult);
-//
+
+//Sign up
 router.post('/register', UserRegister.register);
 //
-router.post('/SearchResult', SearchResult.test);
+//router.post('/SearchResult', SearchResult.test);
 
+//
 router.post('/SearchResultFile', SearchResultFileLink.SearchResultFileLink);
 
-
-/**
- * if we end up doing User list
- */
+//user list
 router.post('/CommunityUserList', CommunityUserList.list);
 
 
