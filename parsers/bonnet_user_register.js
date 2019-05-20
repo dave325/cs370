@@ -63,7 +63,7 @@ module.exports.register = (req, res) => {
             var json = {
                 "request_status" : "success",
                 "user_creation" : "fail",
-                "body" : body
+                "error" : body
             }
             res.json(json).status(200);
 
