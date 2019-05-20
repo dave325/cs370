@@ -14,6 +14,7 @@ p_sig is 215 for Other topics
 
 file description: /pls/forum/EC_forum.add_attachment
 {p_ses, p_case, p_owner_name} -> {p_ses, p_case}
+assign p_BFile_type, p_BFile_subject, p_BFile_caption
 
 send attachment: /pls/forum/EC_forum.add_attachment_dispatch POST
 {p_ses, p_case, p_BFile_type, p_BFile_subject, p_BFile_caption}
@@ -21,11 +22,59 @@ send attachment: /pls/forum/EC_forum.add_attachment_dispatch POST
 
 p_BFile_type is ole for OLE doc, img , aud, vid
 
-sent to /ecommunity/Attachment POST
+sent to /ecommunity/SF POST
 
-confirm submission: http://bonnet19.cs.qc.edu:8080/ecommunity/Attachment POST
+curl --data "p_ses=139580&p_case=19964&p_BFile_type=ole&p_BFile_subject=hello&p_BFile_caption=caption" -X POST http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment_dispatch
+
+result:
+<HTML>
+<HEAD>
+<TITLE>Deposit a Media Document as an Attachment</TITLE>
+</HEAD>
+<BODY BACKGROUND="/wedimage/owasbkg.jpg">
+Your request for attachment deposit has been received.
+<P>
+<P>
+PLEASE RECORD THE FOLLOWING INFORMATION FOR YOU OWN REFERENCE:
+<P>
+Your personal reference number is: 6277
+<P>
+Your transaction number is: 006277ole19m5y19101300-6277
+<P>
+<P>
+Now you MUST proceed to deposit the document by clicking below:
+<P>
+<FORM ACTION="http://bonnet19.cs.qc.edu:8080/ecommunity/SF" METHOD="POST">
+<TABLE  0 cellpadding=0 cellspacing=0>
+<TR>
+<td><br></td>
+<TD><BR><INPUT TYPE="submit" VALUE="Click to Send Attachment!"></TD>
+</TR>
+</TABLE>
+<INPUT TYPE="hidden" NAME="p_usr_id" VALUE="6277">
+<INPUT TYPE="hidden" NAME="p_transact1" VALUE="006277ole19m5y19101300-6277">
+</FORM>
+</BODY>
+</HTML>
+<P>
+
+
+confirm submission: http://bonnet19.cs.qc.edu:8080/ecommunity/SF POST
 {p_usr_id, p_transact1} -> {p_usr_id, p_transact1}
 
+curl --data "p_usr_id=6277&p_transact1=006277ole19m5y19101300-6277" -X POST http://bonnet19.cs.qc.cuny.edu:8080/ecommunity/SF
 
+result:
+<html>
+<head><title>E-Community: Select Attachment File</title></head>
+<body background="images/owasbkg.jpg" BGCOLOR="#c0c0c0">
+<h2>Select File</h2>
+<form enctype="multipart/form-data" method="POST" action="/ecommunity/Attachment;jsessionid=8cyv5wmif1">
+<p><em>Please click "Browse" to select the file,and press the "Attach" to upload the file.</em></p>
+<input type="file" name="filename" size=60 /></label><br />
+<p><input type="submit" value=" Attach " /><input type="reset" value="Reset" /></p>
+</form></body></html>
 
+send the file attachment to
 /ecommunity/Attachment
+with filename?
