@@ -39,8 +39,8 @@ express().use(function(req, res, next) {
 router.post('/caseFileDesc', fileDescription.fileDescription);
 router.post('/caseload', caseLoad.caseLoad);  
 router.post('/caseCreate', caseCreate.caseCreate);
-router.post('/caseAttachment', attachment.SendAttachment);
-router.post('/caseAttachConfirm', submissionConfirm.confirm);
+ro
+uter.post('/caseAttachConfirm', submissionConfirm.confirm);
 
 router.post('/case', caseReport.caseCreate); 
 router.post('/login', login.login);

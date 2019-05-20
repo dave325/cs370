@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'www')));
 app.use('/', indexRouter);
 app.use('/api',proxy);
 app.use('/users', usersRouter);
+app.use('*, indexRouter');
 
 
 
