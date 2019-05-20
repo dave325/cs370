@@ -2,6 +2,9 @@ var  cheerio = require('cheerio');
 var  request = require('request');
 var  URL1 = "http://bonnet19.cs.qc.edu:7778/pls/forum/EC_forum.send_interface";
 var  URL2 = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.send_dispatch";
+var  URL3 = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment";
+var  URL4 = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment_dispatch";
+var  URL5 = "http://bonnet19.cs.qc.edu:8080/ecommunity/SF";
 
 module.exports.caseUpload = (req, res) => {
     request({ method: 'POST', url: URL1, form: {p_usr_username: req.body.p_usr_username, p_usr_password: req.body.p_usr_password}},
@@ -65,8 +68,108 @@ module.exports.caseUpload = (req, res) => {
         
                     })
         
-                    res.json(object2).status(200);
+                    //res.json(object2).status(200);
+                    request({ method: 'POST', url: URL3, form: {p_ses:object2.p_ses, p_case:object2.p_case, p_owner_name: object2.p_owner_name}},
+                        (err, response, body) => {
+                        if (err) return res.json({error:"message"}).status(401);
+            
+                        var $ = cheerio.load(body);
+                        var object3 = {};
+                        object3["form-action"] = $("link").attr('href');
+
+                        object3["title"] = $("title").text();
+
+                        object3['body-background'] = $('body').attr('background');
+
+                        $('input').each(function (index, e) {
+                            if ($(this).attr('name')) {
+                                object3[$(this).attr('name')] = $(this).attr('value');
+                            } else {
+                                object3['submit'] = $(this).attr('value');
+                            }
+
+                        })
+            
+                        //res.json(object3).status(200);     
+                        request({ method: 'POST', url: URL4, form: {p_ses:object3.p_ses, p_case: object3.p_case, p_BFile_type: req.body.p_BFile_type, 
+                            p_BFile_subject: req.body.p_BFile_subject, p_BFile_caption: req.body.p_BFile_caption}},
+                                (err, response, body) => {
+                                    if (err) return res.json({error:"message"}).status(401);
+                                    
+                                    var $ = cheerio.load(body);
+                                    var object4 = {};
+                                    object4["form-action"] = $("link").attr('href');
+                        
+                                    object4["title"] = $("title").text();
+                        
+                                    object4['body-background'] = $('body').attr('background');
+                        
+                                    $('input').each(function (index, e) {
+                                        if ($(this).attr('name')) {
+                                            object4[$(this).attr('name')] = $(this).attr('value');
+                                        } else {
+                                            object4[$(this).attr('type')] = $(this).attr('value');
+                                        }
+                        
+                                    })
+                                    //res.json(object).status(200);   
+                                    request({ method: 'POST', url: URL5, form: {p_usr_id:object4.p_usr_id, p_transact1: object4.p_transact1}},
+                                        (err, response, body) => {
+                                        if (err) return res.json({error:"message"}).status(401);
+                                        
+                                        var $ = cheerio.load(body);
+                                        var object5 = {};
+                                        object5["form-action"] = $("link").attr('href');
+                            
+                                        object5["title"] = $("title").text();
+                            
+                                        object5['body-background'] = $('body').attr('background');
+                            
+                                        $('input').each(function (index, e) {
+                                            if ($(this).attr('name')) {
+                                                object5[$(this).attr('name')] = $(this).attr('value');
+                                            } else {
+                                                object5[$(this).attr('type')] = $(this).attr('value');
+                                            }
+                            
+                                        })
+                                        
+                                        res.json(object5).status(200);
+                                        /*
+                                        request({ method: 'POST', url: URL6, form: {p_usr_id:object5.p_usr_id, p_transact1: object5.p_transact1}},
+                                            (err, response, body) => {
+                                            if (err) return res.json({error:"message"}).status(401);
+                                        
+                                            var $ = cheerio.load(body);
+                                            var object5 = {};
+                                            object5["form-action"] = $("link").attr('href');
+                            
+                                            object5["title"] = $("title").text();
+                            
+                                            object5['body-background'] = $('body').attr('background');
+                            
+                                            $('input').each(function (index, e) {
+                                                if ($(this).attr('name')) {
+                                                    object5[$(this).attr('name')] = $(this).attr('value');
+                                                } else {
+                                                    object5[$(this).attr('type')] = $(this).attr('value');
+                                                }
+                            
+                                            })
+                                        
+                                            res.json(object5).status(200);
+                                                
+                                        });
+                                        */
+                                                
+                                    }
+                                );
+                                }
+                            );
+                        }
+                    );
                 }
             );
-        });
+        }
+    );
 }
