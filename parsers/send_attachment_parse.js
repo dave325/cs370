@@ -1,9 +1,10 @@
 var  cheerio = require('cheerio');
 var  request = require('request');
-var  URL = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment";
+var  URL = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment_dispatch";
 
-module.exports.fileDescription = (req, res) => {
-    request({ method: 'POST', url: URL, form: {p_ses:req.body.p_ses, p_case:req.body.p_case, p_owner_name: req.body.p_owner_name}},
+module.exports.SendAttachment = (req, res) => {
+    request({ method: 'POST', url: URL, form: {p_ses:req.body.p_ses, p_case: req.body.p_case, p_BFile_type: req.body.p_BFile_type, 
+    p_BFile_subject: req.body.p_BFile_subject, p_BFile_caption: req.body.p_BFile_caption}},
         (err, response, body) => {
             if (err) return console.error(err);
             
@@ -19,11 +20,10 @@ module.exports.fileDescription = (req, res) => {
                 if ($(this).attr('name')) {
                     object[$(this).attr('name')] = $(this).attr('value');
                 } else {
-                    object['submit'] = $(this).attr('value');
+                    object[$(this).attr('type')] = $(this).attr('value');
                 }
 
             })
-            
             res.json(object).status(200);        
         }
     );
