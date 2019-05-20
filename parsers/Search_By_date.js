@@ -11,7 +11,7 @@ module.exports.SearchResult = (req, res) => {
             p_increment_date: req.body.p_increment_date,
             p_from_date: req.body.p_from_date,
             p_to_date: req.body.p_to_date,
-            p_session: req.body.p_session,
+            p_session: req.body.p_session_id,
             p_community_id: req.body.p_community_id
         }
     }, (error, response, body) => {
@@ -25,11 +25,12 @@ module.exports.SearchResult = (req, res) => {
             var data = [];
             console.log(body)
             $('tr').each(function(i, elem) {
-                //if(i == 1){    
+                if(i > 0){    
                     var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
                     var date = $(this).children('td:nth-child(2)').text().trim();
                     var author = $(this).children('td:nth-child(3)').text().trim();
                     var subject = $(this).children('td:nth-child(4)').text().trim();
+                    
                     var obj = {
                         "GetCase" : getCase_value,
                         "Date" : date,
@@ -38,10 +39,7 @@ module.exports.SearchResult = (req, res) => {
                     };
         
                     data.push(obj);
-                    
-                    
-                    
-                //}
+                }
         
             });
             json.push(data);
@@ -49,4 +47,3 @@ module.exports.SearchResult = (req, res) => {
         }
     });
 }
-
