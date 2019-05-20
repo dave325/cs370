@@ -1,5 +1,5 @@
 var  request = require('request');
-
+var  cheerio = require('cheerio');
 
 /**
 REQUIRED: None of these fields can be empty: 
@@ -48,10 +48,14 @@ module.exports.register = (req, res) => {
         }
     }, (error, response, body) => {
         if(error){
-            res.json({"status" : "fail"}).status(200);
+            res.json({"request_status" : "fail"}).status(200);
         }else{
             console.log(body);
-            res.json({"status" : "success"}).status(200);
+            var json = {
+                "request_status" : "success",
+                "body" : body
+            }
+            res.json({"request_status" : "success"}).status(200);
         }
     });
 }
