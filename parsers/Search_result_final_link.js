@@ -96,6 +96,8 @@ module.exports.SearchResultFileLink = (req, res) => {
         } else {
             console.log(formOptions)
             if (formOptions.p_attachOrReply === "Get-attachment") {
+                console.log(body);
+                return;
                 var temp = fs.createWriteStream("file.pptx");
                 request
                     .get("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx")
