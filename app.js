@@ -32,15 +32,11 @@ app.use('/api',proxy);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-/*app.use(function(req, res, next) {
-  console.log("404");
+app.use(function(req, res, next) {
+  res.redirect('/');
   next(createError(404));
 });
-*/
 
-app.get('*', (req, res) => {
-  res.send("testiong", 404);
-});
 
 
 // error handler
