@@ -37,7 +37,8 @@ export class ProxyService implements Resolve<any> {
     getByID: 'http://149.4.223.218:3000/api/search/id',
     getByKeyword: 'http://149.4.223.218:3000/api/search/keyword',
     getByDate: 'http://149.4.223.218:3000/api/search/date',
-    caseAction: 'http://149.4.223.218:3000/api/SearchResultFile'
+    caseAction: 'http://149.4.223.218:3000/api/SearchResultFile',
+    register: 'http://149.4.223.218:3000/api/register'
   }
 
 
@@ -167,5 +168,20 @@ export class ProxyService implements Resolve<any> {
       }
 
     );
+  }
+
+  registerUser(form) {
+
+    console.log("REGISTERING WITH VALUES: ");
+    console.log(form.value);
+    return this.http.post(this.ENDPOINTS.register,
+        form.value
+    );
+
+    /*
+    this.authService.register(form.value).subscribe((res) => {
+      this.router.navigateByUrl('home');
+    });
+    */
   }
 }
