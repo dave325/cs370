@@ -47,7 +47,7 @@ module.exports.register = (req, res) => {
             p_usr_url: req.body.p_usr_email 
         }
     }, (error, response, body) => {
-        var $ = cheerio.load(html);
+        var $ = cheerio.load(body);
         
         var msg = $('p').text();
         if(error){
