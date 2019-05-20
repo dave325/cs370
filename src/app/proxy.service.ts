@@ -33,11 +33,11 @@ export class ProxyService implements Resolve<any> {
   }
 
   public ENDPOINTS = {
-    getByName: 'https://149.4.223.218:3000/api/search/name',
-    getByID: 'https://149.4.223.218:3000/api/search/id',
-    getByKeyword: 'https://149.4.223.218:3000/api/search/keyword',
-    getByDate: 'https://149.4.223.218:3000/api/search/date',
-    caseAction: 'https://149.4.223.218:3000/api/SearchResultFile'
+    getByName: 'http://149.4.223.218:3000/api/search/name',
+    getByID: 'http://149.4.223.218:3000/api/search/id',
+    getByKeyword: 'http://149.4.223.218:3000/api/search/keyword',
+    getByDate: 'http://149.4.223.218:3000/api/search/date',
+    caseAction: 'http://149.4.223.218:3000/api/SearchResultFile'
   }
 
 
@@ -95,7 +95,7 @@ export class ProxyService implements Resolve<any> {
   }
 
   public getCaseBy(endpoint: string, info: any) {
-    return this.http.post('https://149.4.223.218:3000/api/login', {}).toPromise().then(
+    return this.http.post('http://149.4.223.218:3000/api/login', {}).toPromise().then(
 
       (res: any) => {
 
@@ -126,7 +126,7 @@ export class ProxyService implements Resolve<any> {
   }
 
   public downloadFile(endpoint: string, info: any) : Promise<void | Observable<HttpResponse<Config>>>{
-    return this.http.post('https://149.4.223.218:3000/api/login', {}).toPromise().then(
+    return this.http.post('http://149.4.223.218:3000/api/login', {}).toPromise().then(
 
       (res: any) => {
 
@@ -148,7 +148,7 @@ export class ProxyService implements Resolve<any> {
   }
 
   public getUsers(){
-    return this.http.post('https://149.4.223.218:3000/api/login', {}).toPromise().then(
+    return this.http.post('http://149.4.223.218:3000/api/login', {}).toPromise().then(
 
       (res: any) => {
 
@@ -158,7 +158,7 @@ export class ProxyService implements Resolve<any> {
           p_session_id : res.p_session_id,
           p_community_id : res.p_community_id
         };
-        return this.http.post("https://149.4.223.218:3000/api/CommunityUserList", postParams).toPromise();
+        return this.http.post("http://149.4.223.218:3000/api/CommunityUserList", postParams).toPromise();
 
       },
       (err) => {
