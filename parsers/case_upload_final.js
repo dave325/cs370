@@ -2,10 +2,6 @@ var  cheerio = require('cheerio');
 var  request = require('request');
 var  URL1 = "http://bonnet19.cs.qc.edu:7778/pls/forum/EC_forum.send_interface";
 var  URL2 = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.send_dispatch";
-var  URL3 = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment";
-var  URL4 = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment_dispatch";
-var  URL5 = "http://bonnet19.cs.qc.edu:8080/ecommunity/SF";
-var  URL6 = "http://bonnet19.cs.qc.edu:8080/ecommunity/Attachment";
 
 module.exports.caseUpload = (req, res) => {
     request({ method: 'POST', url: URL1, form: {p_usr_username: req.body.p_usr_username, p_usr_password: req.body.p_usr_password}},
@@ -45,7 +41,6 @@ module.exports.caseUpload = (req, res) => {
 
             
             object1['descripition-text'] = $('textarea').attr('name');
-            //res.json(object1).status(200);
 
             request({ method: 'POST', url: URL2, form: {p_ses: object1.p_ses, p_sig: req.body.p_sig, p_subject: req.body.p_subject,
                 p_keyword: req.body.p_keyword, p_url: req.body.p_url, p_text: req.body.p_text}},//p_sig: 209 to 215
