@@ -47,15 +47,26 @@ module.exports.register = (req, res) => {
             p_usr_url: req.body.p_usr_email 
         }
     }, (error, response, body) => {
+        var $ = cheerio.load(html);
+        
+        var msg = $('p').text();
         if(error){
             res.json({"request_status" : "fail"}).status(200);
-        }else{
-            console.log(body);
+        }else if(msg.includes("Operation Successfully Completed!")){
             var json = {
                 "request_status" : "success",
+                "user_creation" : "success"
+            }
+            res.json(json).status(200);
+
+        }else{
+            var json = {
+                "request_status" : "success",
+                "user_creation" : "fail",
                 "body" : body
             }
             res.json(json).status(200);
+
         }
     });
 }
