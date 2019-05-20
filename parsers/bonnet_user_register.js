@@ -55,7 +55,7 @@ module.exports.register = (req, res) => {
                 "request_status" : "success",
                 "body" : body
             }
-            res.json({"request_status" : "success"}).status(200);
+            res.json(json).status(200);
         }
     });
 }
