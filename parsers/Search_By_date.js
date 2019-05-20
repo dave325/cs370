@@ -23,8 +23,11 @@ module.exports.SearchResult = (req, res) => {
             var p_session = $('form input').attr('value');
             json.push({"p_session" : p_session });
             var data = [];
-            console.log(body)
+            console.log("tr each ---")
+
             $('tr').each(function(i, elem) {
+                console.log("tr each ---")
+
                 if(i > 0){    
                     var getCase_value= $(this).children('td:nth-child(1)').children('input').attr('value');
                     var date = $(this).children('td:nth-child(2)').text().trim();
