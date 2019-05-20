@@ -33,7 +33,7 @@
               {
                 "glob": ".htaccess",
                 "input": "src/.htaccess",
-                "output": "../"
+                "output": "/"
               }
             ],
             "styles": [
