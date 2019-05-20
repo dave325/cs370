@@ -1,0 +1,31 @@
+case create
+{p_usr_username, p_usr_password} -> {p_ses}
+
+case load
+{p_ses, p_sig, p_subject, p_keyword, p_url, p_text} -> {p_owner_name, p_case, p_ses}
+
+p_sig is 209 for Unified Modeling Language
+p_sig is 210 for Specification and Requirement
+p_sig is 211 for Coding
+p_sig is 212 for Quality assurance and testing
+p_sig is 213 for Verification and Validation
+p_sig is 214 for Security
+p_sig is 215 for Other topics
+
+file description: /pls/forum/EC_forum.add_attachment
+{p_ses, p_case, p_owner_name} -> {p_ses, p_case}
+
+send attachment: /pls/forum/EC_forum.add_attachment_dispatch POST
+{p_ses, p_case, p_BFile_type, p_BFile_subject, p_BFile_caption}
+-> {p_usr_id, p_transact1}
+
+p_BFile_type is ole for OLE doc, img , aud, vid
+
+sent to /ecommunity/Attachment POST
+
+confirm submission: http://bonnet19.cs.qc.edu:8080/ecommunity/Attachment POST
+{p_usr_id, p_transact1} -> {p_usr_id, p_transact1}
+
+
+
+/ecommunity/Attachment
