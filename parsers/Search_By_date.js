@@ -11,7 +11,7 @@ module.exports.SearchResult = (req, res) => {
             p_increment_date: req.body.p_increment_date,
             p_from_date: req.body.p_from_date,
             p_to_date: req.body.p_to_date,
-            p_session: req.body.p_session_id,
+            p_session: req.body.p_session,
             p_community_id: req.body.p_community_id
         }
     }, (error, response, body) => {
@@ -31,14 +31,22 @@ module.exports.SearchResult = (req, res) => {
                     var author = $(this).children('td:nth-child(3)').text().trim();
                     var subject = $(this).children('td:nth-child(4)').text().trim();
                     
-                    var obj = {
-                        "GetCase" : getCase_value,
-                        "Date" : date,
-                        "Author" : author,
-                        "Subject" : subject
-                    };
-        
-                    data.push(obj);
+                    if(getCase_value.length == 0 || 
+                        date.length == 0 ||
+                        author.length == 0 ||
+                        subject == 0){
+                            
+                        }else {
+                            var obj = {
+                                "GetCase" : getCase_value,
+                                "Date" : date,
+                                "Author" : author,
+                                "Subject" : subject
+                            };
+                
+                            data.push(obj);
+                        }
+                    
                 }
         
             });
