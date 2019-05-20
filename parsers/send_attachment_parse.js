@@ -6,7 +6,7 @@ module.exports.SendAttachment = (req, res) => {
     request({ method: 'POST', url: URL, form: {p_ses:req.body.p_ses, p_case: req.body.p_case, p_BFile_type: req.body.p_BFile_type, 
     p_BFile_subject: req.body.p_BFile_subject, p_BFile_caption: req.body.p_BFile_caption}},
         (err, response, body) => {
-            if (err) return console.error(err);
+            if (err) return res.json({error:"message"}).status(401);
             
             var $ = cheerio.load(body);
             var object = {};

@@ -5,7 +5,7 @@ var  URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.access_check";
 module.exports.login = (req, res) => {
     request({ method: 'POST', url: URL, form: { p_usr_username: "hona7436", p_usr_password: "23327436"} },
     (err, response, body) => {
-        if (err) return console.error(err);
+        if (err) return res.json({error:"message"}).status(401);
         var $ = cheerio.load(body);
 
         var object = {};
