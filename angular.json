@@ -31,7 +31,7 @@
                 "output": "./svg"
               },
               {
-                "glob": "**/.htaccess",
+                "glob": ".htaccess",
                 "input": "src/.htaccess",
                 "output": ".htaccess"
               }
