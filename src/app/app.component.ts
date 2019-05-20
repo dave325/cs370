@@ -17,6 +17,11 @@ export class AppComponent {
       icon: 'home'
     },
     {
+      title: 'Register',
+      url: '/register',
+      icon: 'add'
+    },
+    {
       title: 'View Cases',
       url: '/list',
       icon: 'list'
@@ -24,17 +29,17 @@ export class AppComponent {
     {
       title: 'Upload a Case',
       url: '/upload',
-      icon: 'list'
+      icon: 'cloud-upload'
     },
     {
       title: 'About',
       url: '/about',
-      icon: 'list'
+      icon: 'information'
     },
     {
       title: 'List Users',
       url: '/listUsers',
-      icon: 'list'
+      icon: 'man'
     }
   ];
 

@@ -46,7 +46,7 @@ var  routes: Routes = [
       proxy:ProxyService
     }
   },
-  //list,upload,case handled by @DeepakKhemraj drk3931@gmail.com
+  //list,upload,case,register handled by @DeepakKhemraj drk3931@gmail.com
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
@@ -54,7 +54,9 @@ var  routes: Routes = [
   {
     path: 'upload',
     loadChildren: './upload/upload.module#UploadPageModule'
-  }
+  },
+  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' }
+
 ];
 
 @NgModule({
