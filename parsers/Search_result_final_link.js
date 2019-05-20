@@ -1,26 +1,15 @@
 var cheerio = require('cheerio')
 var request = require('request')
 var fs = require('fs')
-var url = "http://bonnet19.cs.qc.cuny.edu";
-var method = "7778";
+
 var path = require("path")
 /**
  * contains download link. 
  */
 
-var options = {
-    url: url,
-    method: method
-    /*
-    header: {
-        ...
-    }
-    */
-};
 
 
 module.exports.SearchResultFileLink = (req, res) => {
-    //using 'List of threaded cases posted in your (selected Special Interest Groups and) community'
     var formOptions;
     switch (req.body.p_attachOrReply) {
         case "Get-attachment":

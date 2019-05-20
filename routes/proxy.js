@@ -9,7 +9,7 @@ var fileDescription = require('../parsers/file_desc_parse');
 var attachment = require('../parsers/send_attachment_parse');
 var submissionConfirm = require('../parsers/file_submission_confirm_parse');
 //delete later
-var threadCase = require('../parsers/parseThreadedCase');
+//var threadCase = require('../parsers/parseThreadedCase');
 //Search
 var SearchByKeyWord = require('../parsers/Search_By_keyword');
 var SearchByDate = require('../parsers/Search_By_date');
@@ -20,7 +20,7 @@ var SearchResultFileLink = require('../parsers/Search_result_final_link');
 //
 var UserRegister = require('../parsers/bonnet_user_register');
 //delete later
-var SearchResult = require('../parsers/Search_result');
+//var SearchResult = require('../parsers/Search_result');
 //
 var CommunityUserList = require('../parsers/searchAllUserersInACommunity');
 
@@ -39,15 +39,14 @@ express().use(function(req, res, next) {
 router.post('/caseFileDesc', fileDescription.fileDescription);
 router.post('/caseload', caseLoad.caseLoad);  
 router.post('/caseCreate', caseCreate.caseCreate);
-router.post('/caseAttachment', attachment.SendAttachment);
 router.post('/caseAttachConfirm', submissionConfirm.confirm);
 
 router.post('/case', caseReport.caseCreate); 
 router.post('/login', login.login);
-router.post('/threadCase', threadCase.threadCase);
-router.post('/test', caseReport.test)
+//router.post('/threadCase', threadCase.threadCase);
+//router.post('/test', caseReport.test)
 //threaded might need to delete latter, look at /SearchResult
-router.post('/thread-test', threadCase.test)
+//router.post('/thread-test', threadCase.test)
 
 
 
@@ -60,17 +59,16 @@ router.post('/search/date', SearchByDate.SearchResult);
 router.post('/search/keyword', SearchByKeyWord.SearchResult);
 router.post('/search/name', SearchByName.SearchResult);
 router.post('/search/group', SearchByGroup.SearchResult);
-//
+
+//Sign up
 router.post('/register', UserRegister.register);
 //
-router.post('/SearchResult', SearchResult.test);
+//router.post('/SearchResult', SearchResult.test);
 
+//
 router.post('/SearchResultFile', SearchResultFileLink.SearchResultFileLink);
 
-
-/**
- * if we end up doing User list
- */
+//user list
 router.post('/CommunityUserList', CommunityUserList.list);
 
 
