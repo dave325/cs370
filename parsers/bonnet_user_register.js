@@ -2,6 +2,8 @@ var  cheerio = require('cheerio')
 var  request = require('request')
 var  fs = require('fs')
 
+
+
 var json = [];
 
 module.exports.register = (req, res) => {
@@ -12,19 +14,24 @@ module.exports.register = (req, res) => {
        // path: '/pls/forum/ec_forum.find_cases_by_name',
         form: {
             //NAME AND PERSONAL INFORMATION
-            p_usr_lname : req.body.p_usr_lname ,
+            p_usr_lname: req.body.p_usr_lname ,
             p_usr_fname: req.body.p_usr_fname ,
             p_usr_username: req.body.p_usr_username ,
             p_usr_password: req.body.p_usr_password ,
             p_usr_password2: req.body.p_usr_password2 ,
             p_usr_community: req.body.p_usr_community ,
             p_community_pin: req.body.p_community_pin ,
+            p_usr_email: req.body.p_usr_email ,
             p_usr_role: req.body.p_usr_role 
         }
     }, (error, response, body) => {
-        console.log(body);
-
-
+        if(error){
+            console.log(body);
+            res.json({"Bad" : "OK"}).status(200);
+        }else{
+            console.log(body);
+            res.json({"Good" : "OK"}).status(200);
+        }
     });
 }
 
