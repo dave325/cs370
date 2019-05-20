@@ -95,8 +95,9 @@ module.exports.SearchResultFileLink = (req, res) => {
             console.log(err);
         } else {
             console.log(formOptions)
+            var $ = cheerio.load(body);
             if (formOptions.p_attachOrReply === "Get-attachment") {
-                console.log(body);
+                console.log($('a').attr('href'));
                 return;
                 var temp = fs.createWriteStream("file.pptx");
                 request
@@ -136,7 +137,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                 //fs.unlink('file.pptx');
                 return;
             }
-            var $ = cheerio.load(body);
+            
             var title = $('TITLE').text();
             if (title === "404 Not Found") {
                 res.json({ error: "Route does not exist" }).status(400);
