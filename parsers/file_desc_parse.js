@@ -2,7 +2,7 @@ var  cheerio = require('cheerio');
 var  request = require('request');
 var  URL = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment";
 
-module.exports.caseLoad = (req, res) => {
+module.exports.fileDescription = (req, res) => {
     request({ method: 'POST', url: URL, form: {p_ses:req.body.p_ses, p_case:req.body.p_case, p_owner_name: req.body.p_owner_name}},
         (err, response, body) => {
             if (err) return console.error(err);

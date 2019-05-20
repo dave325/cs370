@@ -2,7 +2,7 @@ var  cheerio = require('cheerio');
 var  request = require('request');
 var  URL = "http://bonnet19.cs.qc.edu:8080/ecommunity/SF";
 
-module.exports.SendAttachment = (req, res) => {
+module.exports.confirm = (req, res) => {
     request({ method: 'POST', url: URL, form: {p_usr_id, p_transact1}},
         (err, response, body) => {
             if (err) return console.error(err);
