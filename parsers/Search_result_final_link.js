@@ -104,6 +104,8 @@ module.exports.SearchResultFileLink = (req, res) => {
                                 console.log(fileName)
                                 var newFile = path.join(__dirname, "../", fileName);
                                 console.log(newFile)
+                                res.setHeader('Content-disposition', 'attachment; filename=' + fileName);
+
                                 res.download(fileName, function(resFile){
                                     if(resFile){
                                         console.log(resFile);
