@@ -11,7 +11,9 @@ var app = express();
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Content-Disposition");
+  res.header('Allow-access-expose-headers', "true");
+  res.header('Access-Control-Expose-Headers', "Content-Disposition");
   next();
 });
 
