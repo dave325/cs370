@@ -48,7 +48,7 @@ export class ListPage implements OnInit {
     }
     if (this.choice === 'id') {
       this.doSearch(this.proxyService.ENDPOINTS.getByID, {
-        cp_case_select: this.searchQuery,
+        p_case_select: this.searchQuery,
 
       });
 
