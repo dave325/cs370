@@ -57,7 +57,7 @@ var ListPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Case List\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n\n\n  <ion-row>\n\n    <ion-col size=\"9\">\n\n      <div *ngIf=\"choice != 'date'\">\n        <ion-searchbar [(ngModel)]=\"searchQuery\" name=\"searchQuery\" (keyup.enter)=\"search($event)\" #searchBar>\n        </ion-searchbar>\n\n      </div>\n      <div *ngIf=\"choice == 'date'\">\n        <ion-item>\n          <ion-label position=\"stacked\">From Date</ion-label>\n          <ion-searchbar [(ngModel)]=\"p_from_date\" name=\"from_data\">\n          </ion-searchbar>\n        </ion-item>\n        <ion-item>\n          <ion-label position=\"stacked\">To Date</ion-label>\n          <ion-searchbar [(ngModel)]=\"p_to_date\" name=\"to_date\">\n          </ion-searchbar>\n        </ion-item>\n        <ion-select [(ngModel)]=\"p_increment_date\" value=\"ALL_DAY\">\n          <ion-select-option value=\"ALL_DAY\">Get cases of every weekday\n          </ion-select-option>\n          <ion-select-option value=\"MONDAY\">Get cases of Monday only\n          </ion-select-option>\n          <ion-select-option value=\"TUESDAY\">Get cases of Tuesday only\n          </ion-select-option>\n          <ion-select-option value=\"WEDNESDAY\">Get cases of Wednesday only\n          </ion-select-option>\n          <ion-select-option value=\"THURSDAY\">Get cases of Thursday only\n          </ion-select-option>\n          <ion-select-option value=\"FRIDAY\">Get cases of Friday only\n          </ion-select-option>\n          <ion-select-option value=\"SATURDAY\">Get cases of Saturday only\n          </ion-select-option>\n          <ion-select-option value=\"SUNDAY\">Get cases of Sunday only\n          </ion-select-option>\n        </ion-select>\n        <ion-button size=\"small\" fill=\"outline\" color=\"primary\" (click)=\"submitDate()\">Submit</ion-button>\n      </div>\n      <h2 class=\"alert alert-danger\" *ngIf=\"error\" role=\"alert\">{{error}}</h2>\n      <h2 class=\"alert alert-info\" *ngIf=\"info\" role=\"alert\">{{info}}</h2>\n\n    </ion-col>\n\n\n\n\n    <ion-col size=\"3\">\n      <ion-label>Search By</ion-label>\n\n      <ion-select value=\"lastname\" okText=\"Okay\" cancelText=\"Dismiss\" #filterChoice [(ngModel)]=\"choice\">\n        <ion-select-option value=\"keyword\">Keyword</ion-select-option>\n        <ion-select-option value=\"id\">ID</ion-select-option>\n        <ion-select-option value=\"lastname\">Lastname</ion-select-option>\n        <ion-select-option value=\"date\">Date</ion-select-option>\n      </ion-select>\n    </ion-col>\n  </ion-row>\n\n  <div padding>\n  </div>\n  <ion-item>\n\n  </ion-item>\n  <ion-list>\n    <ion-item *ngFor=\"let item of caseList\" [routerDirection]=\"'root'\" [routerLink]=\"'/case/' + item.GetCase\">\n      {{item.Subject}} by {{item.Author}}<br>\n      <div class=\"item-note\" slot=\"end\">\n        {{item.GetCase}}\n        <br>\n        {{item.Date}}\n\n      </div>\n\n    </ion-item>\n  </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-title>\r\n      Case List\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n\r\n  <ion-row>\r\n\r\n    <ion-col size=\"9\">\r\n\r\n      <div *ngIf=\"choice != 'date'\">\r\n        <ion-searchbar [(ngModel)]=\"searchQuery\" name=\"searchQuery\" (keyup.enter)=\"search($event)\" #searchBar>\r\n        </ion-searchbar>\r\n\r\n      </div>\r\n      <div *ngIf=\"choice == 'date'\">\r\n        <ion-item>\r\n          <ion-label position=\"stacked\">From Date</ion-label>\r\n          <ion-searchbar [(ngModel)]=\"p_from_date\" name=\"from_data\">\r\n          </ion-searchbar>\r\n        </ion-item>\r\n        <ion-item>\r\n          <ion-label position=\"stacked\">To Date</ion-label>\r\n          <ion-searchbar [(ngModel)]=\"p_to_date\" name=\"to_date\">\r\n          </ion-searchbar>\r\n        </ion-item>\r\n        <ion-select [(ngModel)]=\"p_increment_date\" value=\"ALL_DAY\">\r\n          <ion-select-option value=\"ALL_DAY\">Get cases of every weekday\r\n          </ion-select-option>\r\n          <ion-select-option value=\"MONDAY\">Get cases of Monday only\r\n          </ion-select-option>\r\n          <ion-select-option value=\"TUESDAY\">Get cases of Tuesday only\r\n          </ion-select-option>\r\n          <ion-select-option value=\"WEDNESDAY\">Get cases of Wednesday only\r\n          </ion-select-option>\r\n          <ion-select-option value=\"THURSDAY\">Get cases of Thursday only\r\n          </ion-select-option>\r\n          <ion-select-option value=\"FRIDAY\">Get cases of Friday only\r\n          </ion-select-option>\r\n          <ion-select-option value=\"SATURDAY\">Get cases of Saturday only\r\n          </ion-select-option>\r\n          <ion-select-option value=\"SUNDAY\">Get cases of Sunday only\r\n          </ion-select-option>\r\n        </ion-select>\r\n        <ion-button size=\"small\" fill=\"outline\" color=\"primary\" (click)=\"submitDate()\">Submit</ion-button>\r\n      </div>\r\n      <h2 class=\"alert alert-danger\" *ngIf=\"error\" role=\"alert\">{{error}}</h2>\r\n      <h2 class=\"alert alert-info\" *ngIf=\"info\" role=\"alert\">{{info}}</h2>\r\n\r\n    </ion-col>\r\n\r\n\r\n\r\n\r\n    <ion-col size=\"3\">\r\n      <ion-label>Search By</ion-label>\r\n\r\n      <ion-select value=\"lastname\" okText=\"Okay\" cancelText=\"Dismiss\" #filterChoice [(ngModel)]=\"choice\">\r\n        <ion-select-option value=\"keyword\">Keyword</ion-select-option>\r\n        <ion-select-option value=\"id\">ID</ion-select-option>\r\n        <ion-select-option value=\"lastname\">Lastname</ion-select-option>\r\n        <ion-select-option value=\"date\">Date</ion-select-option>\r\n      </ion-select>\r\n    </ion-col>\r\n  </ion-row>\r\n\r\n  <div padding>\r\n  </div>\r\n  <ion-item>\r\n\r\n  </ion-item>\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let item of caseList\" [routerDirection]=\"'root'\" [routerLink]=\"'/case/' + item.GetCase\">\r\n      {{item.Subject}} by {{item.Author}}<br>\r\n      <div class=\"item-note\" slot=\"end\">\r\n        {{item.GetCase}}\r\n        <br>\r\n        {{item.Date}}\r\n\r\n      </div>\r\n\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>"
 
 /***/ }),
 
@@ -110,7 +110,7 @@ var ListPage = /** @class */ (function () {
         }
         if (this.choice === 'id') {
             this.doSearch(this.proxyService.ENDPOINTS.getByID, {
-                p_case_select: this.searchQuery,
+                p_case_select: this.searchQuery
             });
         }
         if (this.choice === 'lastname') {
@@ -132,6 +132,9 @@ var ListPage = /** @class */ (function () {
         this.proxyService.getCaseBy(endpoint, info).then(function (res) {
             _this.caseList = [];
             var i = res.length;
+            if (_this.choice === "id") {
+                _this.route.navigate(['/case/' + info.p_case_select]);
+            }
             while (i--) {
                 var element = res[i];
                 if (Object.keys(element).length > 1) {
@@ -167,6 +170,7 @@ var ListPage = /** @class */ (function () {
             var i = res.length;
             while (i--) {
                 var element = res[i];
+                console.log(element);
                 if (Object.keys(element).length > 1) {
                     if (element.Author.length > 0) {
                         _this.caseList.push(element);
@@ -195,7 +199,7 @@ var ListPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./list.page.html */ "./src/app/list/list.page.html"),
             styles: [__webpack_require__(/*! ./list.page.scss */ "./src/app/list/list.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _proxy_service__WEBPACK_IMPORTED_MODULE_3__["ProxyService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _proxy_service__WEBPACK_IMPORTED_MODULE_3__["ProxyService"]])
     ], ListPage);
     return ListPage;
 }());

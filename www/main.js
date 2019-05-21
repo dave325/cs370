@@ -887,7 +887,7 @@ module.exports = webpackAsyncContext;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n   <ion-text>\n     About the Developers\n   </ion-text>\n  <ion-card>\n    <ion-card-header>\n      <ion-card-title>David Dataram</ion-card-title>\n    </ion-card-header>\n  \n    <ion-card-content>\n      Keep close to Nature's heart... and break clear away, once in awhile,\n      and climb a mountain or spend a week in the woods. Wash your spirit clean.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <ion-card-header>\n      <ion-card-title>Deepak Khemraj</ion-card-title>\n    </ion-card-header>\n  \n    <ion-card-content>\n      Keep close to Nature's heart... and break clear away, once in awhile,\n      and climb a mountain or spend a week in the woods. Wash your spirit clean.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <ion-card-header>\n      <ion-card-title>Dong</ion-card-title>\n    </ion-card-header>\n  \n    <ion-card-content>\n      Keep close to Nature's heart... and break clear away, once in awhile,\n      and climb a mountain or spend a week in the woods. Wash your spirit clean.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <ion-card-header>\n      <ion-card-title>Nazmul</ion-card-title>\n    </ion-card-header>\n  \n    <ion-card-content>\n      Keep close to Nature's heart... and break clear away, once in awhile,\n      and climb a mountain or spend a week in the woods. Wash your spirit clean.\n    </ion-card-content>\n  </ion-card>\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-title>\r\n      About\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n   <ion-text>\r\n     About the Developers\r\n   </ion-text>\r\n  <ion-card>\r\n    <ion-card-header>\r\n      <ion-card-title>David</ion-card-title>\r\n    </ion-card-header>\r\n  \r\n    \r\n  </ion-card>\r\n  <ion-card>\r\n    <ion-card-header>\r\n      <ion-card-title>Deepak</ion-card-title>\r\n    </ion-card-header>\r\n  \r\n   \r\n  </ion-card>\r\n  <ion-card>\r\n    <ion-card-header>\r\n      <ion-card-title>Dong</ion-card-title>\r\n    </ion-card-header>\r\n  \r\n   \r\n  </ion-card>\r\n  <ion-card>\r\n    <ion-card-header>\r\n      <ion-card-title>Nazmul</ion-card-title>\r\n    </ion-card-header>\r\n  \r\n   \r\n  </ion-card>\r\n</ion-content>"
 
 /***/ }),
 
@@ -1031,7 +1031,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n    <ion-menu side=\"start\" menuId=\"first\">\n      <ion-header>\n        <ion-toolbar>\n          <ion-title>Menu</ion-title>\n        </ion-toolbar>\n      </ion-header>\n      <ion-content>\n        <ion-list>\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\n              <ion-label>\n                {{p.title}}\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n\n\n\n    <ion-router-outlet main></ion-router-outlet>\n</ion-app>\n"
+module.exports = "<ion-app>\r\n    <ion-menu side=\"start\" menuId=\"first\">\r\n      <ion-header>\r\n        <ion-toolbar>\r\n          <ion-title>Menu</ion-title>\r\n        </ion-toolbar>\r\n      </ion-header>\r\n      <ion-content>\r\n        <ion-list>\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\r\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\r\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\r\n              <ion-label>\r\n                {{p.title}}\r\n              </ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n        </ion-list>\r\n      </ion-content>\r\n    </ion-menu>\r\n\r\n\r\n\r\n    <ion-router-outlet main></ion-router-outlet>\r\n</ion-app>\r\n"
 
 /***/ }),
 
@@ -1207,7 +1207,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Case {{str}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card>\n    <ion-card-header>\n      <ion-card-title>SIG: {{case.case_header.SIG}} ({{case.case_header.Authoremail}})</ion-card-title>\n      <ion-card-subtitle>Author: {{case.case_header.CaseAuthor}}</ion-card-subtitle>\n    </ion-card-header>\n\n    <ion-card-content>\n      Author: {{case.case_header.Subject}}<br>\n      Date: {{case.case_header.Date}}<br>\n      Author URL: <a href=\"{{case.case_header.AuthorURL}}\">{{case.case_header.AuthorURL}}</a><br>\n    </ion-card-content>\n  </ion-card>\n  <ion-item>\n    <ion-label>OLE Document Attachment: </ion-label>\n    <ion-select cancelText=\"Cancel\" okText=\"Download\" interface=\"action-sheet\" (ionChange)=\"onSelectChange($event)\">\n      <ion-select-option value=\"{{option.value}}\" *ngFor=\"let option of case.select_radio_options\">{{option.text}}\n      </ion-select-option>\n    </ion-select>\n  </ion-item>\n  <ion-item>\n    <ion-label>Get attachment or reply: </ion-label>\n    <ion-select cancelText=\"Cancel\" okText=\"Ok\">\n      <ion-select-option value=\"Get-attachment\">Get Attachment\n      </ion-select-option>\n      <ion-select-option value=\"Reply\">Reply\n      </ion-select-option>\n      <ion-select-option value=\"Bookmark case\">Bookmark case\n      </ion-select-option>\n      <ion-select-option value=\"Add user to my hotlist\">Add user to my hotlist\n      </ion-select-option>\n      <ion-select-option value=\"Create my new resource group\">Create my new resource group\n      </ion-select-option>\n    </ion-select>\n  </ion-item>\n  <ion-item>\n    <ion-label>Q1. I find the level of this case is</ion-label>\n    <ion-select [(ngModel)]=\"p_rating_level\" cancelText=\"Cancel\" okText=\"Ok\">\n      <ion-select-option value=\"1\">Basic\n      </ion-select-option>\n      <ion-select-option value=\"2\">Intermediate\n      </ion-select-option>\n      <ion-select-option value=\"3\">Advance\n      </ion-select-option>\n    </ion-select>\n  </ion-item>\n  <ion-item>\n    <ion-label>Q2. I find this case</ion-label>\n    <ion-select [(ngModel)]=\"p_rating_quality\" cancelText=\"Cancel\" okText=\"Ok\">\n      <ion-select-option value=\"1\">Trivial\n      </ion-select-option>\n      <ion-select-option value=\"2\">Useful\n      </ion-select-option>\n      <ion-select-option value=\"3\">Good\n      </ion-select-option>\n      <ion-select-option value=\"4\">Excellent\n      </ion-select-option>\n    </ion-select>\n  </ion-item>\n  <ion-button expand=\"block\" (click)=\"submitRating()\">Submit Rating</ion-button>\n\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-title>Case {{str}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card>\r\n    <ion-card-header>\r\n      <ion-card-title>SIG: {{case.case_header.SIG}} ({{case.case_header.Authoremail}})</ion-card-title>\r\n      <ion-card-subtitle>Author: {{case.case_header.CaseAuthor}}</ion-card-subtitle>\r\n    </ion-card-header>\r\n\r\n    <ion-card-content>\r\n      Author: {{case.case_header.Subject}}<br>\r\n      Date: {{case.case_header.Date}}<br>\r\n      Author URL: <a href=\"{{case.case_header.AuthorURL}}\">{{case.case_header.AuthorURL}}</a><br>\r\n    </ion-card-content>\r\n  </ion-card>\r\n  <ion-item>\r\n    <ion-label>OLE Document Attachment: </ion-label>\r\n    <ion-select cancelText=\"Cancel\" okText=\"Download\" interface=\"action-sheet\" (ionChange)=\"onSelectChange($event)\">\r\n      <ion-select-option value=\"{{option.value}}\" *ngFor=\"let option of case.select_radio_options\">{{option.text}}\r\n      </ion-select-option>\r\n    </ion-select>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-label>Get attachment or reply: </ion-label>\r\n    <ion-select cancelText=\"Cancel\" okText=\"Ok\">\r\n      <ion-select-option value=\"Bookmark case\">Bookmark case\r\n      </ion-select-option>\r\n      <ion-select-option value=\"Add user to my hotlist\">Add user to my hotlist\r\n      </ion-select-option>\r\n      <ion-select-option value=\"Create my new resource group\">Create my new resource group\r\n      </ion-select-option>\r\n    </ion-select>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-label>Q1. I find the level of this case is</ion-label>\r\n    <ion-select [(ngModel)]=\"p_rating_level\" cancelText=\"Cancel\" okText=\"Ok\">\r\n      <ion-select-option value=\"1\">Basic\r\n      </ion-select-option>\r\n      <ion-select-option value=\"2\">Intermediate\r\n      </ion-select-option>\r\n      <ion-select-option value=\"3\">Advance\r\n      </ion-select-option>\r\n    </ion-select>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-label>Q2. I find this case</ion-label>\r\n    <ion-select [(ngModel)]=\"p_rating_quality\" cancelText=\"Cancel\" okText=\"Ok\">\r\n      <ion-select-option value=\"1\">Trivial\r\n      </ion-select-option>\r\n      <ion-select-option value=\"2\">Useful\r\n      </ion-select-option>\r\n      <ion-select-option value=\"3\">Good\r\n      </ion-select-option>\r\n      <ion-select-option value=\"4\">Excellent\r\n      </ion-select-option>\r\n    </ion-select>\r\n  </ion-item>\r\n  <ion-button expand=\"block\" (click)=\"submitRating()\">Submit Rating</ion-button>\r\n\r\n</ion-content>"
 
 /***/ }),
 
@@ -1290,7 +1290,12 @@ var CasePage = /** @class */ (function () {
                     var data = window.URL.createObjectURL(blob);
                     var link = document.createElement('a');
                     link.href = data;
-                    link.download = "test.pptx";
+                    console.log();
+                    var contentDispositionHeader = res.headers.get('Content-Disposition');
+                    var result = contentDispositionHeader.split(';')[1].trim().split('=')[1];
+                    result = result.replace(/"/g, "");
+                    console.log(contentDispositionHeader);
+                    link.download = ev.detail.value;
                     // this is necessary as link.click() does not work on the latest firefox
                     link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
                     setTimeout(function () {
@@ -1358,7 +1363,7 @@ var CasePage = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      All Users\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-item *ngFor=\"let item of users\">\n      <ion-label>\n        {{item.name}} <br>\n        {{item.email}} <br>\n        <a href=\"{{item.url}}\" *ngIf=\"item.url.length > 0 \">{{item.url}}</a>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-title>\r\n      All Users\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content>\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let item of users\">\r\n      <ion-label>\r\n        {{item.name}} <br>\r\n        {{item.email}} <br>\r\n        <a href=\"{{item.url}}\" *ngIf=\"item.url.length > 0 \">{{item.url}}</a>\r\n      </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n</ion-content>"
 
 /***/ }),
 
@@ -1429,7 +1434,7 @@ var FindUsersComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form (submit)=\"submit()\">\n  <ion-item>\n    <ion-label position=\"fixed\">Username</ion-label>\n    <ion-input type=\"text\" [(ngModel)]=\"formData.p_usr_username\" name=\"p_usr_username\"></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-label position=\"fixed\">Password</ion-label>\n    <ion-input type=\"text\" [(ngModel)]=\"formData.p_usr_password\" name=\"p_usr_password\"></ion-input>\n  </ion-item>\n  <ion-button (click)=\"submit()\">\n    <ion-icon slot=\"icon-only\" name=\"star\"></ion-icon>\n  </ion-button>\n</form>"
+module.exports = "<form (submit)=\"submit()\">\r\n  <ion-item>\r\n    <ion-label position=\"fixed\">Username</ion-label>\r\n    <ion-input type=\"text\" [(ngModel)]=\"formData.p_usr_username\" name=\"p_usr_username\"></ion-input>\r\n  </ion-item>\r\n  <ion-item>\r\n    <ion-label position=\"fixed\">Password</ion-label>\r\n    <ion-input type=\"text\" [(ngModel)]=\"formData.p_usr_password\" name=\"p_usr_password\"></ion-input>\r\n  </ion-item>\r\n  <ion-button (click)=\"submit()\">\r\n    <ion-icon slot=\"icon-only\" name=\"star\"></ion-icon>\r\n  </ion-button>\r\n</form>"
 
 /***/ }),
 
@@ -1635,14 +1640,48 @@ var ProxyService = /** @class */ (function () {
         });
     };
     ProxyService.prototype.registerUser = function (form) {
+        var f = form.value;
         console.log("REGISTERING USER WITH VALUES: ");
-        console.log(form.value);
-        return this.http.post(this.ENDPOINTS.register, form.value);
+        /*
+        p_usr_lname: req.body.p_usr_lname ,
+        p_usr_fname: req.body.p_usr_fname ,
+        p_usr_username: req.body.p_usr_username ,
+        p_usr_password: req.body.p_usr_password ,
+        p_usr_password2: req.body.p_usr_password2 ,
+        p_usr_community: req.body.p_usr_community ,
+        p_community_pin: req.body.p_community_pin ,
+        p_usr_email: req.body.p_usr_email ,
+        p_usr_title: req.body.p_usr_title ,
+        p_usr_jobtitle: req.body.p_usr_jobtitle ,
+        p_usr_flag: req.body.p_usr_flag ,
+        p_usr_company: req.boWdy.p_usr_company ,
+        p_usr_contact: req.body.p_usr_contact ,
+        p_usr_role: req.body.p_usr_role ,
+        p_usr_street1: req.body.p_usr_street1 ,
+        p_usr_street2: req.body.p_usr_street2 ,
+        p_usr_apt: req.body.p_usr_apt ,
+        p_usr_city: req.body.p_usr_city ,
+        p_usr_state: req.body.p_usr_state ,
+        p_usr_state_symbol: req.body.p_usr_state_symbol ,
+        p_usr_postal_cd: req.body.p_usr_postal_cd ,
+        p_usr_country: req.body.p_usr_country ,
+        p_usr_country_code_p: req.body.p_usr_country_code_p ,
+        p_usr_area_code_p: req.body.p_usr_area_code_p ,
+        p_usr_phone: req.body.p_usr_phone ,
+        p_usr_country_code_f: req.body.p_usr_country_code_f ,
+        p_usr_area_code_f: req.body.p_usr_area_code_f ,
+        p_usr_fax: req.body.p_usr_fax ,
+        p_usr_url: req.body.p_usr_email
+        */
+        console.log(f);
+        f.p_usr_role = 14;
+        f.p_usr_community = "Software Engineering PIN #:183";
+        return this.http.post(this.ENDPOINTS.register, f);
     };
-    ProxyService.prototype.uploadCase = function (form) {
+    ProxyService.prototype.uploadCase = function (formData) {
         console.log("UPLOADING CASE WITH VALUES: ");
-        console.log(form.value);
-        return this.http.post(this.ENDPOINTS.caseUpload, form.value);
+        console.log(formData);
+        return this.http.post(this.ENDPOINTS.caseUpload, formData);
     };
     ProxyService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -1719,7 +1758,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/daviddataram/Desktop/Spring2019/CS370/bonnetUpdate/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\DRK\Desktop\cs370\src\main.ts */"./src/main.ts");
 
 
 /***/ })

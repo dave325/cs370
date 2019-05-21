@@ -62,7 +62,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      BM\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>ECommunity Knowledge Base</ion-card-subtitle>\n      <ion-card-title>Welcome to Bonnet Mobile</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n\n\n        Swipe in from the left to view cases, upload your own, \n        view all the users in this system, and register for Bonnet!\n\n      \n\n    </ion-card-content>\n  </ion-card>\n\n\n\n\n  <!--\n     <ion-text color=\"secondary\">\n    <h1>Welcome to Bonnet Mobile</h1>\n  </ion-text>\n\n  \n  <ion-button color=\"primary\" (click)=\"sub()\">Login</ion-button>\n\n  \n  <ion-text color=\"primary\">\n      <h3>Swipe in from the left to view student cases and upload your own</h3>\n    </ion-text>\n\n  -->\n \n\n\n\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-title>\r\n      BM\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-card>\r\n    <ion-card-header>\r\n      <ion-card-subtitle>ECommunity Knowledge Base</ion-card-subtitle>\r\n      <ion-card-title>Welcome to Bonnet Mobile</ion-card-title>\r\n    </ion-card-header>\r\n\r\n    <ion-card-content>\r\n\r\n\r\n      Swipe in from the left to view cases, upload your own,\r\n      view all the users in this system, and register for Bonnet!\r\n\r\n      <div padding>\r\n\r\n      </div>\r\n      <ion-row>\r\n        <ion-col>\r\n\r\n          <div class=\"ion-text-center\">\r\n            <ion-button (click)=\"toRegister()\" shape=\"round\">Register</ion-button>\r\n            <ion-button (click)=\"toView()\" shape=\"round\">View Cases</ion-button>\r\n            <ion-button (click)=\"toUpload()\" shape=\"round\">Upload Case</ion-button>\r\n            <ion-button (click)=\"toUsers()\" shape=\"round\">All Users</ion-button>\r\n            <ion-button (click)=\"toAbout()\" shape=\"round\">About</ion-button>\r\n          </div>\r\n        </ion-col>\r\n      </ion-row>\r\n\r\n\r\n\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n\r\n\r\n\r\n  <!--\r\n     <ion-text color=\"secondary\">\r\n    <h1>Welcome to Bonnet Mobile</h1>\r\n  </ion-text>\r\n\r\n  \r\n  <ion-button color=\"primary\" (click)=\"sub()\">Login</ion-button>\r\n\r\n  \r\n  <ion-text color=\"primary\">\r\n      <h3>Swipe in from the left to view student cases and upload your own</h3>\r\n    </ion-text>\r\n\r\n  -->\r\n\r\n\r\n\r\n\r\n</ion-content>"
 
 /***/ }),
 
@@ -73,7 +73,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".welcome-card ion-img {\n  max-height: 35vh;\n  overflow: hidden; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9kYXZpZGRhdGFyYW0vRGVza3RvcC9TcHJpbmcyMDE5L0NTMzcwL2Jvbm5ldFVwZGF0ZS9zcmMvYXBwL2hvbWUvaG9tZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxnQkFBZ0I7RUFDaEIsZ0JBQWdCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndlbGNvbWUtY2FyZCBpb24taW1nIHtcbiAgbWF4LWhlaWdodDogMzV2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cbiJdfQ== */"
+module.exports = ".welcome-card ion-img {\n  max-height: 35vh;\n  overflow: hidden; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9DOlxcVXNlcnNcXERSS1xcRGVza3RvcFxcY3MzNzAvc3JjXFxhcHBcXGhvbWVcXGhvbWUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0VBQ2hCLGdCQUFnQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi53ZWxjb21lLWNhcmQgaW9uLWltZyB7XHJcbiAgbWF4LWhlaWdodDogMzV2aDtcclxuICBvdmVyZmxvdzogaGlkZGVuO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -91,13 +91,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage(modal) {
+    function HomePage(modal, router) {
         this.modal = modal;
+        this.router = router;
     }
     HomePage.prototype.sub = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -115,13 +118,28 @@ var HomePage = /** @class */ (function () {
             });
         });
     };
+    HomePage.prototype.toAbout = function () {
+        this.router.navigateByUrl('about');
+    };
+    HomePage.prototype.toView = function () {
+        this.router.navigateByUrl('list');
+    };
+    HomePage.prototype.toUpload = function () {
+        this.router.navigateByUrl('upload');
+    };
+    HomePage.prototype.toRegister = function () {
+        this.router.navigateByUrl('register');
+    };
+    HomePage.prototype.toUsers = function () {
+        this.router.navigateByUrl('listUsers');
+    };
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-home',
             template: __webpack_require__(/*! ./home.page.html */ "./src/app/home/home.page.html"),
             styles: [__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], HomePage);
     return HomePage;
 }());
