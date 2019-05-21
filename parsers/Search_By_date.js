@@ -4,6 +4,8 @@ var  request = require('request')
 var json = [];
 
 module.exports.SearchResult = (req, res) => {
+    console.log(req.body.p_increment_date +  '\n' + req.body.p_from_date +  '\n' + req.body.p_to_date +  '\n' + req.body.p_session_id+  '\n' + req.body.p_community_id)
+
     request({
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_date",
         method: "POST",
