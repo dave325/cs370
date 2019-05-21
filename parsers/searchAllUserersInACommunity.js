@@ -20,7 +20,8 @@ module.exports.list = (req, res) => {
         }
     }, (error, response, body) => {
         if (error) {
-            console.log(`error requesting ${url}`);
+            res.json({error: error}).status(401);
+            return;
         } else {
             var $ = cheerio.load(body);
 

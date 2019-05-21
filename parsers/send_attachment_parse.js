@@ -1,13 +1,20 @@
-var  cheerio = require('cheerio');
-var  request = require('request');
-var  URL = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment_dispatch";
+var cheerio = require('cheerio');
+var request = require('request');
+var URL = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.add_attachment_dispatch";
 
 module.exports.SendAttachment = (req, res) => {
-    request({ method: 'POST', url: URL, form: {p_ses:req.body.p_ses, p_case: req.body.p_case, p_BFile_type: req.body.p_BFile_type, 
-    p_BFile_subject: req.body.p_BFile_subject, p_BFile_caption: req.body.p_BFile_caption}},
+    request({
+        method: 'POST', url: URL, form: {
+            p_ses: req.body.p_ses, p_case: req.body.p_case, p_BFile_type: req.body.p_BFile_type,
+            p_BFile_subject: req.body.p_BFile_subject, p_BFile_caption: req.body.p_BFile_caption
+        }
+    },
         (err, response, body) => {
-            if (err) return res.json({error:"message"}).status(401);
-            
+            if (err) {
+                res.json({ error: err }).status(401);
+                return;
+            }
+
             var $ = cheerio.load(body);
             var object = {};
             object["form-action"] = $("link").attr('href');
@@ -24,7 +31,7 @@ module.exports.SendAttachment = (req, res) => {
                 }
 
             })
-            res.json(object).status(200);        
+            res.json(object).status(200);
         }
     );
 }

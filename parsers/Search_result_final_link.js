@@ -90,23 +90,18 @@ module.exports.SearchResultFileLink = (req, res) => {
                 request
                     .get("http://bonnet19.cs.qc.cuny.edu:7778" + $('a').attr('href'))
                     .on('response', function (file) {
-                        console.log(file) // 200
-                        console.log(file.headers) // 'image/png'
                         var filename = "33.jpg";
                         //var stat = fs.statSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
                         //var fileToSend = fs.readFileSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
                         res.set('Content-Type', file.headers['content-type']);
-                       
                         file.pipe(temp);
                         temp.on('finish', function () {
                             temp.close(function () {
                                 //var newFile = fs.createReadStream('file.pptx');
-                                var fileName = $('a').attr('href').split('/');
-                                console.log(fileName);
-                                var newFile = path.join(__dirname, "../", "file.pptx");
+                                var fileName = $('a').attr('href').split('/')[2];
+                                var newFile = path.join(__dirname, "../", fileName);
                                 res.download('file.pptx', function(resFile){
                                     if(resFile){
-                                        console.log(resFile);
                                         res.json(resFile).status(500);
                                         return;
                                     }
@@ -119,7 +114,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                         });
                     })
                     .on('error', function (fileErr) {
-                        console.log(fileErr)
+                        res.json({error: fileErr}).status(401);
                         return;
                     });
                 //fs.unlink('file.pptx');
@@ -128,7 +123,7 @@ module.exports.SearchResultFileLink = (req, res) => {
             
             var title = $('TITLE').text();
             if (title === "404 Not Found") {
-                res.json({ error: "Route does not exist" }).status(400);
+                res.json({ error: "Route does not exist" }).status(404);
                 return;
             }
             var link = $('b').find('a').attr('href');
@@ -136,6 +131,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                 "download_link": link
             };
             res.json(json).status(200);
+            return;
         }
 
     });
