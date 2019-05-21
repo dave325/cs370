@@ -10,7 +10,7 @@ module.exports.SearchResult = (req, res) => {
         url: "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/ec_forum.find_cases_by_date",
         method: "POST",
         form: {
-            p_increment_date: "ALL_DAY",
+            p_increment_date: req.body.p_increment_date,
             p_from_date: req.body.p_from_date,
             p_to_date: req.body.p_to_date,
             p_session: req.body.p_session_id,
