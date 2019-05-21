@@ -12,7 +12,7 @@ module.exports.SearchResult = (req, res) => {
         method: "POST",
         form: {
             p_case_select: req.body.p_case_select,
-            p_session: req.body.p_session,
+            p_session: req.body.p_session_id,
             p_community: req.body.p_community_id
         }
     }, (error, response, body) => {
