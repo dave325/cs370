@@ -57,7 +57,7 @@ var ListPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Case List\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n\n\n  <ion-row>\n\n    <ion-col size=\"9\">\n\n      <div *ngIf=\"choice != 'date'\">\n        <ion-searchbar [(ngModel)]=\"searchQuery\" name=\"searchQuery\" (keyup.enter)=\"search($event)\" #searchBar>\n        </ion-searchbar>\n      </div>\n      <div *ngIf=\"choice == 'date'\">\n        <ion-searchbar [(ngModel)]=\"p_from_date\" name=\"from_data\">\n        </ion-searchbar>\n        <ion-searchbar [(ngModel)]=\"p_to_date\" name=\"to_date\">\n        </ion-searchbar>\n        <ion-select [(ngModel)]=\"p_increment_date\">\n          <ion-select-option value=\"ALL_DAY\">Get cases of every weekday\n          </ion-select-option>\n          <ion-select-option value=\"MONDAY\">Get cases of Monday only\n          </ion-select-option>\n          <ion-select-option value=\"TUESDAY\">Get cases of Tuesday only\n          </ion-select-option>\n          <ion-select-option value=\"WEDNESDAY\">Get cases of Wednesday only\n          </ion-select-option>\n          <ion-select-option value=\"THURSDAY\">Get cases of Thursday only\n          </ion-select-option>\n          <ion-select-option value=\"FRIDAY\">Get cases of Friday only\n          </ion-select-option>\n          <ion-select-option value=\"SATURDAY\">Get cases of Saturday only\n          </ion-select-option>\n          <ion-select-option value=\"SUNDAY\">Get cases of Sunday only\n          </ion-select-option>\n        </ion-select>\n        <ion-button size=\"small\" fill=\"outline\" color=\"primary\" (click)=\"submitDate()\">Submit</ion-button>\n      </div>\n\n\n    </ion-col>\n\n\n\n\n    <ion-col size=\"3\">\n      <ion-label>Search By</ion-label>\n\n      <ion-select value=\"lastname\" okText=\"Okay\" cancelText=\"Dismiss\" #filterChoice [(ngModel)]=\"choice\">\n        <ion-select-option value=\"keyword\">Keyword</ion-select-option>\n        <ion-select-option value=\"id\">ID</ion-select-option>\n        <ion-select-option value=\"lastname\">Lastname</ion-select-option>\n        <ion-select-option value=\"date\">Date</ion-select-option>\n      </ion-select>\n    </ion-col>\n  </ion-row>\n\n  <div padding>\n  </div>\n  <ion-item>\n\n  </ion-item>\n  <ion-list>\n    <ion-item *ngFor=\"let item of caseList\" [routerDirection]=\"'root'\" [routerLink]=\"'/case/' + item.GetCase\">\n      {{item.Subject}} by {{item.Author}}<br>\n      <div class=\"item-note\" slot=\"end\">\n        {{item.GetCase}}\n        <br>\n        {{item.Date}}\n\n      </div>\n\n    </ion-item>\n  </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Case List\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n\n\n  <ion-row>\n\n    <ion-col size=\"9\">\n\n      <div *ngIf=\"choice != 'date'\">\n        <ion-searchbar [(ngModel)]=\"searchQuery\" name=\"searchQuery\" (keyup.enter)=\"search($event)\" #searchBar>\n        </ion-searchbar>\n\n      </div>\n      <div *ngIf=\"choice == 'date'\">\n        <ion-item>\n          <ion-label position=\"stacked\">From Date</ion-label>\n          <ion-searchbar [(ngModel)]=\"p_from_date\" name=\"from_data\">\n          </ion-searchbar>\n        </ion-item>\n        <ion-item>\n          <ion-label position=\"stacked\">To Date</ion-label>\n          <ion-searchbar [(ngModel)]=\"p_to_date\" name=\"to_date\">\n          </ion-searchbar>\n        </ion-item>\n        <ion-select [(ngModel)]=\"p_increment_date\" value=\"ALL_DAY\">\n          <ion-select-option value=\"ALL_DAY\">Get cases of every weekday\n          </ion-select-option>\n          <ion-select-option value=\"MONDAY\">Get cases of Monday only\n          </ion-select-option>\n          <ion-select-option value=\"TUESDAY\">Get cases of Tuesday only\n          </ion-select-option>\n          <ion-select-option value=\"WEDNESDAY\">Get cases of Wednesday only\n          </ion-select-option>\n          <ion-select-option value=\"THURSDAY\">Get cases of Thursday only\n          </ion-select-option>\n          <ion-select-option value=\"FRIDAY\">Get cases of Friday only\n          </ion-select-option>\n          <ion-select-option value=\"SATURDAY\">Get cases of Saturday only\n          </ion-select-option>\n          <ion-select-option value=\"SUNDAY\">Get cases of Sunday only\n          </ion-select-option>\n        </ion-select>\n        <ion-button size=\"small\" fill=\"outline\" color=\"primary\" (click)=\"submitDate()\">Submit</ion-button>\n      </div>\n      <h2 class=\"alert alert-danger\" *ngIf=\"error\" role=\"alert\">{{error}}</h2>\n      <h2 class=\"alert alert-info\" *ngIf=\"info\" role=\"alert\">{{info}}</h2>\n\n    </ion-col>\n\n\n\n\n    <ion-col size=\"3\">\n      <ion-label>Search By</ion-label>\n\n      <ion-select value=\"lastname\" okText=\"Okay\" cancelText=\"Dismiss\" #filterChoice [(ngModel)]=\"choice\">\n        <ion-select-option value=\"keyword\">Keyword</ion-select-option>\n        <ion-select-option value=\"id\">ID</ion-select-option>\n        <ion-select-option value=\"lastname\">Lastname</ion-select-option>\n        <ion-select-option value=\"date\">Date</ion-select-option>\n      </ion-select>\n    </ion-col>\n  </ion-row>\n\n  <div padding>\n  </div>\n  <ion-item>\n\n  </ion-item>\n  <ion-list>\n    <ion-item *ngFor=\"let item of caseList\" [routerDirection]=\"'root'\" [routerLink]=\"'/case/' + item.GetCase\">\n      {{item.Subject}} by {{item.Author}}<br>\n      <div class=\"item-note\" slot=\"end\">\n        {{item.GetCase}}\n        <br>\n        {{item.Date}}\n\n      </div>\n\n    </ion-item>\n  </ion-list>\n</ion-content>"
 
 /***/ }),
 
@@ -99,12 +99,18 @@ var ListPage = /** @class */ (function () {
     ListPage.prototype.search = function ($event) {
         console.log("CHOICE IS " + this.choice);
         console.log("QUERY IS " + this.searchQuery);
+        if (this.searchQuery == undefined) {
+            this.info = null;
+            this.error = "Please add something in the search query";
+            return;
+        }
+        this.error = null;
         if (this.choice == undefined) {
             this.choice = 'lastname';
         }
         if (this.choice === 'id') {
             this.doSearch(this.proxyService.ENDPOINTS.getByID, {
-                case_id: this.searchQuery,
+                p_case_select: this.searchQuery,
             });
         }
         if (this.choice === 'lastname') {
@@ -124,7 +130,6 @@ var ListPage = /** @class */ (function () {
         var _this = this;
         this.caseList = [];
         this.proxyService.getCaseBy(endpoint, info).then(function (res) {
-            console.log(res);
             _this.caseList = [];
             var i = res.length;
             while (i--) {
@@ -135,21 +140,51 @@ var ListPage = /** @class */ (function () {
                     }
                 }
             }
-            _this.caseList.reverse();
+            if (_this.caseList.length === 0) {
+                _this.info = null;
+                _this.error = "No Cases Found!";
+            }
+            else {
+                _this.error = null;
+                _this.caseList.reverse();
+            }
+        }, function (err) {
+            console.log(err);
+            _this.info = null;
+            _this.error = "There was an error searching for cases. Please try later.";
         });
     };
     ListPage.prototype.submitDate = function () {
+        var _this = this;
         var info = {
             p_from_date: this.p_from_date,
             p_to_date: this.p_to_date,
             p_increment_date: this.p_increment_date
         };
-        console.log(info);
         this.proxyService.getCaseBy(this.proxyService.ENDPOINTS.getByDate, info)
             .then(function (res) {
-            console.log(res);
+            _this.caseList = [];
+            var i = res.length;
+            while (i--) {
+                var element = res[i];
+                if (Object.keys(element).length > 1) {
+                    if (element.Author.length > 0) {
+                        _this.caseList.push(element);
+                    }
+                }
+            }
+            if (_this.caseList.length === 0) {
+                _this.info = null;
+                _this.error = "No Cases Found!";
+            }
+            else {
+                _this.error = null;
+                _this.caseList.reverse();
+            }
         }, function (err) {
             console.log(err);
+            _this.info = null;
+            _this.error = "There was an error searching for cases. Please try later.";
         });
     };
     ListPage.prototype.ngOnInit = function () {

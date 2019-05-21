@@ -58,7 +58,7 @@ var UploadPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Case List\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form #form=\"ngForm\" (ngSubmit)=\"register(form)\">\n    <ion-grid>\n      <ion-row color=\"primary\" justify-content-center>\n        <ion-col align-self-center size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\n          <div text-center>\n            <h3>Upload your case!</h3>\n          </div>\n          <div padding>\n            <ion-item>\n              <ion-label>Case Name:</ion-label>\n              <ion-input name=\"caseName\" type=\"text\" placeholder=\"What will we call your case?\" ngModel required>\n              </ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label>Case Description:</ion-label>\n              <ion-textarea rows=\"6\" cols=\"20\" maxlength=\"500\" name=\"caseName\" type=\"text\" placeholder=\"Give a short description of your case\" ngModel\n                required></ion-textarea>\n            </ion-item>\n            <ion-item>\n              <ion-label>Case File:</ion-label>\n              <ion-button color=\"primary\" shape=\"round\" fill=\"outline\">Attach</ion-button>\n            </ion-item>\n          </div>\n\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </form>\n\n\n\n</ion-content>\n\n\n<ion-footer>\n  <div padding>\n    <ion-button size=\"large\" type=\"submit\" [disabled]=\"form.invalid\" expand=\"block\">Upload</ion-button>\n  </div>\n</ion-footer>"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Case Upload\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form #form=\"ngForm\" (ngSubmit)=\"doUpload(form)\">\n    <ion-grid>\n      <ion-row color=\"primary\" justify-content-center>\n        <ion-col align-self-center size-md=\"6\" size-lg=\"5\" size-xs=\"12\">\n          <div text-center>\n            <h3>Upload your case!</h3>\n          </div>\n          <div padding>\n            <ion-item>\n              <ion-label>Username:</ion-label>\n              <ion-input name=\"p_usr_username\" type=\"text\" placeholder=\"What is your username?\" ngModel required>\n              </ion-input>\n            </ion-item>\n            <ion-item>\n              <ion-label>Password:</ion-label>\n              <ion-input name=\"p_usr_password\" type=\"password\" placeholder=\"What is your password?\" ngModel required>\n              </ion-input>\n            </ion-item>\n\n\n            <ion-item>\n\n\n              <ion-label>Interest Group:</ion-label>\n\n              <ion-select name=\"p_sig\" value=\"215\" [(ngModel)]=\"p_sig\" >\n                <ion-select-option value=\"209\">Unified Modeling Language</ion-select-option>\n                <ion-select-option value=\"210\">Specification and Requirement</ion-select-option>\n\n                <ion-select-option value=\"211\">Coding</ion-select-option>\n                <ion-select-option value=\"212\">QA Testing</ion-select-option>\n\n                <ion-select-option value=\"213\">Verification and Validation</ion-select-option>\n                <ion-select-option value=\"214\">Security</ion-select-option>\n\n                <ion-select-option value=\"215\">Other Topics</ion-select-option>\n\n              </ion-select>\n\n            </ion-item>\n\n\n            <ion-item>\n              <ion-label>Subject:</ion-label>\n              <ion-input name=\"p_subject\" type=\"text\" placeholder=\"What is the subject of the case?\" ngModel required>\n              </ion-input>\n            </ion-item>\n\n            <ion-item>\n              <ion-label>Keywords:</ion-label>\n              <ion-input name=\"p_keyword\" type=\"text\" placeholder=\"What are the keywords of this subject?\" ngModel\n                required>\n              </ion-input>\n            </ion-item>\n\n            <ion-item>\n              <ion-label>URL:</ion-label>\n              <ion-input name=\"p_url\" type=\"text\" placeholder=\"Is there a relevant URL?\" ngModel required>\n              </ion-input>\n            </ion-item>\n\n            <ion-item>\n              <ion-textarea name=\"p_text\" type=\"text\" rows=\"6\" cols=\"20\" maxlength=\"500\"\n                placeholder=\"What is the description of your case?\" ngModel required>\n              </ion-textarea>\n            </ion-item>\n\n\n\n\n\n\n\n          </div>\n\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </form>\n\n\n\n</ion-content>\n\n\n<ion-footer>\n  <div padding>\n    <ion-button (click)=\"doUpload(form)\" size=\"large\" type=\"submit\" [disabled]=\"form.invalid\" expand=\"block\">Upload\n    </ion-button>\n  </div>\n</ion-footer>"
 
 /***/ }),
 
@@ -85,15 +85,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UploadPage", function() { return UploadPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _proxy_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../proxy.service */ "./src/app/proxy.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
 
 
 var UploadPage = /** @class */ (function () {
-    function UploadPage() {
+    function UploadPage(router, proxyService, toastController) {
+        this.router = router;
+        this.proxyService = proxyService;
+        this.toastController = toastController;
+        this.p_sig = 215;
     }
-    UploadPage.prototype.ngOnInit = function () {
+    UploadPage.prototype.presentToastOnFailureToUploadCase = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toastController.create({
+                            message: 'Could not upload the case at this moment, please try again later!',
+                            duration: 2800,
+                            position: 'middle'
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
-    UploadPage.prototype.register = function (form) {
-        return;
+    UploadPage.prototype.doUpload = function (form) {
+        var _this = this;
+        var formVal = form.value;
+        formVal.p_sig = this.p_sig;
+        this.proxyService.uploadCase(form.value).toPromise().then(function (res) {
+            _this.router.navigateByUrl('upload-success');
+        }, function (err) {
+            _this.presentToastOnFailureToUploadCase();
+        });
+    };
+    UploadPage.prototype.ngOnInit = function () {
     };
     UploadPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -101,7 +136,7 @@ var UploadPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./upload.page.html */ "./src/app/upload/upload.page.html"),
             styles: [__webpack_require__(/*! ./upload.page.scss */ "./src/app/upload/upload.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _proxy_service__WEBPACK_IMPORTED_MODULE_3__["ProxyService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]])
     ], UploadPage);
     return UploadPage;
 }());
