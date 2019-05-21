@@ -96,7 +96,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                         //var stat = fs.statSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
                         //var fileToSend = fs.readFileSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
                         res.set('Content-Type', file.headers['content-type']);
-                        res.setHeader('Content-disposition', 'attachment; filename=' + fileName);
+                        res.set('Content-disposition', 'attachment; filename=' + fileName);
                         file.pipe(temp);
                         temp.on('finish', function () {
                             temp.close(function () {
