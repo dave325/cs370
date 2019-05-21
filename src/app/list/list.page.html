@@ -20,13 +20,20 @@
       <div *ngIf="choice != 'date'">
         <ion-searchbar [(ngModel)]="searchQuery" name="searchQuery" (keyup.enter)="search($event)" #searchBar>
         </ion-searchbar>
+
       </div>
       <div *ngIf="choice == 'date'">
-        <ion-searchbar [(ngModel)]="p_from_date" name="from_data">
-        </ion-searchbar>
-        <ion-searchbar [(ngModel)]="p_to_date" name="to_date">
-        </ion-searchbar>
-        <ion-select [(ngModel)]="p_increment_date">
+        <ion-item>
+          <ion-label position="stacked">From Date</ion-label>
+          <ion-searchbar [(ngModel)]="p_from_date" name="from_data">
+          </ion-searchbar>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">To Date</ion-label>
+          <ion-searchbar [(ngModel)]="p_to_date" name="to_date">
+          </ion-searchbar>
+        </ion-item>
+        <ion-select [(ngModel)]="p_increment_date" value="ALL_DAY">
           <ion-select-option value="ALL_DAY">Get cases of every weekday
           </ion-select-option>
           <ion-select-option value="MONDAY">Get cases of Monday only
@@ -46,7 +53,8 @@
         </ion-select>
         <ion-button size="small" fill="outline" color="primary" (click)="submitDate()">Submit</ion-button>
       </div>
-
+      <h2 class="alert alert-danger" *ngIf="error" role="alert">{{error}}</h2>
+      <h2 class="alert alert-info" *ngIf="info" role="alert">{{info}}</h2>
 
     </ion-col>
 

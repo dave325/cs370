@@ -15,6 +15,8 @@ import { ProxyService } from '../proxy.service';
 export class ListPage implements OnInit {
   private selectedItem: any;
   caseList: Array<any>;
+  error;
+  info;
 
   constructor(
     private route: ActivatedRoute, private proxyService: ProxyService
@@ -35,6 +37,12 @@ export class ListPage implements OnInit {
     console.log("CHOICE IS " + this.choice);
     console.log("QUERY IS " + this.searchQuery);
 
+    if(this.searchQuery == undefined){
+      this.info = null;
+      this.error = "Please add something in the search query";
+      return;
+    }
+    this.error = null;
     if (this.choice == undefined) {
       this.choice = 'lastname';
     }
@@ -70,10 +78,6 @@ export class ListPage implements OnInit {
       info
     ).then(
       (res: any) => {
-
-
-
-        console.log(res);
         this.caseList = [];
         var i = res.length;
         while (i--) {
@@ -86,8 +90,18 @@ export class ListPage implements OnInit {
           }
         }
 
-        this.caseList.reverse();
-
+        
+        if(this.caseList.length === 0) {
+          this.info = null;
+          this.error = "No Cases Found!"
+        }else{
+          this.error = null;
+          this.caseList.reverse();
+        }
+      }, (err) => {
+        console.log(err);
+        this.info = null;
+        this.error = "There was an error searching for cases. Please try later.";
       }
     );
 
@@ -98,13 +112,33 @@ export class ListPage implements OnInit {
       p_to_date: this.p_to_date,
       p_increment_date: this.p_increment_date
     };
-    console.log(info);
     this.proxyService.getCaseBy(this.proxyService.ENDPOINTS.getByDate, info)
       .then(
         (res) => {
-          console.log(res);
+          this.caseList = [];
+          var i = res.length;
+          while (i--) {
+  
+            let element = res[i];
+            if (Object.keys(element).length > 1) {
+              if (element.Author.length > 0) {
+                this.caseList.push(element);
+              }
+            }
+          }
+  
+          
+          if(this.caseList.length === 0) {
+            this.info = null;
+            this.error = "No Cases Found!"
+          }else{
+            this.error = null;
+            this.caseList.reverse();
+          }
         }, (err) => {
           console.log(err);
+          this.info = null;
+          this.error = "There was an error searching for cases. Please try later.";
         }
       )
   }

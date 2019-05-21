@@ -5,7 +5,7 @@ var  URL = "http://bonnet19.cs.qc.edu:8080/ecommunity/SF";
 module.exports.confirm = (req, res) => {
     request({ method: 'POST', url: URL, form: {p_usr_id: req.body.p_usr_id, p_transact1:req.body.p_transact1}},
         (err, response, body) => {
-            if (err) return res.json({error:"message"}).status(401);
+            if (err) return res.json({error:err}).status(401);
             
             var $ = cheerio.load(body);
             var object = {};
