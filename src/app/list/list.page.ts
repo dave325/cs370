@@ -1,6 +1,6 @@
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Route, createHostListener } from '@angular/compiler/src/core';
+import { createHostListener } from '@angular/compiler/src/core';
 import { ProxyService } from '../proxy.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class ListPage implements OnInit {
   info;
 
   constructor(
-    private route: ActivatedRoute, private proxyService: ProxyService
+    private route: Router, private proxyService: ProxyService,
   ) {
 
   }
@@ -37,7 +37,7 @@ export class ListPage implements OnInit {
     console.log("CHOICE IS " + this.choice);
     console.log("QUERY IS " + this.searchQuery);
 
-    if(this.searchQuery == undefined){
+    if (this.searchQuery == undefined) {
       this.info = null;
       this.error = "Please add something in the search query";
       return;
@@ -48,7 +48,7 @@ export class ListPage implements OnInit {
     }
     if (this.choice === 'id') {
       this.doSearch(this.proxyService.ENDPOINTS.getByID, {
-        p_case_select: this.searchQuery,
+        p_case_select: this.searchQuery
 
       });
 
@@ -80,6 +80,9 @@ export class ListPage implements OnInit {
       (res: any) => {
         this.caseList = [];
         var i = res.length;
+        if (this.choice === "id") {
+          this.route.navigate(['/case/' + info.p_case_select]);
+        }
         while (i--) {
 
           let element = res[i];
@@ -90,11 +93,11 @@ export class ListPage implements OnInit {
           }
         }
 
-        
-        if(this.caseList.length === 0) {
+
+        if (this.caseList.length === 0) {
           this.info = null;
           this.error = "No Cases Found!"
-        }else{
+        } else {
           this.error = null;
           this.caseList.reverse();
         }
@@ -118,7 +121,7 @@ export class ListPage implements OnInit {
           this.caseList = [];
           var i = res.length;
           while (i--) {
-  
+
             let element = res[i];
             if (Object.keys(element).length > 1) {
               if (element.Author.length > 0) {
@@ -126,12 +129,12 @@ export class ListPage implements OnInit {
               }
             }
           }
-  
-          
-          if(this.caseList.length === 0) {
+
+
+          if (this.caseList.length === 0) {
             this.info = null;
             this.error = "No Cases Found!"
-          }else{
+          } else {
             this.error = null;
             this.caseList.reverse();
           }

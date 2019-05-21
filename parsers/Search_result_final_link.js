@@ -100,7 +100,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                                 //var newFile = fs.createReadStream('file.pptx');
                                 var fileName = $('a').attr('href').split('/')[2];
                                 var newFile = path.join(__dirname, "../", fileName);
-                                res.download('file.pptx', function(resFile){
+                                res.download(fileName, function(resFile){
                                     if(resFile){
                                         res.json(resFile).status(500);
                                         return;
