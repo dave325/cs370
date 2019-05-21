@@ -83,7 +83,7 @@ module.exports.SearchResultFileLink = (req, res) => {
         if (error) {
             res.json({error: error}).status(401);
         } else {
-            console.log(formOptions)
+            console.log(body)
             var $ = cheerio.load(body);
             if (formOptions.p_attachOrReply === "Get-attachment") {
                 var temp = fs.createWriteStream($('a').attr('href'));
