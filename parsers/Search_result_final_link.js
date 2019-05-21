@@ -81,7 +81,7 @@ module.exports.SearchResultFileLink = (req, res) => {
         form: formOptions
     }, (error, response, body) => {
         if (error) {
-            console.log(err);
+            res.json({error: error}).status(401);
         } else {
             console.log(formOptions)
             var $ = cheerio.load(body);
@@ -96,12 +96,13 @@ module.exports.SearchResultFileLink = (req, res) => {
                         //var stat = fs.statSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
                         //var fileToSend = fs.readFileSync("http://bonnet19.cs.qc.cuny.edu:7778/EC_dropoff/4849ole16m4y19547.pptx");
                         res.set('Content-Type', file.headers['content-type']);
-                        //res.set('Content-Length', stat.size);
-                        //res.set('Content-Disposition', filename);
+                       
                         file.pipe(temp);
                         temp.on('finish', function () {
                             temp.close(function () {
                                 //var newFile = fs.createReadStream('file.pptx');
+                                var fileName = $('a').attr('href').split('/');
+                                console.log(fileName);
                                 var newFile = path.join(__dirname, "../", "file.pptx");
                                 res.download('file.pptx', function(resFile){
                                     if(resFile){

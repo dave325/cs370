@@ -17,7 +17,7 @@ module.exports.SearchResult = (req, res) => {
         }
     }, (error, response, body) => {
         if (error) {
-            console.log(`error requesting ${url}`);
+            cres.json({error: error}).status(401);
         } else {
             var $ = cheerio.load(body);
             var json = [];

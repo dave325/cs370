@@ -7,7 +7,7 @@ var  URL = "http://bonnet19.cs.qc.edu:7778/pls/forum/ec_forum.retrieve_interface
 module.exports.caseCreate = (req, res) => {
     request({ method: 'POST', url: URL, form: { p_case_select: req.body.p_case_select, p_session: req.body.p_session } },
         (err, response, body) => {
-            if (err) return res.json({error:"message"}).status(401);
+            if (err) return res.json({error:err}).status(401);
 
             var $ = cheerio.load(body);
             var object = {};

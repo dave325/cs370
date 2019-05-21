@@ -6,7 +6,7 @@ var  URL2 = "http://bonnet19.cs.qc.cuny.edu:7778/pls/forum/EC_forum.send_dispatc
 module.exports.caseUpload = (req, res) => {
     request({ method: 'POST', url: URL1, form: {p_usr_username: req.body.p_usr_username, p_usr_password: req.body.p_usr_password}},
         (err, response, body) => {
-            if (err) return res.json({error: "message"}).status(401);
+            if (err) return res.json({error: err}).status(401);
 
             var object1 = {}
             var $ = cheerio.load(body);

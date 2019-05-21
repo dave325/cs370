@@ -17,7 +17,7 @@ module.exports.SearchResult = (req, res) => {
         }
     }, (error, response, body) => {
         if (error) {
-            console.log(err);
+            res.json({error: error}).status(401);
         } else {
             if (body == "Your selected case does not belong to your community\n") {
                 var msg = {
