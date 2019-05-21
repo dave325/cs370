@@ -52,7 +52,7 @@ export class RegisterPage implements OnInit {
 
       else{
 
-        this.proxyService.registerUser(form.value).toPromise().then(
+        this.proxyService.registerUser(form).toPromise().then(
           (res)=>
           {
               this.router.navigateByUrl('register-success');
