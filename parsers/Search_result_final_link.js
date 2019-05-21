@@ -86,7 +86,8 @@ module.exports.SearchResultFileLink = (req, res) => {
             console.log(body)
             var $ = cheerio.load(body);
             if (formOptions.p_attachOrReply === "Get-attachment") {
-                var temp = fs.createWriteStream($('a').attr('href'));
+                var fileName = $('a').attr('href').split('/')[2];
+                var temp = fs.createWriteStream(fileName);
                 request
                     .get("http://bonnet19.cs.qc.cuny.edu:7778" + $('a').attr('href'))
                     .on('response', function (file) {
@@ -98,7 +99,7 @@ module.exports.SearchResultFileLink = (req, res) => {
                         temp.on('finish', function () {
                             temp.close(function () {
                                 //var newFile = fs.createReadStream('file.pptx');
-                                var fileName = $('a').attr('href').split('/')[2];
+                               
                                 console.log(fileName)
                                 var newFile = path.join(__dirname, "../", fileName);
                                 console.log(newFile)
