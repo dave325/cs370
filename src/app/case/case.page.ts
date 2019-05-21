@@ -76,7 +76,6 @@ export class CasePage implements OnInit {
                   result = result.replace(/"/g,"");
 
               console.log(contentDispositionHeader);
-              return;
               link.download = ev.detail.value;
               // this is necessary as link.click() does not work on the latest firefox
               link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
