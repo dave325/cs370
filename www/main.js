@@ -841,6 +841,18 @@ var map = {
 		"./src/app/list/list.module.ts",
 		"list-list-module"
 	],
+	"./register-success/register-success.module": [
+		"./src/app/register-success/register-success.module.ts",
+		"register-success-register-success-module"
+	],
+	"./register/register.module": [
+		"./src/app/register/register.module.ts",
+		"register-register-module"
+	],
+	"./upload-success/upload-success.module": [
+		"./src/app/upload-success/upload-success.module.ts",
+		"upload-success-upload-success-module"
+	],
 	"./upload/upload.module": [
 		"./src/app/upload/upload.module.ts",
 		"upload-upload-module"
@@ -981,7 +993,7 @@ var routes = [
             proxy: _proxy_service__WEBPACK_IMPORTED_MODULE_2__["ProxyService"]
         }
     },
-    //list,upload,case handled by @DeepakKhemraj drk3931@gmail.com
+    //list,upload,case,register handled by @DeepakKhemraj drk3931@gmail.com
     {
         path: 'list',
         loadChildren: './list/list.module#ListPageModule'
@@ -989,7 +1001,10 @@ var routes = [
     {
         path: 'upload',
         loadChildren: './upload/upload.module#UploadPageModule'
-    }
+    },
+    { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
+    { path: 'register-success', loadChildren: './register-success/register-success.module#RegisterSuccessPageModule' },
+    { path: 'upload-success', loadChildren: './upload-success/upload-success.module#UploadSuccessPageModule' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -1052,6 +1067,11 @@ var AppComponent = /** @class */ (function () {
                 icon: 'home'
             },
             {
+                title: 'Register',
+                url: '/register',
+                icon: 'add'
+            },
+            {
                 title: 'View Cases',
                 url: '/list',
                 icon: 'list'
@@ -1059,17 +1079,17 @@ var AppComponent = /** @class */ (function () {
             {
                 title: 'Upload a Case',
                 url: '/upload',
-                icon: 'list'
+                icon: 'cloud-upload'
             },
             {
                 title: 'About',
                 url: '/about',
-                icon: 'list'
+                icon: 'information'
             },
             {
                 title: 'List Users',
                 url: '/listUsers',
-                icon: 'list'
+                icon: 'man'
             }
         ];
         this.initializeApp();
@@ -1338,7 +1358,7 @@ var CasePage = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      Case List\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-item *ngFor=\"let item of users\">\n      <ion-label>\n        {{item.name}} <br>\n        {{item.email}} <br>\n        <a href=\"{{item.url}}\" *ngIf=\"item.url.length > 0 \">{{item.url}}</a>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      All Users\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-item *ngFor=\"let item of users\">\n      <ion-label>\n        {{item.name}} <br>\n        {{item.email}} <br>\n        <a href=\"{{item.url}}\" *ngIf=\"item.url.length > 0 \">{{item.url}}</a>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>"
 
 /***/ }),
 
@@ -1504,7 +1524,9 @@ var ProxyService = /** @class */ (function () {
             getByID: 'http://149.4.223.218:3000/api/search/id',
             getByKeyword: 'http://149.4.223.218:3000/api/search/keyword',
             getByDate: 'http://149.4.223.218:3000/api/search/date',
-            caseAction: 'http://149.4.223.218:3000/api/SearchResultFile'
+            caseAction: 'http://149.4.223.218:3000/api/SearchResultFile',
+            register: 'http://149.4.223.218:3000/api/register',
+            caseUpload: 'http://149.4.223.218:3000/api/caseUpload'
         };
     }
     ProxyService.prototype.resolve = function (route, state) {
@@ -1611,6 +1633,16 @@ var ProxyService = /** @class */ (function () {
             console.log("COULD NOT PERFORM LOGIN FUNCTIONALITY");
             console.log(err);
         });
+    };
+    ProxyService.prototype.registerUser = function (form) {
+        console.log("REGISTERING USER WITH VALUES: ");
+        console.log(form.value);
+        return this.http.post(this.ENDPOINTS.register, form.value);
+    };
+    ProxyService.prototype.uploadCase = function (form) {
+        console.log("UPLOADING CASE WITH VALUES: ");
+        console.log(form.value);
+        return this.http.post(this.ENDPOINTS.caseUpload, form.value);
     };
     ProxyService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

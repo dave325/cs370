@@ -48,7 +48,7 @@ export class ListPage implements OnInit {
     }
     if (this.choice === 'id') {
       this.doSearch(this.proxyService.ENDPOINTS.getByID, {
-        case_id: this.searchQuery,
+        p_case_select: this.searchQuery,
 
       });
 
@@ -120,6 +120,7 @@ export class ListPage implements OnInit {
           while (i--) {
   
             let element = res[i];
+            console.log(element);
             if (Object.keys(element).length > 1) {
               if (element.Author.length > 0) {
                 this.caseList.push(element);

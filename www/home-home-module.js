@@ -62,7 +62,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      BM\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-text color=\"secondary\">\n    <h1>Welcome to Bonnet Mobile</h1>\n  </ion-text>\n\n  <!--\n  <ion-button color=\"primary\" (click)=\"sub()\">Login</ion-button>\n\n  -->\n  <ion-text color=\"primary\">\n    <h3>Swipe in from the left to view student cases and upload your own</h3>\n  </ion-text>\n  \n\n\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      BM\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>ECommunity Knowledge Base</ion-card-subtitle>\n      <ion-card-title>Welcome to Bonnet Mobile</ion-card-title>\n    </ion-card-header>\n\n    <ion-card-content>\n\n\n        Swipe in from the left to view cases, upload your own, \n        view all the users in this system, and register for Bonnet!\n\n      \n\n    </ion-card-content>\n  </ion-card>\n\n\n\n\n  <!--\n     <ion-text color=\"secondary\">\n    <h1>Welcome to Bonnet Mobile</h1>\n  </ion-text>\n\n  \n  <ion-button color=\"primary\" (click)=\"sub()\">Login</ion-button>\n\n  \n  <ion-text color=\"primary\">\n      <h3>Swipe in from the left to view student cases and upload your own</h3>\n    </ion-text>\n\n  -->\n \n\n\n\n</ion-content>"
 
 /***/ }),
 
