@@ -8,7 +8,7 @@ Search for case parsers:
         - method: post
         - input: p_session (hiddent), p_community_id (hidden)
         - p_case_select (user input) 
-		
+		endpoint: /search/id
 {
 	"p_case_select": "14119",
 	"p_community" : "183",
