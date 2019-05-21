@@ -33,8 +33,7 @@ export class UploadPage implements OnInit {
     let formVal = form.value;
     formVal.p_sig = this.p_sig;
 
-
-    this.proxyService.uploadCase(form.value).toPromise().then(
+    this.proxyService.uploadCase(formVal).toPromise().then(
       (res) => {
         this.router.navigateByUrl('upload-success');
       },

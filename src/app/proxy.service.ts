@@ -182,13 +182,12 @@ export class ProxyService implements Resolve<any> {
 
   }
 
-  uploadCase(form)
+  uploadCase(formData)
   {
 
     console.log("UPLOADING CASE WITH VALUES: ");
-    console.log(form.value);
     return this.http.post(this.ENDPOINTS.caseUpload,
-        form.value
+        formData
     );
 
   }

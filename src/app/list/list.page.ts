@@ -123,6 +123,7 @@ export class ListPage implements OnInit {
           while (i--) {
 
             let element = res[i];
+            console.log(element);
             if (Object.keys(element).length > 1) {
               if (element.Author.length > 0) {
                 this.caseList.push(element);

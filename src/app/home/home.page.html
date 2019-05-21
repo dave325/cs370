@@ -20,10 +20,26 @@
     <ion-card-content>
 
 
-        Swipe in from the left to view cases, upload your own, 
-        view all the users in this system, and register for Bonnet!
+      Swipe in from the left to view cases, upload your own,
+      view all the users in this system, and register for Bonnet!
 
-      
+      <div padding>
+
+      </div>
+      <ion-row>
+        <ion-col>
+
+          <div class="ion-text-center">
+            <ion-button (click)="toRegister()" shape="round">Register</ion-button>
+            <ion-button (click)="toView()" shape="round">View Cases</ion-button>
+            <ion-button (click)="toUpload()" shape="round">Upload Case</ion-button>
+            <ion-button (click)="toUsers()" shape="round">All Users</ion-button>
+            <ion-button (click)="toAbout()" shape="round">About</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+
+
 
     </ion-card-content>
   </ion-card>
@@ -45,7 +61,7 @@
     </ion-text>
 
   -->
- 
+
 
 
 
