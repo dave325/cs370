@@ -73,6 +73,8 @@ export class CasePage implements OnInit {
               var contentDispositionHeader = res.headers.get('Content-Disposition');
 
               var result = contentDispositionHeader.split(';')[1].trim().split('=')[1];
+                  result = result.replace(/"/g,"");
+
               console.log(contentDispositionHeader);
               return;
               link.download = ev.detail.value;
