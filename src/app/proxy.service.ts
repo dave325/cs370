@@ -174,10 +174,48 @@ export class ProxyService implements Resolve<any> {
 
   registerUser(form) {
 
+
+    let f = form.value;
+
     console.log("REGISTERING USER WITH VALUES: ");
-    console.log(form.value);
+
+    /*
+    p_usr_lname: req.body.p_usr_lname ,
+    p_usr_fname: req.body.p_usr_fname ,
+    p_usr_username: req.body.p_usr_username ,
+    p_usr_password: req.body.p_usr_password ,
+    p_usr_password2: req.body.p_usr_password2 ,
+    p_usr_community: req.body.p_usr_community ,
+    p_community_pin: req.body.p_community_pin ,
+    p_usr_email: req.body.p_usr_email ,
+    p_usr_title: req.body.p_usr_title ,
+    p_usr_jobtitle: req.body.p_usr_jobtitle ,
+    p_usr_flag: req.body.p_usr_flag ,
+    p_usr_company: req.boWdy.p_usr_company ,
+    p_usr_contact: req.body.p_usr_contact ,
+    p_usr_role: req.body.p_usr_role ,
+    p_usr_street1: req.body.p_usr_street1 ,
+    p_usr_street2: req.body.p_usr_street2 ,
+    p_usr_apt: req.body.p_usr_apt ,
+    p_usr_city: req.body.p_usr_city ,
+    p_usr_state: req.body.p_usr_state ,
+    p_usr_state_symbol: req.body.p_usr_state_symbol ,
+    p_usr_postal_cd: req.body.p_usr_postal_cd ,
+    p_usr_country: req.body.p_usr_country ,
+    p_usr_country_code_p: req.body.p_usr_country_code_p ,
+    p_usr_area_code_p: req.body.p_usr_area_code_p ,
+    p_usr_phone: req.body.p_usr_phone ,
+    p_usr_country_code_f: req.body.p_usr_country_code_f ,
+    p_usr_area_code_f: req.body.p_usr_area_code_f ,
+    p_usr_fax: req.body.p_usr_fax ,
+    p_usr_url: req.body.p_usr_email 
+    */
+
+    console.log(f);
+    f.p_usr_role=14;
+    f.p_usr_community="Software Engineering PIN #:183";
     return this.http.post(this.ENDPOINTS.register,
-        form.value
+        f
     );
 
   }
@@ -186,6 +224,7 @@ export class ProxyService implements Resolve<any> {
   {
 
     console.log("UPLOADING CASE WITH VALUES: ");
+    console.log(formData);
     return this.http.post(this.ENDPOINTS.caseUpload,
         formData
     );
